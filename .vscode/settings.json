@@ -1,0 +1,14 @@
+{
+  "cSpell.words": ["Kapusta"],
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#ffffff",
+    "titleBar.activeBackground": "#FF751D",
+    "titleBar.inactiveForeground": "#ffffff",
+    "titleBar.inactiveBackground": "#cccccc"
+  }
+}
