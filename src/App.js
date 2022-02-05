@@ -1,7 +1,12 @@
-import stale from './App.module.scss';
+import s from './App.module.scss';
+import Button from 'Components/ExampleButton/exampleButton';
+
+
 
 function App() {
-  return <div className={stale.App}>Kapu$ta</div>;
+  return <div className={s.App}>Kapu$ta
+    <Button></Button>
+  </div>;
 }
 
 export default App;
