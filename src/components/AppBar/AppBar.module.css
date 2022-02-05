@@ -1,0 +1,117 @@
+.header {
+  display: flex;
+  margin: 0 auto;
+  /* justify-content: ; */
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  background: #ffffff;
+  /* box-shadow: 0 8px 32px 0 rgba(216, 136, 31, 0.37);
+  backdrop-filter: blur( 9.3px );
+  -webkit-backdrop-filter: blur( 9.3px );
+  border-radius: 15px; */
+  border: 1px solid rgba(105, 99, 64, 0.18);
+}
+
+.logo {
+  width: 90px;
+  height: 31px;
+  margin-left: 19px;
+}
+
+.groupV {
+  width: 32px;
+  margin-left: 129px;
+  margin-right: 15px;
+}
+
+.vector1 {
+  width: 0px;
+  height: 36px;
+  border: 1px solid #e0e5eb;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.buttonUserName {
+  font-weight: normal;
+  font-style: Roboto;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  text-align: right;
+  border: none;
+  background: none;
+  text-overflow: ellipsis;
+  /* overflow: hidden; */
+  white-space: nowrap;
+}
+
+.buttonLogout {
+  width: 66px;
+  font-style: Roboto;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  text-decoration-line: underline;
+  text-align: left;
+  border: none;
+  background: none;
+}
+
+.logOut {
+  width: 16px;
+  height: 16px;
+  margin-right: 20px;
+  border: none;
+  background: none;
+}
+@media screen and (min-width: 1280px) {
+  .header {
+    width: 1280px;
+  }
+  .groupV {
+    margin-left: 908px;
+  }
+  .buttonLogout {
+    margin-right: 44px;
+  }
+  .logo {
+    margin-left: 26px;
+  }
+
+  .logOut {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    width: 768px;
+  }
+  .logo {
+    margin-left: 12px;
+  }
+  .groupV {
+    margin-left: 444px;
+  }
+  .buttonLogout {
+    width: 64;
+    margin-right: 44px;
+  }
+
+  .logOut {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .buttonUserName,
+  .buttonLogout,
+  .vector1 {
+    display: none;
+  }
+}
