@@ -49,6 +49,7 @@ export const loginThunk = createAsyncThunk(
         alert('Нету такого пользователя, попробуйте другое имя');
         throw new Error('Required');
       }
+      console.log('loginThunk', data.data);
       return data.data;
     } catch (error) {
       return rejectWithValue({
@@ -62,7 +63,6 @@ export const currentThunk = createAsyncThunk(
   'users/current',
   async (_, { rejectWithValue, getState }) => {
     const state = getState();
-    console.log('currentThunk', state.auth.token);
     if (state.auth.token) {
       try {
         const response = await fetch(
@@ -76,8 +76,32 @@ export const currentThunk = createAsyncThunk(
           },
         );
         const data = await response.json();
-
+        console.log('currentThunk', data);
         return data.data.result;
+      } catch (error) {
+        return rejectWithValue({
+          error: error.message,
+        });
+      }
+    }
+  },
+);
+
+export const logOutThunk = createAsyncThunk(
+  'users/logout',
+  async (_, { rejectWithValue, getState }) => {
+    const state = getState();
+
+    if (state.auth.token) {
+      try {
+        const response = await fetch(BASE_USER_URL + userLogOut, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: state.auth.token,
+          },
+        });
+        return response.statusText;
       } catch (error) {
         return rejectWithValue({
           error: error.message,

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import stale from './App.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentThunk } from './redux/asyncthunc';
+import Header from 'components/Header/header';
 
 function App() {
   const token = useSelector(state => state.auth.token);
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <div className={stale.App}>
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
       </Routes>

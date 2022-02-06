@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerThunk, loginThunk, currentThunk } from './asyncthunc';
+import {
+  registerThunk,
+  loginThunk,
+  currentThunk,
+  logOutThunk,
+} from './asyncthunc';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -31,7 +36,7 @@ const authSlice = createSlice({
         name: action.payload.name,
         email: action.payload.email,
         id: action.payload.id,
-        isAuth: true,
+        isAuth: false,
       };
     },
     [registerThunk.rejected](state, action) {
@@ -66,7 +71,6 @@ const authSlice = createSlice({
       return {
         ...state,
         isLoading: true,
-        isAuth: false,
       };
     },
     [currentThunk.fulfilled](state, action) {
@@ -75,7 +79,6 @@ const authSlice = createSlice({
         isLoading: false,
         name: action.payload.name,
         email: action.payload.email,
-        id: action.payload.id,
         isAuth: true,
       };
     },
@@ -84,6 +87,28 @@ const authSlice = createSlice({
         ...state,
         isLoading: false,
         error: action.payload,
+        isAuth: false,
+      };
+    },
+    [logOutThunk.pending](state, action) {
+      return {
+        ...state,
+        isLoading: true,
+        isAuth: false,
+      };
+    },
+    [logOutThunk.fulfilled](state, action) {
+      return {
+        ...state,
+        isLoading: false,
+        token: '',
+        isAuth: false,
+      };
+    },
+    [logOutThunk.rejected](state, action) {
+      return {
+        ...state,
+        isLoading: false,
         isAuth: false,
       };
     },
