@@ -1,6 +1,7 @@
 import styles from './HomePage.module.scss';
 import kapusta from './kapusta2.png';
 import SignupForm from './SignUpForm/SignUpForm';
+
 function HomePage() {
   return (
     <div className={styles.homepage}>
@@ -11,6 +12,7 @@ function HomePage() {
         </div>
         <SignupForm className={styles.signup} />
       </div>
+ 
       <img src={kapusta} alt="kapusta" className={styles.kapusta} />
     </div>
   );
