@@ -2,16 +2,21 @@ import { useState } from 'react';
 import { useFormik } from 'formik';
 import styles from './SignUpForm.module.scss';
 import googleIcon from './google.svg';
+import { registerThunk, loginThunk } from '../../../redux/asyncthunc';
+import { useDispatch } from 'react-redux';
 
 const SignupForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
   });
+
   const inputHandler = ({ target: { name, value } }) => {
     switch (name) {
       case 'email':
@@ -24,6 +29,16 @@ const SignupForm = () => {
   };
   const handlerSubmit = e => {
     e.preventDefault();
+    const user = { email, password };
+    dispatch(loginThunk(user));
+    setEmail('');
+    setPassword('');
+  };
+
+  const handlerRegisterSubmit = e => {
+    e.preventDefault();
+    const user = { email, password };
+    dispatch(registerThunk(user));
     setEmail('');
     setPassword('');
   };
@@ -78,7 +93,11 @@ const SignupForm = () => {
               <button type="submit" className={styles.signIn}>
                 <span className={styles.buttonText}>Войти</span>
               </button>
-              <button type="button" className={styles.signOn}>
+              <button
+                onClick={handlerRegisterSubmit}
+                type="button"
+                className={styles.signOn}
+              >
                 <span className={styles.buttonText}>Регистрация</span>
               </button>
             </li>
