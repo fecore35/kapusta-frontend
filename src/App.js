@@ -10,6 +10,12 @@ function App() {
   const isAuth = useSelector(state => state.auth.isAuth);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (token) {
+      dispatch(currentThunk());
+    }
+  }, [token]);
+
   return (
     <div className={stale.App}>
       <Routes>

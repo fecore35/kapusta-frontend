@@ -4,7 +4,7 @@ const BASE_USER_URL = 'http://localhost:8081';
 const userLogin = '/api/auth/login';
 const userRegister = '/api/auth/registration';
 const userLogOut = '/api/auth/logout';
-const userCurrent = '/api/users/:id';
+const userCurrent = '/api/users/';
 
 export const registerThunk = createAsyncThunk(
   'users/register',
@@ -65,20 +65,20 @@ export const currentThunk = createAsyncThunk(
     console.log('currentThunk', state.auth.token);
     if (state.auth.token) {
       try {
-        const response = await fetch(BASE_USER_URL + userCurrent, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            Autorization: state.auth.token,
-            id: state.auth.id,
+        const response = await fetch(
+          BASE_USER_URL + userCurrent + state.auth.id,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: state.auth.token,
+            },
           },
-        });
-        console.log(response);
+        );
         const data = await response.json();
-        console.log(data);
-        return data.data;
+
+        return data.data.result;
       } catch (error) {
-        console.log(error);
         return rejectWithValue({
           error: error.message,
         });
