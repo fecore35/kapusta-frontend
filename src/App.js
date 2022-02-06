@@ -2,6 +2,7 @@ import HomePage from 'components/homepage/HomePage';
 import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import stale from './App.module.scss';
+import AppBar from './components/AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentThunk } from './redux/asyncthunc';
 
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <div className={stale.App}>
+      <AppBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
       </Routes>
