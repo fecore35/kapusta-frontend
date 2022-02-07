@@ -6,6 +6,8 @@ import AppBar from './components/AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentThunk } from './redux/asyncthunc';
 
+import UserView from './components/UserView/UserView'
+
 function App() {
   const token = useSelector(state => state.auth.token);
   const isAuth = useSelector(state => state.auth.isAuth);
@@ -22,7 +24,9 @@ function App() {
       <AppBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/user" element={<UserView />} />
       </Routes>
+
     </div>
   );
 }
