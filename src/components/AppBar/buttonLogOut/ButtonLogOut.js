@@ -6,9 +6,9 @@ const ButtonLogOut = () => {
       className={s.buttonLogout}
       variant="outlined"
       type="button"
-      // onClick={() => dispatch(authOperations.logOut())}
+    // onClick={() => dispatch(authOperations.logOut())}
     >
-      Выйти
+      Выйти <
     </button>
   );
 };
