@@ -39,8 +39,8 @@ const SignupForm = () => {
     e.preventDefault();
     const user = { email, password };
     dispatch(registerThunk(user));
-    setEmail('');
-    setPassword('');
+    // setEmail('');
+    // setPassword('');
   };
   return (
     <div className={styles.window}>

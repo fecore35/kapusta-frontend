@@ -76,8 +76,31 @@ export const currentThunk = createAsyncThunk(
           },
         );
         const data = await response.json();
-
         return data.data.result;
+      } catch (error) {
+        return rejectWithValue({
+          error: error.message,
+        });
+      }
+    }
+  },
+);
+
+export const logOutThunk = createAsyncThunk(
+  'users/logout',
+  async (_, { rejectWithValue, getState }) => {
+    const state = getState();
+
+    if (state.auth.token) {
+      try {
+        const response = await fetch(BASE_USER_URL + userLogOut, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${ state.auth.token}`
+          },
+        });
+        return response.statusText;
       } catch (error) {
         return rejectWithValue({
           error: error.message,
