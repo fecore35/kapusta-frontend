@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@pnotify/confirm": "^5.2.0",
     "eslint": "^8.8.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
