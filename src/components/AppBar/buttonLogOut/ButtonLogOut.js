@@ -8,7 +8,7 @@ const ButtonLogOut = () => {
       type="button"
       // onClick={() => dispatch(authOperations.logOut())}
     >
-      Выйти
+      Выйтиdfdff
     </button>
   );
 };
