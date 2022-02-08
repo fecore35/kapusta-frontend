@@ -71,7 +71,7 @@ export const currentThunk = createAsyncThunk(
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              Authorization: state.auth.token,
+              Authorization: `Bearer ${ state.auth.token}`,
             },
           },
         );
