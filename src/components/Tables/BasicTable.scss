@@ -30,3 +30,19 @@ table th {
   background-color: $secondaryColor;
   color: $textColor;
 }
+
+.pageNavigation {
+  width: 760px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  justify-content: space-around;
+}
+.pageNavigationButton {
+  color: $secondaryColor;
+  background-color: $accentColor;
+  border: none;
+  border-radius: 5px;
+}
