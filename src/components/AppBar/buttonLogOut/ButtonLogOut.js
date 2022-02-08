@@ -1,16 +1,6 @@
-import s from '../AppBar.module.scss';
-
-const ButtonLogOut = () => {
-  return (
-    <button
-      className={s.buttonLogout}
-      variant="outlined"
-      type="button"
-      // onClick={() => dispatch(authOperations.logOut())}
-    >
-      Выйти
-    </button>
-  );
+import ModalLogOut from 'components/ModalLogOut/ModalLogOut';
+const ButtonLogOut = ({}) => {
+  return <ModalLogOut />;
 };
 
 export default ButtonLogOut;

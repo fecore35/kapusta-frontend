@@ -5,6 +5,7 @@ import stale from './App.module.scss';
 import AppBar from './components/AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentThunk } from './redux/asyncthunc';
+import ModalLogOut from './components/ModalLogOut/ModalLogOut';
 
 function App() {
   const token = useSelector(state => state.auth.token);
