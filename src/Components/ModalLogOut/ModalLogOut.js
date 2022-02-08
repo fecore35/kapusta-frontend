@@ -13,7 +13,7 @@ defaults.width = '380px';
 defaults.styling = 'custom';
 defaults.hide = false;
 
-const ModalLogOut = () => {
+const ModalLogOut = ({ onClickSuccess }) => {
   function click() {
     success({
       text: 'Вы действительно хотите выйти?',
@@ -31,6 +31,7 @@ const ModalLogOut = () => {
                 click: (notice, value) => {
                   notice.close();
                   notice.fire('pnotify:confirm', { notice, value });
+                  onClickSuccess();
                 },
               },
               {
