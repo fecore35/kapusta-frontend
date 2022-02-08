@@ -2,7 +2,10 @@ import styles from './HomePage.module.scss';
 import kapusta from '../../components/homepage/images/desktop/kapusta2.png';
 import kapusta2 from '../../components/homepage/images/mobile/kapusta2.png';
 import SignupForm from './SignUpForm/SignUpForm';
+import { useSelector } from 'react-redux';
+
 function HomePage() {
+  const isAuth = useSelector(state => state.auth.isAuth);
   return (
     <div className={styles.homepage}>
       <div className={styles.hero}>
@@ -10,7 +13,7 @@ function HomePage() {
           <h1 className={styles.heading}>Kapu$ta</h1>
           <p className={styles.description}>S M A R T F I N A N C E</p>
         </div>
-        <SignupForm className={styles.signup} />
+        {!isAuth && <SignupForm className={styles.signup} />}
       </div>
       <picture>
         <source
