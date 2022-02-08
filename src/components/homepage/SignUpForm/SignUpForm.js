@@ -49,7 +49,10 @@ const SignupForm = () => {
           Вы можете авторизоваться с помощью <br />
           Google Account:
         </p>
-        <a href="www.google.com" className={styles.googleLink}>
+        <a
+          href="http://localhost:3030/api/auth/google"
+          className={styles.googleLink}
+        >
           <img src={googleIcon} alt="google" />
           <span className={styles.googleText}>Google</span>
         </a>
