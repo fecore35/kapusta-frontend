@@ -9,6 +9,7 @@ import ModalLogOut from './components/ModalLogOut/ModalLogOut';
 import Router from 'constants/router';
 import Dashboard from 'pages/Dashboard';
 import Report from 'pages/Report';
+import NotFound from 'pages/NotFound';
 
 function App() {
   const token = useSelector(state => state.auth.token);
@@ -28,6 +29,7 @@ function App() {
         <Route path={Router.HOME} element={<HomePage />} />
         <Route path={Router.DASHBOARD} element={<Dashboard />} />
         <Route path={Router.REPORT} element={<Report />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
