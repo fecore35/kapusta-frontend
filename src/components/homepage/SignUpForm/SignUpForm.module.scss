@@ -1,7 +1,7 @@
 .window {
   position: absolute;
   top: 117px;
-  right: 110px;
+  right: 150px;
   padding: 50px 85px;
   background-color: #ffffff;
   border-radius: 30px;
@@ -13,8 +13,9 @@
 }
 @media screen and (max-width: 1279px) {
   .window {
-    top: 239px;
-    right: 200px;
+    margin-top: 50px;
+    position: sticky;
+    top: 240px;
   }
 }
 @media screen and (max-width: 767px) {

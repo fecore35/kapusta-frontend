@@ -1,17 +1,25 @@
 .hero {
-  height: 526px;
   border-bottom-left-radius: 20%;
   background-color: #f5f6fb;
   background-image: url('../../components/homepage/images/desktop/kapusta.png');
   background-repeat: repeat-x;
   background-position: left 0px top 28px;
-  background-size: contain;
-  position: relative;
   margin-bottom: 76px;
+  padding-bottom: 79px;
+}
+@media screen and (min-width: 1280px) {
+  .hero {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 @media screen and (max-width: 1279px) {
   .hero {
     background-image: url('../../components/homepage/images/tablet/kapusta.png');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 526px;
   }
 }
 @media screen and (max-width: 767px) {
@@ -25,9 +33,9 @@
   }
 }
 .tagline {
-  position: absolute;
-  bottom: 98px;
-  left: 230px;
+  display: inline-block;
+  margin-top: 308px;
+  margin-left: 230px;
 }
 .heading {
   font-size: 102px;
@@ -43,10 +51,8 @@
 }
 @media screen and (max-width: 1279px) {
   .tagline {
-    position: absolute;
-    left: 166px;
-    top: 62px;
-    bottom: auto;
+    margin-top: 90px;
+    margin-left: 0;
   }
 }
 @media screen and (max-width: 767px) {
@@ -70,34 +76,22 @@
   }
 }
 .kapusta {
-  position: absolute;
-  left: 230px;
+  margin-left: 230px;
 }
 @media screen and (max-width: 1279px) {
   .kapusta {
-    left: 103px;
-    top: 710px;
-    bottom: 56px;
-    z-index: 51;
+    margin-left: 103px;
+    margin-top: 110px;
   }
 }
 @media screen and (max-width: 767px) {
   .kapusta {
-    left: 35px;
-    top: 640px;
-    z-index: 1;
+    margin-left: 35px;
+    margin-top: 218px;
   }
 }
 .homepage {
   font-family: 'Roboto';
-}
-@media screen and (max-width: 1279px) {
-  .homepage {
-    width: 768px;
-  }
-}
-@media screen and (max-width: 767px) {
-  .homepage {
-    width: 320px;
-  }
+  margin-left: auto;
+  margin-right: auto;
 }
