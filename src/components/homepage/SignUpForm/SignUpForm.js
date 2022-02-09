@@ -50,7 +50,7 @@ const SignupForm = () => {
           Google Account:
         </p>
         <a
-          href="http://localhost:3030/api/auth/google"
+          href="http://localhost:5000/auth/google"
           className={styles.googleLink}
         >
           <img src={googleIcon} alt="google" />

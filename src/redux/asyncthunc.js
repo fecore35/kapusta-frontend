@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const BASE_USER_URL = 'http://localhost:8081';
-const userLogin = '/api/auth/login';
-const userRegister = '/api/auth/registration';
-const userLogOut = '/api/auth/logout';
-const userCurrent = '/api/users/';
+const BASE_USER_URL = 'http://localhost:5000';
+const userLogin = '/auth/login';
+const userRegister = '/auth/registration';
+const userLogOut = '/auth/logout';
+const userCurrent = '/users/';
 
 export const registerThunk = createAsyncThunk(
   'users/register',
@@ -71,7 +71,7 @@ export const currentThunk = createAsyncThunk(
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${ state.auth.token}`,
+              Authorization: `Bearer ${state.auth.token}`,
             },
           },
         );
@@ -97,7 +97,7 @@ export const logOutThunk = createAsyncThunk(
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${ state.auth.token}`
+            Authorization: `Bearer ${state.auth.token}`,
           },
         });
         return response.statusText;
