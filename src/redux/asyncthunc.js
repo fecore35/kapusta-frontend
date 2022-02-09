@@ -4,6 +4,7 @@ const BASE_USER_URL = 'http://localhost:5000';
 const userLogin = '/auth/login';
 const userRegister = '/auth/registration';
 const userLogOut = '/auth/logout';
+// const userGoogle = '/auth/google';
 const userCurrent = '/users/';
 
 export const registerThunk = createAsyncThunk(
@@ -57,6 +58,32 @@ export const loginThunk = createAsyncThunk(
     }
   },
 );
+// export const loginGoogleThunk = createAsyncThunk(
+//   'users/google',
+//   async (user, { rejectWithValue }) => {
+//     try {
+//       const response = await fetch(BASE_USER_URL + userGoogle, {
+//         method: 'GET',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         query: JSON.stringify(user),
+//       });
+//       const data = await response.json();
+//       const add = 'sdfsdf';
+//       console.log(data, add);
+//       if (!data.data.token) {
+//         alert('Нету такого пользователя, попробуйте другое имя');
+//         throw new Error('Required');
+//       }
+//       return data.data;
+//     } catch (error) {
+//       return rejectWithValue({
+//         error: error.message,
+//       });
+//     }
+//   },
+// );
 
 export const currentThunk = createAsyncThunk(
   'users/current',

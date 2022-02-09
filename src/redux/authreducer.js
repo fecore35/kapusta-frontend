@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerThunk, loginThunk, currentThunk, logOutThunk } from './asyncthunc';
+import {
+  registerThunk,
+  loginThunk,
+  currentThunk,
+  logOutThunk,
+  // loginGoogleThunk,
+} from './asyncthunc';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -62,6 +68,27 @@ const authSlice = createSlice({
         error: action.payload,
       };
     },
+    // [loginGoogleThunk.pending](state, action) {
+    //   return {
+    //     isLoading: true,
+    //   };
+    // },
+    // [loginGoogleThunk.fulfilled](state, action) {
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     token: action.payload.token,
+    //     id: action.payload.id,
+    //     isAuth: false,
+    //   };
+    // },
+    // [loginGoogleThunk.rejected](state, action) {
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     error: action.payload,
+    //   };
+    // },
     [currentThunk.pending](state, action) {
       return {
         ...state,
@@ -89,29 +116,29 @@ const authSlice = createSlice({
     },
     [logOutThunk.pending](state, action) {
       return {
-          ...state,
-          isLoading: true,
-          isAuth: false,
-      }
-  },
-  [logOutThunk.fulfilled](state, action) {
-  return {
-      ...state, 
-      isLoading: false,
-      name: '',
-      email: '',
-      token: '',
-      isAuth: false,
-  }
-  },
-  [logOutThunk.rejected](state, action) {
-  return  {
-   ...state,
-   isLoading:false,
-  //  error: action.payload,
-   isAuth: false,
-  }
-  },
+        ...state,
+        isLoading: true,
+        isAuth: false,
+      };
+    },
+    [logOutThunk.fulfilled](state, action) {
+      return {
+        ...state,
+        isLoading: false,
+        name: '',
+        email: '',
+        token: '',
+        isAuth: false,
+      };
+    },
+    [logOutThunk.rejected](state, action) {
+      return {
+        ...state,
+        isLoading: false,
+        //  error: action.payload,
+        isAuth: false,
+      };
+    },
   },
 });
 
