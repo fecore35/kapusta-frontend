@@ -1,0 +1,41 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+.App {
+  background-size: cover;
+  width: 320px;
+  height: 342px;
+  margin-left: auto;
+  margin-right: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 767px) {
+  .App {
+    background-image: url(./images/mobile/mobile-bg.png);
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .App {
+    width: 768px;
+    height: 582px;
+    background-image: url(./images/tablet/tablet-bg.png);
+  }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 2100px) {
+  .App {
+    width: 1280px;
+    height: 582px;
+    background-image: url(./images/desktop/desktop-bg.png);
+  }
+}
+
+// .App {
+//  color: #ff751d;
+//  /* background-color: 90419D; */
+
+// }

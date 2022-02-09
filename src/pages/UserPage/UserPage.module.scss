@@ -1,0 +1,45 @@
+.container {
+  padding-top: 30px;
+  color: #52555f;
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .container {
+    padding-top: 40px;
+    padding-left: 51px;
+    padding-right: 51px;
+  }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1900px) {
+  .container {
+    padding-top: 40px;
+    padding-left: 110px;
+    padding-right: 110px;
+  }
+}
+
+.header {
+  text-align: center;
+}
+
+.statistics {
+  color: #52555f;
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+}
+
+.balance {
+  text-align: center;
+  padding-bottom: 294px;
+}
+
+.button {
+  width: 159px;
+  height: 53px;
+}
+.button:nth-last {
+  padding-right: 2px;
+}

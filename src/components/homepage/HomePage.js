@@ -6,7 +6,8 @@ function HomePage() {
     <div className={styles.homepage}>
       <div className={styles.hero}>
         <div className={styles.tagline}>
-          <h1 className={styles.heading}>Kapu$ta</h1>
+          <h1 className={styles.heading}>Kapusta</h1>
+
           <p className={styles.description}>Smart finance</p>
         </div>
         <SignupForm className={styles.signup} />
