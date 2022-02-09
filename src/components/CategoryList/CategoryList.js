@@ -1,11 +1,6 @@
 import { useState } from 'react';
+import Category from './Category';
 import s from './CategoryList.module.scss';
-
-function makeNumber(number) {
-  var n = number.toString();
-  var separator = ' ';
-  return n.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1' + separator);
-}
 
 function CategoryList() {
   const [type, setType] = useState('Расход');
@@ -17,27 +12,22 @@ function CategoryList() {
         <div className="">Расходы</div>
 
         <ul className={s.list}>
-          <li className={s.item} onClick={() => setCategory(0)}>
-            <p className={s.total}>{makeNumber('3000.50')}</p>
-            <i className={s.icon}>
-              <svg width="56" height="56">
-                <use href="sprite-category.svg#book"></use>
-              </svg>
-            </i>
-            <p className={s.name}>Продукты</p>
-          </li>
-          <li
-            className={s.item + ' ' + s.active}
-            onClick={() => setCategory(1)}
-          >
-            <p className={s.total}>{makeNumber('200.00')}</p>
-            <i className={s.icon}>
-              <svg width="56" height="56">
-                <use href="sprite-category.svg#alcohol"></use>
-              </svg>
-            </i>
-            <p className={s.name}>Продукты</p>
-          </li>
+          <Category
+            id="1"
+            name="FOODS"
+            total="2000.12"
+            icon="foods"
+            setCategory={setCategory}
+            currentCategory={category}
+          />
+          <Category
+            id="2"
+            name="SPORT"
+            total="9000.00"
+            icon="sport"
+            setCategory={setCategory}
+            currentCategory={category}
+          />
         </ul>
       </div>
     </div>
