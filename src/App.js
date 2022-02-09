@@ -6,7 +6,7 @@ import AppBar from './components/AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentThunk } from './redux/asyncthunc';
 import ModalLogOut from './components/ModalLogOut/ModalLogOut';
-
+import Form from './components/Form/Form';
 function App() {
   const token = useSelector(state => state.auth.token);
   const isAuth = useSelector(state => state.auth.isAuth);
@@ -21,6 +21,7 @@ function App() {
   return (
     <div className={stale.App}>
       <AppBar />
+      <Form />
       <Routes>
         <Route path="/" element={<HomePage />} />
       </Routes>
