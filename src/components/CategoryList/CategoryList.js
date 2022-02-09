@@ -4,12 +4,27 @@ import s from './CategoryList.module.scss';
 
 function CategoryList() {
   const [type, setType] = useState('Расход');
-  const [category, setCategory] = useState(1);
+  const [category, setCategory] = useState('1');
+
+  const onChangeTypeHandler = () => {
+    if (type === 'доход') {
+      return setType('Расход');
+    }
+    setType('доход');
+  };
 
   return (
     <div className={s.container}>
       <div className={s.inner}>
-        <div className="">Расходы</div>
+        <div className={s.control}>
+          <button className={s.button} onClick={onChangeTypeHandler}>
+            -
+          </button>
+          <div className={s.type}>{type}</div>
+          <button className={s.button} onClick={onChangeTypeHandler}>
+            +
+          </button>
+        </div>
 
         <ul className={s.list}>
           <Category
