@@ -6,7 +6,15 @@ import AppBar from './components/AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentThunk } from './redux/asyncthunc';
 import ModalLogOut from './components/ModalLogOut/ModalLogOut';
+
 import Form from './components/Form/Form';
+
+import Router from 'constants/router';
+import Dashboard from 'pages/Dashboard';
+import Report from 'pages/Report';
+import NotFound from 'pages/NotFound';
+
+
 function App() {
   const token = useSelector(state => state.auth.token);
   const isAuth = useSelector(state => state.auth.isAuth);
@@ -23,7 +31,10 @@ function App() {
       <AppBar />
       <Form />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path={Router.HOME} element={<HomePage />} />
+        <Route path={Router.DASHBOARD} element={<Dashboard />} />
+        <Route path={Router.REPORT} element={<Report />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
