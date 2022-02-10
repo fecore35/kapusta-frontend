@@ -1,5 +1,5 @@
 import HomePage from 'components/homepage/HomePage';
-import { Route, Routes, NavLink } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import stale from './App.module.scss';
 import AppBar from './components/AppBar/AppBar';
