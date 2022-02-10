@@ -5,7 +5,6 @@ import stale from './App.module.scss';
 import AppBar from './components/AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentThunk } from './redux/asyncthunc';
-import Form from 'components/Form/Form';
 
 import Router from 'constants/router';
 import Dashboard from 'pages/Dashboard';
@@ -26,7 +25,6 @@ function App() {
   return (
     <div className={stale.App}>
       <AppBar />
-      <Form />
       <Routes>
         <Route path={Router.HOME} element={<HomePage />} />
         <Route path={Router.DASHBOARD} element={<Dashboard />} />
