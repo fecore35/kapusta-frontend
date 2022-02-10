@@ -2,11 +2,17 @@ import HomePage from 'components/homepage/HomePage';
 import { Route, Routes, NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import stale from './App.module.scss';
+import AppBar from './components/AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentThunk } from './redux/asyncthunc';
 import { Costs } from 'components/Costs/Costs';
 import { Profit } from 'components/Profit/Profit';
 import { UserPage } from '../src/pages/UserPage/UserPage.js';
+
+import Router from 'constants/router';
+import Dashboard from 'pages/Dashboard';
+import Report from 'pages/Report';
+import NotFound from 'pages/NotFound';
 
 function App() {
   const token = useSelector(state => state.auth.token);
@@ -21,14 +27,12 @@ function App() {
 
   return (
     <div className={stale.App}>
+      <AppBar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-
-        <Route path="/userPage/*" element={<UserPage />}>
-          <Route path="costs" element={<Costs />} />
-
-          <Route path="profit" element={<Profit />} />
-        </Route>
+        <Route path={Router.HOME} element={<HomePage />} />
+        <Route path={Router.DASHBOARD} element={<Dashboard />} />
+        <Route path={Router.REPORT} element={<Report />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

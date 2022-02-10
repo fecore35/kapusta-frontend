@@ -1,0 +1,92 @@
+.logOutModal {
+  background-color: white;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+.modalBtn {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 0;
+  cursor: pointer;
+  width: 125px;
+  border-radius: 16px;
+  height: 44px;
+  border: 2px solid #f5f6fb;
+  transition-duration: 350ms;
+  transition-property: background-color border-color color;
+}
+
+.buttonYes {
+  @extend .modalBtn;
+  background-color: $accentColor;
+  border-color: $accentColor;
+  color: #ffffff;
+}
+
+.buttonNo {
+  @extend .modalBtn;
+  background-color: $mainColor;
+  color: #52555f;
+}
+
+.modalBtn:hover {
+  background-color: $mainColor;
+  color: $accentColor;
+  border-color: $accentColor;
+}
+
+.pnotify-pre-line {
+  letter-spacing: 0.02em;
+  color: $secondaryTextColor;
+}
+
+.custom-confirm {
+  margin-top: 20px;
+}
+
+.pnotify-closer {
+  float: none;
+  margin-left: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.pnotify-action-bar {
+  flex-wrap: nowrap;
+  justify-content: space-between !important;
+  margin-top: 0;
+}
+
+.pnotify .pnotify-shadow {
+  padding-top: 50px;
+  padding-bottom: 60px;
+  padding-left: 58px;
+  padding-right: 58px;
+}
+
+.pnotify.pnotify-with-icon .pnotify-content {
+  margin-left: 0;
+}
+
+.pnotify-text-with-max-height {
+  width: 100%;
+  text-align: center;
+}
+
+.pnotify-sticker {
+  display: none;
+}
