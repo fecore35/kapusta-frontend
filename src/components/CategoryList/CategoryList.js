@@ -50,9 +50,7 @@ function CategoryList() {
           />
         </ul>
       </div>
-      <Schedule type={type}
-                category={category}
-      />
+      <Schedule type={type} category={category} />
     </div>
   );
 }
