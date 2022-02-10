@@ -5,9 +5,6 @@ import stale from './App.module.scss';
 import AppBar from './components/AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentThunk } from './redux/asyncthunc';
-import { Costs } from 'components/Costs/Costs';
-import { Profit } from 'components/Profit/Profit';
-import { UserPage } from '../src/pages/UserPage/UserPage.js';
 
 import Router from 'constants/router';
 import Dashboard from 'pages/Dashboard';

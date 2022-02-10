@@ -1,5 +1,4 @@
 .header {
-  padding-bottom: 295px;
   text-align: center;
 }
 
@@ -36,7 +35,6 @@
 
   .header {
     display: flex;
-    flex-direction: row-reverse;
     align-items: center;
     justify-content: space-around;
 
@@ -61,14 +59,12 @@
   }
 }
 
-@media screen and (min-width: 1280px) and (max-width: 1900px) {
+@media screen and (min-width: 1280px) {
   .header {
     display: flex;
-    flex-direction: row-reverse;
     align-items: center;
     justify-content: space-around;
 
-    margin-left: 442px;
     padding-bottom: 10px;
   }
 

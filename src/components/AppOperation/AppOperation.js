@@ -1,18 +1,27 @@
-import { Outlet, Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import s from './AppOperation.module.scss';
-import { Costs } from 'components/Costs/Costs';
-import { Profit } from 'components/Profit/Profit';
 
 export function AppOperation() {
+  const [tab, setTab] = useState('income');
+
   return (
     <>
       <div className={s.operation}>
-        <NavLink className={s.costs + ' ' + s.link} to="/userPage/costs">
-          РАСХОД
-        </NavLink>
-        <NavLink className={s.profit + ' ' + s.link} to="/userPage/profit">
-          ДОХОД
-        </NavLink>
+        <button
+          className={s.costs + ' ' + s.link}
+          type="button"
+          onClick={() => setTab('income')}
+        >
+          доход
+        </button>
+        <button
+          className={s.profit + ' ' + s.link}
+          type="button"
+          onClick={() => setTab('consumption')}
+        >
+          расход
+        </button>
       </div>
 
       <Outlet />
