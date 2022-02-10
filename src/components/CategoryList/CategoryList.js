@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { reportSelectors, reportOperation } from 'redux/report';
 import Button from 'components/Button/Button';
 import Category from './Category';
 import s from './CategoryList.module.scss';
@@ -8,7 +10,9 @@ import arrowRight from '../../icons/arrow-r.svg';
 
 function CategoryList() {
   const [type, setType] = useState('Расход');
-  const [category, setCategory] = useState('1');
+  const categoryList = useSelector(reportSelectors.getReportCategory);
+  const [currentCategory, setCurrentCategory] = useState();
+  const dispatch = useDispatch();
 
   const onChangeTypeHandler = () => {
     if (type === 'доход') {
@@ -16,6 +20,15 @@ function CategoryList() {
     }
     setType('доход');
   };
+
+  useEffect(() => {
+    dispatch(
+      reportOperation.getCategory({
+        month: '1',
+        year: '2022',
+      }),
+    );
+  }, [dispatch]);
 
   return (
     <div className={s.container}>
@@ -31,22 +44,17 @@ function CategoryList() {
         </div>
 
         <ul className={s.list}>
-          <Category
-            id="1"
-            name="FOODS"
-            total="2000.12"
-            icon="foods"
-            setCategory={setCategory}
-            currentCategory={category}
-          />
-          <Category
-            id="2"
-            name="SPORT"
-            total="9000.00"
-            icon="sport"
-            setCategory={setCategory}
-            currentCategory={category}
-          />
+          {categoryList &&
+            categoryList.map(({ name, slug, totalSum }) => (
+              <Category
+                key={slug}
+                name={name}
+                total={totalSum}
+                icon={slug}
+                setCategory={setCurrentCategory}
+                currentCategory={currentCategory}
+              />
+            ))}
         </ul>
       </div>
     </div>
