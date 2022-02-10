@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import Calendar from '../../src/components/Calendar/calendar.js';
-import { Formik, Form, useField } from 'formik';
+import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
+import { Formik, Form, useField } from 'formik';
+import Calendar from 'components/Calendar/calendar.js';
 import styled from '@emotion/styled';
-import s from './form.module.scss';
+import s from './Form.module.scss';
 import calendar from '../../icons/calendar.png';
 import 'react-calendar/dist/Calendar.css';
 import calcImg from '../../icons/calcImg.png';
