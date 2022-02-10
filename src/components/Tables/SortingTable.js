@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useTable, useSortBy } from 'react-table'
 import MOCK_DATA from './MOCK_DATA.json'
-import { COLUMNS } from './columns'
+import { COLUMNS } from './sortedColumns'
 import './BasicTable.scss'
 
 export const SortingTable = () => {

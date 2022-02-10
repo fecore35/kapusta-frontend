@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 import { useTable } from 'react-table'
-import MOCK_DATA from './MOCK_DATA.json'
-import { COLUMNS } from './columns'
+import MOCK_SUMMARY from './MOCK_SUMMARY.json'
+import { summaryColumns } from './summaryColumns'
 import './BasicTable.scss'
 
-export const BasicTable = () => {
-    const columns = useMemo(() => COLUMNS, [])
-    const data = useMemo(() => MOCK_DATA, [])
+export const SummaryTable = () => {
+    const columns = useMemo(() => summaryColumns, [])
+    const data = useMemo(() => MOCK_SUMMARY, [])
     const tableInstance = useTable({
         columns: columns,
         data: data,
@@ -23,10 +23,8 @@ export const BasicTable = () => {
                                 <th{...column.getHeaderProps()}>{column.render('Header')}</th>
                             ))
                         }
-
                     </tr>
                 ))}
-
             </thead>
             <tbody {...getTableBodyProps()}>
                 {
@@ -39,11 +37,9 @@ export const BasicTable = () => {
                                         <td {...cell.getCellProps()}>{cell.render('Cell')}</td>)
                                 })
                             }
-
                             </tr>)
                     })
                 }
-
             </tbody>
         </table>)
 };

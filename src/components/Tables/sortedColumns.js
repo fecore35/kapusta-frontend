@@ -5,7 +5,7 @@ export const COLUMNS = [
     {
         Header: 'Дата',
         accessor: "date",
-        Cell: ({ value }) => { return format(new Date(value), 'dd/MM/yy') }
+        Cell: ({ value }) => { return format(new Date(value), 'dd.MM.yy') }
     },
     {
         Header: 'Категория',

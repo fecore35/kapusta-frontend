@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useTable, useSortBy, usePagination } from 'react-table'
 import MOCK_DATA from './MOCK_DATA.json'
-import { COLUMNS } from './columns'
+import { COLUMNS } from './sortedColumns'
 import './BasicTable.scss'
 
 
@@ -12,9 +12,9 @@ export const PaginationTable = () => {
         columns: columns,
         data: data,
     }, useSortBy, usePagination)
-    const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow, previousPage, nextPage } = tableInstance
+    const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow, previousPage, nextPage, } = tableInstance
     return (
-        <><table {...getTableProps()}>
+        <div><table {...getTableProps()}>
             <thead>
                 {headerGroups.map((headerGroup) => (
                     <tr{...headerGroup.getHeaderGroupProps}>
@@ -53,5 +53,5 @@ export const PaginationTable = () => {
                 <button className='pageNavigationButton' onClick={() => previousPage()}>Назад</button>
                 <button className='pageNavigationButton' onClick={() => nextPage()}>Дальше</button>
             </div>
-        </>)
+        </div>)
 };
