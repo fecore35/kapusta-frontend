@@ -5,6 +5,7 @@ import s from './CategoryList.module.scss';
 
 import arrowLeft from '../../icons/arrow-l.svg';
 import arrowRight from '../../icons/arrow-r.svg';
+import Schedule from 'components/homepage/schedule/Shedule';
 
 function CategoryList() {
   const [type, setType] = useState('Расход');
@@ -49,6 +50,7 @@ function CategoryList() {
           />
         </ul>
       </div>
+      <Schedule type={type} category={category} />
     </div>
   );
 }
