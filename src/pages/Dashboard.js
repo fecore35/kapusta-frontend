@@ -1,28 +1,13 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Router from '../constants/router';
 import Form from 'components/Form/Form';
+import TopPanel from 'components/TopPanel/TopPanel';
+import { AppOperation } from '../components/AppOperation/AppOperation';
 
 function Dashboard() {
-  const [tab, setTab] = useState('income');
-
   return (
     <>
-      <h2>Dashboard</h2>
-      <Link to={Router.REPORT}>Перейти к отчетам</Link>
-
-      <div>
-        <button type="button" onClick={() => setTab('income')}>
-          доход
-        </button>
-        <button type="button" onClick={() => setTab('consumption')}>
-          расход
-        </button>
-      </div>
-
+      <TopPanel showReport />
+      <AppOperation />
       <Form />
-
-      {tab === 'income' ? <>доход</> : <>расход</>}
     </>
   );
 }

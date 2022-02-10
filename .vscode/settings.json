@@ -1,5 +1,9 @@
 {
-  "cSpell.words": ["Kapusta"],
+  "cSpell.words": [
+    "ДОХОД",
+    "РАСХОД",
+    "Kapusta"
+  ],
   "files.autoSave": "onFocusChange",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
