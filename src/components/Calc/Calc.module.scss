@@ -1,0 +1,53 @@
+main {
+  background: url(https://i.imgur.com/BzMIeML.gif?noredirect) no-repeat center
+    center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.calc {
+  margin: 0 auto;
+  padding: 90px;
+  width: 300px;
+  height: 700px;
+  border-radius: 25px;
+}
+.result {
+  width: 90%;
+  padding: 1px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 24px;
+  color: white;
+  background-color: black;
+  border: 2px solid #ffffff;
+  font-family: 'Lucida Console', Courier, monospace;
+}
+
+.botones {
+  width: 200;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2px;
+  font-family: 'Lucida Console', Courier, monospace;
+}
+.boton {
+  background: black;
+  border-radius: 10px;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #7b2587;
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+}
+
+.boton:active {
+  background: #112f41;
+  color: #f2b134;
+}

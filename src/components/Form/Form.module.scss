@@ -121,7 +121,7 @@ button[name='buttonYes'] {
     margin-right: auto;
     margin-top: 30px;
   }
-  .calendarInner {
+  .calcInner .calendarInner {
     position: fixed;
     z-index: 99999999;
   }
@@ -186,7 +186,8 @@ button[name='buttonYes'] {
     margin-right: 20px;
     margin-top: 0;
   }
-  .calendarInner {
+  .calendarInner,
+  .calcInner {
     position: fixed;
     z-index: 99999999;
   }

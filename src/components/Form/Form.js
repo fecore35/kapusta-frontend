@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import Calendar from '../../src/components/Calendar/calendar.js';
+import Calendar from '../Calendar/calendar';
 import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
 import styled from '@emotion/styled';
-import s from './form.module.scss';
+import s from './Form.module.scss';
 import calendar from '../../icons/calendar.png';
 import 'react-calendar/dist/Calendar.css';
 import calcImg from '../../icons/calcImg.png';
+import Calc from '../Calc/calc';
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -57,6 +58,8 @@ const FormLabel = () => {
   const [category, setCategory] = useState('');
   const [valueCalendar, onChange] = useState(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
+  const [valueCalc, onChanges] = useState(null);
+  const [showCalc, setShowCalc] = useState(false);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -96,6 +99,24 @@ const FormLabel = () => {
     document.addEventListener('click', calendarHandler);
     return () => {
       document.removeEventListener('click', calendarHandler);
+    };
+  }, []);
+
+  const calcHandler = e => {
+    if (
+      e.target.name === 'calc' ||
+      e.target.closest('.calc') ||
+      e.target.classList.contains('main')
+    ) {
+      return;
+    }
+
+    setShowCalc(false);
+  };
+  useEffect(() => {
+    document.addEventListener('click', calcHandler);
+    return () => {
+      document.removeEventListener('click', calcHandler);
     };
   }, []);
 
@@ -185,7 +206,17 @@ const FormLabel = () => {
               <option value="education">Образование</option>
               <option value="other">Прочее</option>
             </MySelect>
-            <MyTextInput name="calc" type="number" placeholder="0.00" />
+            <MyTextInput
+              value={valueCalc}
+              type="input"
+              name="calc"
+              placeholder="0.00"
+              onFocus={() => setShowCalc(true)}
+            />
+            <div className="calcInner">
+              {showCalc && <Calc onChange={onChanges} />}
+            </div>
+
             {/* <img src={calcImg} alt="calculator" className={s.calcImg} /> */}
           </div>
           <button type="submit" name="buttonYes" className="buttonYes">
