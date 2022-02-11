@@ -12,9 +12,15 @@ const reportSlice = createSlice({
     transactions: [],
     error: null,
   },
-  redusers: {
-    renameProp: (state, action) => {
-      return { ...state, myLoad: action.payload };
+  reducers: {
+    reportType: (state, action) => {
+      return { ...state, income: action.payload };
+    },
+    reportMonth: (state, action) => {
+      return { ...state, month: action.payload };
+    },
+    reportYear: (state, action) => {
+      return { ...state, month: action.payload };
     },
   },
   extraReducers: {
@@ -41,5 +47,5 @@ const reportSlice = createSlice({
   },
 });
 
-export const { renameProp } = reportSlice.actions;
+export const { reportType } = reportSlice.actions;
 export default reportSlice.reducer;
