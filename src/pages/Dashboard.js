@@ -5,12 +5,16 @@ import UserView from 'components/UserView/UserView';
 
 function Dashboard() {
   return (
-    <>
-      <TopPanel showReport />
-      <AppOperation />
-      <Form />
-      <UserView />
-    </>
+    <section className="section-dashboard section">
+      <div className="container">
+        <TopPanel showReport />
+        <AppOperation />
+        <div className="section__inner">
+          <Form />
+          <UserView />
+        </div>
+      </div>
+    </section>
   );
 }
 
