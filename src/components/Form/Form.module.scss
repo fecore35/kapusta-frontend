@@ -1,13 +1,14 @@
-form {
+.formFormic {
   // display: flex;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
   width: 100%;
   // height: 511px;
-  padding-top: 54px;
-  padding-bottom: 170px;
+  padding-top: 21px;
   padding-left: 19px;
+  background: #f5f6fb;
+  border-bottom-left-radius: 20%;
 }
 textarea[name='product'],
 select[name='category'],
@@ -24,6 +25,10 @@ input[name='calc'] {
   border: 2px solid #f5f6fb;
   box-sizing: border-box;
   border-radius: 0px;
+  background: #f5f6fb;
+}
+select[name='category'] {
+  margin-bottom: 30px;
 }
 textarea[name='product'],
 select[name='category'] {
@@ -41,23 +46,37 @@ select[name='category'] {
 
 input[name='calc'] {
   justify-content: center;
-  margin-left: 69px;
+  margin-left: 50px;
   width: 125px;
   height: 44px;
   color: #c7ccdc;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 22px 0px 0px 22px;
 }
 button[name='buttonYes'] {
   margin-top: 83px;
   margin-right: 15px;
   margin-left: 27px;
 }
-
-.calcImg {
-  width: 12, 89px;
-  height: 5, 94px;
+.calc {
+  margin: 0 auto;
+}
+.calcWrapper {
+  width: 60px;
+  height: 44px;
+  margin-left: 167px;
+  margin-top: -45px;
+  padding: 12px 23px;
+  border: 2px solid #ffffff;
   box-sizing: border-box;
   border-radius: 22px 0px 0px 22px;
   transform: matrix(-1, 0, 0, 1, 0, 0);
+  background: #f5f6fb;
+}
+.calcImg {
+  width: 20px;
+  height: 20px;
 }
 @media screen and (max-width: 320px) {
   input[name='calendar'],
@@ -66,7 +85,7 @@ button[name='buttonYes'] {
   }
 }
 @media screen and (min-width: 768px) {
-  form {
+  .formFormic {
     display: flex;
     flex-wrap: wrap;
     margin-left: auto;
@@ -121,13 +140,13 @@ button[name='buttonYes'] {
     margin-right: auto;
     margin-top: 30px;
   }
-  .calcInner .calendarInner {
-    position: fixed;
+  .calendarInner {
+    position: absolute;
     z-index: 99999999;
   }
 }
 @media screen and (min-width: 1280px) {
-  form {
+  .formFormic {
     margin-left: 110px;
     margin-top: 132px;
     padding-top: 33px;
@@ -188,7 +207,7 @@ button[name='buttonYes'] {
   }
   .calendarInner,
   .calcInner {
-    position: fixed;
+    position: absolute;
     z-index: 99999999;
   }
 }

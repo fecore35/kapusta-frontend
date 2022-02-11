@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Router from '../constants/router';
+import Form from 'components/Form/Form';
 
 function Dashboard() {
   const [tab, setTab] = useState('income');
@@ -18,6 +19,8 @@ function Dashboard() {
           расход
         </button>
       </div>
+
+      <Form />
 
       {tab === 'income' ? <>доход</> : <>расход</>}
     </>

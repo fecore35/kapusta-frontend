@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
 import Calendar from '../Calendar/calendar';
 import { Formik, Form, useField } from 'formik';
+import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import styled from '@emotion/styled';
 import s from './Form.module.scss';
@@ -57,7 +56,7 @@ const FormLabel = () => {
   const [product, setProduct] = useState('');
   const [category, setCategory] = useState('');
   const [valueCalendar, onChange] = useState(new Date());
-  const [showCalendar, setShowCalendar] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(null);
   const [valueCalc, onChanges] = useState(null);
   const [showCalc, setShowCalc] = useState(false);
 
@@ -106,7 +105,7 @@ const FormLabel = () => {
     if (
       e.target.name === 'calc' ||
       e.target.closest('.calc') ||
-      e.target.classList.contains('main')
+      e.target.classList.contains('Form_calcInner__NHujA')
     ) {
       return;
     }
@@ -167,7 +166,7 @@ const FormLabel = () => {
           }, 400);
         }}
       >
-        <Form>
+        <Form className={s.formFormic}>
           <img src={calendar} alt="calendar" className={s.calendarImg} />
           <MyTextInput
             value={valueCalendar}
@@ -213,11 +212,14 @@ const FormLabel = () => {
               placeholder="0.00"
               onFocus={() => setShowCalc(true)}
             />
-            <div className="calcInner">
-              {showCalc && <Calc onChange={onChanges} />}
+            <div className={s.calc}>
+              <div className={s.calcInner}>
+                {showCalc && <Calc onChange={onChanges} />}
+                <div className={s.calcWrapper}>
+                  <img src={calcImg} alt="calculator" className={s.calcImg} />
+                </div>
+              </div>
             </div>
-
-            {/* <img src={calcImg} alt="calculator" className={s.calcImg} /> */}
           </div>
           <button type="submit" name="buttonYes" className="buttonYes">
             ВВВОД

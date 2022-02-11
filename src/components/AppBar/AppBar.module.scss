@@ -51,11 +51,12 @@
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.04em;
-  color: #52555f;
+  // color: #52555f;
   text-decoration-line: underline;
   text-align: left;
   border: none;
   background: none;
+  display: none;
 }
 
 .logOut {
@@ -68,8 +69,8 @@
 
 @media screen and (max-width: 320px) {
   .buttonUserName,
-  .buttonLogout,
-  .vector1 {
+  .vector1,
+  .buttonLogout {
     display: none;
   }
 }
@@ -101,8 +102,10 @@
   .groupV {
     margin-left: 908px;
   }
+
   .buttonLogout {
     margin-right: 44px;
+    justify-content: center;
   }
   .logo {
     margin-left: 26px;
