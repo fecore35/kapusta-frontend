@@ -26,6 +26,7 @@ const reportSlice = createSlice({
   extraReducers: {
     [reportOperation.getCategory.pending](state, action) {
       return {
+        ...state,
         isLoading: true,
         error: null,
       };
