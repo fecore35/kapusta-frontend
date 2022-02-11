@@ -64,43 +64,47 @@ function Schedule({ type, category }) {
   }, [category]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.schedule}>
-        <VictoryChart theme={VictoryTheme.material} width={620} padding={60}>
-          <VictoryAxis
-          // tickFormat={}
-          />
-          <VictoryBar
-            style={{
-              data: {
-                width: 36,
-                fill: ({ datum }) => datum.fill,
-              },
-            }}
-            // data={[
-            //     { quarter: "Свинина", earnings: 5000, label: "5000", fill: '#FF751D',},
-            //     { quarter: "Говядина", earnings: 4500, label: "4500", fill:'#FFDAC0' },
-            //     { quarter: "Курица", earnings: 3200, label: "3200" ,fill:'#FFDAC0'},
-            //     { quarter: "Рыба", earnings: 2100, label: "2100", fill: '#FF751D' },
-            //     { quarter: "Панини", earnings: 1800, label: "1800" ,fill:'#FFDAC0'},
-            //     { quarter: "Кофе", earnings: 1700, label: "1700" ,fill:'#FFDAC0'},
-            //     { quarter: "Спагетти", earnings: 1500, label: "1500", fill: '#FF751D' },
-            //     { quarter: "Шоколад", earnings: 800, label: "800" ,fill:'#FFDAC0'},
-            //     { quarter: "Маслины", earnings: 550, label: "550",fill:'#FFDAC0' },
-            //     { quarter: "Зелень", earnings: 300, label: "300", fill: '#FF751D' },
-            // ]}
-            data={dataForSchedule()}
-            // data accessor for x values
-            x="quarter"
-            // data accessor for y values
-            y="earnings"
-            labelComponent={
-              <VictoryLabel
-                style={[{ fontFamily: 'Roboto', fontSize: 12, lineHeight: 14 }]}
-              />
-            }
-          />
-        </VictoryChart>
+    <div className="section">
+      <div className="container">
+        <div className={styles.schedule}>
+          <VictoryChart theme={VictoryTheme.material} width={620} padding={60}>
+            <VictoryAxis
+            // tickFormat={}
+            />
+            <VictoryBar
+              style={{
+                data: {
+                  width: 36,
+                  fill: ({ datum }) => datum.fill,
+                },
+              }}
+              // data={[
+              //     { quarter: "Свинина", earnings: 5000, label: "5000", fill: '#FF751D',},
+              //     { quarter: "Говядина", earnings: 4500, label: "4500", fill:'#FFDAC0' },
+              //     { quarter: "Курица", earnings: 3200, label: "3200" ,fill:'#FFDAC0'},
+              //     { quarter: "Рыба", earnings: 2100, label: "2100", fill: '#FF751D' },
+              //     { quarter: "Панини", earnings: 1800, label: "1800" ,fill:'#FFDAC0'},
+              //     { quarter: "Кофе", earnings: 1700, label: "1700" ,fill:'#FFDAC0'},
+              //     { quarter: "Спагетти", earnings: 1500, label: "1500", fill: '#FF751D' },
+              //     { quarter: "Шоколад", earnings: 800, label: "800" ,fill:'#FFDAC0'},
+              //     { quarter: "Маслины", earnings: 550, label: "550",fill:'#FFDAC0' },
+              //     { quarter: "Зелень", earnings: 300, label: "300", fill: '#FF751D' },
+              // ]}
+              data={dataForSchedule()}
+              // data accessor for x values
+              x="quarter"
+              // data accessor for y values
+              y="earnings"
+              labelComponent={
+                <VictoryLabel
+                  style={[
+                    { fontFamily: 'Roboto', fontSize: 12, lineHeight: 14 },
+                  ]}
+                />
+              }
+            />
+          </VictoryChart>
+        </div>
       </div>
     </div>
   );

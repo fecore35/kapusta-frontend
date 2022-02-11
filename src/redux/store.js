@@ -1,6 +1,8 @@
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import authReduser from './authreducer';
 import balanceReducer from './balancereducer';
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import reportReducer from './report/reportReducer';
+
 import {
   persistStore,
   persistReducer,
@@ -25,6 +27,7 @@ export const store = configureStore({
   reducer: {
     auth: authPersistReducer,
     balance: balanceReducer,
+    report: reportReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
