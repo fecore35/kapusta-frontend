@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAOA,AAAA,SAAS,CAAC;EACR,UAAU,EAAE,GAAG,CAAC,IAAI,CAAC,IAAI,CAAC,wBAAwB;EAClD,aAAa,EAAE,IAAI;EACnB,UAAU,EAAE,IAAI;CACjB",
-    "sources": [
-        "Schedule.module.scss"
-    ],
-    "names": [],
-    "file": "Schedule.module.css"
-}
