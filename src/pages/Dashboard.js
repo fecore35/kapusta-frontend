@@ -1,6 +1,7 @@
-import Form from 'components/Form/Form';
 import TopPanel from 'components/TopPanel/TopPanel';
-import { AppOperation } from '../components/AppOperation/AppOperation';
+import { AppOperation } from 'components/AppOperation/AppOperation';
+import Form from 'components/Form/Form';
+import UserView from 'components/UserView/UserView';
 
 function Dashboard() {
   return (
@@ -8,6 +9,7 @@ function Dashboard() {
       <TopPanel showReport />
       <AppOperation />
       <Form />
+      <UserView />
     </>
   );
 }
