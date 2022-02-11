@@ -1,14 +1,20 @@
-import Form from 'components/Form/Form';
 import TopPanel from 'components/TopPanel/TopPanel';
-import { AppOperation } from '../components/AppOperation/AppOperation';
+import { AppOperation } from 'components/AppOperation/AppOperation';
+import Form from 'components/Form/Form';
+import UserView from 'components/UserView/UserView';
 
 function Dashboard() {
   return (
-    <>
-      <TopPanel showReport />
-      <AppOperation />
-      <Form />
-    </>
+    <section className="section-dashboard section">
+      <div className="container">
+        <TopPanel showReport />
+        <AppOperation />
+        <div className="section__inner">
+          <Form />
+          <UserView />
+        </div>
+      </div>
+    </section>
   );
 }
 

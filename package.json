@@ -11,7 +11,11 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+<<<<<<< HEAD
     "axios": "^0.25.0",
+=======
+    "date-fns": "^2.28.0",
+>>>>>>> 114626b4d1b3744c539ea164c33252b273783cc5
     "formik": "^2.2.9",
     "modern-normalize": "^1.1.0",
     "pnotify": "^5.2.0",
@@ -24,6 +28,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-table": "^7.7.0",
     "redux-persist": "^6.0.0",
     "sass": "^1.49.7",
     "victory": "^36.2.1",
