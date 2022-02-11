@@ -49,6 +49,7 @@ const SignupForm = () => {
       <a href="http://localhost:5000/auth/google" className={styles.google}>
         Google
       </a>
+
       <p className={styles.text}>
         Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
       </p>

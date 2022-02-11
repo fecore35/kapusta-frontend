@@ -5,11 +5,13 @@ import stale from './App.module.scss';
 import AppBar from './components/AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentThunk } from './redux/asyncthunc';
-import ModalLogOut from './components/ModalLogOut/ModalLogOut';
+
 import Router from 'constants/router';
 import Dashboard from 'pages/Dashboard';
 import Report from 'pages/Report';
 import NotFound from 'pages/NotFound';
+import queryString from 'query-string';
+import { createBrowserHistory } from 'history';
 
 function App() {
   const token = useSelector(state => state.auth.token);
@@ -21,6 +23,10 @@ function App() {
       dispatch(currentThunk());
     }
   }, [token]);
+
+  const history = createBrowserHistory();
+  const { user, newToken } = queryString.parse(history.location.search);
+  console.log(user, newToken);
 
   return (
     <div className={stale.App}>
