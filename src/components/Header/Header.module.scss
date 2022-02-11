@@ -1,0 +1,110 @@
+@import '../../sass/utils/shared.scss';
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px 10px 19px;
+  background-color: white;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 26px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-right: 68px;
+  }
+}
+
+.logo {
+  top: 12px;
+  left: 19px;
+  width: 90px;
+  height: 31px;
+
+  @media screen and (min-width: 768px) {
+    left: 26px;
+  }
+}
+
+.user_container {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 12px;
+  background-color: $bg-avatar-color;
+}
+
+.name {
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    margin-right: 40px;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 1.16px;
+    color: $btn-grey-text-color;
+  }
+
+  @media screen and (min-width: 1280px) {
+  }
+}
+
+.name::after {
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 36px;
+    right: 82px;
+    bottom: 10px;
+    background-color: $bg-stripe-color;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 1280px;
+    right: 130px;
+  }
+}
+
+.logout {
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 1.16px;
+    color: $btn-grey-text-color;
+    text-decoration: underline;
+  }
+
+  @media screen and (min-width: 1280px) {
+  }
+}
+
+.logout_mobile {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.logout_icon {
+  width: 16px;
+  height: 16px;
+}
