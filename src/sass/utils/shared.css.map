@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": ";ACQA,iCAAiC;AAGH,wBAAwB;AACvB,YAAY;AAC3C,oBAAoB;AAYpB,6BAA6B;AACe,iCAAiC;AAC7C,4BAA4B;AAK5D,2CAA2C;AAK3C,kCAAkC;AAClC,sBAAsB;AAItB,wBAAwB;AAIxB,4BAA4B",
+    "sources": [
+        "shared.scss",
+        "_colors.scss",
+        "_variables.scss"
+    ],
+    "names": [],
+    "file": "shared.css"
+}
