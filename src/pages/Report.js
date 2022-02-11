@@ -1,5 +1,5 @@
 import CategoryList from 'components/CategoryList/CategoryList';
-import TopPanel from 'components/TopPanel/TopPanel';
+import TopPanel from 'components/BalanceForm/BalanceForm';
 
 function Report() {
   return (
