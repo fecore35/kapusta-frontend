@@ -1,0 +1,223 @@
+@charset "UTF-8";
+/*цвета для отрисовки логотипов*/
+/*картинка с капустой */
+/* её тень*/
+/*цвета для кнопок*/
+/*основные цвета для текста*/
+/*цвет текста в меню с балансом*/
+/*текст в хедере и отчетах*/
+/*цвета для отчетов по расходам и доходам*/
+/*цвета для страницы с графиками*/
+/*активные категории*/
+/*неактивные категории*/
+/*начальное модальное окно*/
+.register {
+  position: absolute;
+  left: 50%;
+  top: 255px;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  z-index: 10;
+  width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 18px 53px 18px;
+  background-color: #fff;
+  -webkit-box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+          box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+  color: #000;
+}
+
+@media screen and (min-width: 768px) {
+  .register {
+    z-index: 4;
+    top: 297px;
+    width: 436px;
+    padding: 50px 85px 53px 86px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .register {
+    margin: 0;
+    top: 173px;
+    width: 436px;
+    min-height: 535px;
+    left: 75%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .font {
+    font-size: 12px;
+    line-height: 14px;
+    margin-left: 0;
+  }
+}
+
+.text {
+  margin-bottom: 24px;
+  margin-left: 11px;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: inherit;
+  color: #52555f;
+}
+
+@media screen and (min-width: 768px) {
+  .text {
+    font-size: 12px;
+    line-height: 14px;
+    margin-left: 0;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+}
+
+.text_align {
+  composes: text;
+  text-align: center;
+  width: 222px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .text_align {
+    composes: text;
+    width: 100%;
+  }
+}
+
+.google {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 122px;
+  height: 40px;
+  border-radius: 26px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  background-color: #f5f6fb;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.google::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  margin-left: 20px;
+  background-image: url(../../../pictures/Group.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 30px;
+  margin-left: 11px;
+}
+
+@media screen and (min-width: 768px) {
+  .label {
+    margin-left: 0;
+  }
+}
+
+.last_label {
+  composes: label;
+  margin-bottom: 40px;
+}
+
+.sign {
+  margin-bottom: 12px;
+  width: 100%;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .sign {
+    font-size: 12px;
+    line-height: 14px;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+.input {
+  border-radius: 30px;
+  background-color: #f6f7fb;
+  padding: 18px 20px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.wrap_reg {
+  margin-top: auto;
+}
+
+.button {
+  width: 125px;
+  height: 44px;
+  background-color: #f5f6fb;
+  border-radius: 16px;
+  border: none;
+  padding: 0;
+  color: #52555f;
+  font-weight: 700;
+  -webkit-filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+          filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background-color: #ff751d;
+  color: #fff;
+  -webkit-filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
+          filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
+  -webkit-transition: 0.5s linear;
+  transition: 0.5s linear;
+}
+/*# sourceMappingURL=SignUpForm.module.css.map */

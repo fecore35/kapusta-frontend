@@ -1,0 +1,56 @@
+@import '../../sass/main.scss';
+
+table {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  border-collapse: collapse;
+  width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  color: $secondaryTextColor;
+  border: none;
+}
+
+table th:first-child {
+  border-top-left-radius: 20px;
+}
+table th:last-child {
+  border-top-right-radius: 20px;
+}
+
+table td,
+table th {
+  border: 1px solid $secondaryColor;
+  padding: 8px;
+}
+
+// table tr:nth-child(even) {
+//   background-color: $secondaryColor;
+// }
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: $secondaryColor;
+  color: $textColor;
+}
+
+.pageNavigation {
+  width: 760px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  justify-content: space-around;
+}
+.pageNavigationButton {
+  color: $secondaryColor;
+  background-color: $accentColor;
+  border: none;
+  border-radius: 5px;
+}
