@@ -8,6 +8,7 @@ const reportSlice = createSlice({
     month: '1',
     year: '2022',
     category: [],
+    currentCategory: null,
     income: true,
     transactions: [],
     error: null,
@@ -21,6 +22,9 @@ const reportSlice = createSlice({
     },
     reportYear: (state, action) => {
       return { ...state, month: action.payload };
+    },
+    reportCategory: (state, action) => {
+      return { ...state, currentCategory: action.payload };
     },
   },
   extraReducers: {
@@ -48,5 +52,6 @@ const reportSlice = createSlice({
   },
 });
 
-export const { reportType } = reportSlice.actions;
+export const { reportType, reportMonth, reportYear, reportCategory } =
+  reportSlice.actions;
 export default reportSlice.reducer;

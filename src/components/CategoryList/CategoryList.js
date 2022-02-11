@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { reportCategory } from 'redux/report/reportReducer';
 import { useReportCategory } from 'hooks/useReportCategory';
 import Category from './Category';
 import s from './CategoryList.module.scss';
@@ -13,6 +14,10 @@ function CategoryList() {
   useEffect(() => {
     categoryList && setCurrentCategory(categoryList[0]?.slug);
   }, [categoryList]);
+
+  useEffect(() => {
+    dispatch(reportCategory(currentCategory));
+  }, [currentCategory]);
 
   return (
     <div className={s.inner}>
