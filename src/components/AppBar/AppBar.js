@@ -6,7 +6,6 @@ import vector1 from '../../icons/logo.png';
 import logOut from '../../icons/logOut.png';
 import ButtonUserName from './buttonUserName/ButtonUserName';
 import ButtonLogOut from './buttonLogOut/ButtonLogOut';
-import ButtonLogOutMob from '../AppBar/buttonLogOut/ButtonLogoutMob';
 import s from './AppBar.module.scss';
 
 const AppBar = () => {
@@ -24,7 +23,6 @@ const AppBar = () => {
       <img src={vector1} alt="vector1" width="32" className={s.vector1} />
       <ButtonLogOut className={s.buttonLogout} />
       <div className={s.logOut}>
-        <ButtonLogOutMob />
         <img src={logOut} alt="logOut" width="12" />
       </div>
     </header>

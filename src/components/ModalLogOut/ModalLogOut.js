@@ -52,7 +52,7 @@ const ModalLogOut = ({ onClickSuccess }) => {
   return (
     <div>
       <button type="button" onClick={click} className={s.buttonLogout}>
-        Выйти
+        <span>Выйти</span>
       </button>
     </div>
   );
