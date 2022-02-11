@@ -4,7 +4,7 @@ import styles from './SignUpForm.module.scss';
 import { registerThunk, loginThunk } from '../../../redux/asyncthunc';
 import { useDispatch } from 'react-redux';
 
-const LoginForm = ({ onClickRegister }) => {
+const SignupForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const LoginForm = ({ onClickRegister }) => {
       <p className={styles.text_align}>
         Вы можете авторизоваться с помощью Google Account:
       </p>
-      <a href="http://localhost:3030/api/auth/google" className={styles.google}>
+      <a href="http://localhost:5000/auth/google" className={styles.google}>
         Google
       </a>
       <p className={styles.text}>
@@ -82,12 +82,16 @@ const LoginForm = ({ onClickRegister }) => {
           <button type="submit" className={styles.button}>
             войти
           </button>
-          <button type="button" onClick={onClickRegister} className={styles.button}>
+          <button
+            type="button"
+            onClick={handlerRegisterSubmit}
+            className={styles.button}
+          >
             регистрация
           </button>
         </div>
       </form>
-    </div >
+    </div>
   );
 };
-export default LoginForm;
+export default SignupForm;
