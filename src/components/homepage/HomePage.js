@@ -11,23 +11,23 @@ function HomePage() {
       <div className={styles.hero}>
         <div className={styles.tagline}>
           <h1 className={styles.heading}>Kapu$ta</h1>
-          <p className={styles.description}>S M A R T F I N A N C E</p>
+          <p className={styles.description}>Smart finance</p>
         </div>
         {!isAuth && <SignupForm className={styles.signup} />}
       </div>
       <picture>
         <source
-          srcset={kapusta2}
+          srcSet={kapusta2}
           media="(max-width:310px)"
           type="image/png"
         ></source>
         <source
-          srcset={kapusta}
+          srcSet={kapusta}
           media="(min-width:768px)"
           type="image/png"
         ></source>
         <source
-          srcset={kapusta}
+          srcSet={kapusta}
           media="(min-width:1280px)"
           type="image/png"
         ></source>

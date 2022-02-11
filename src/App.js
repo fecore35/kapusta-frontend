@@ -5,7 +5,7 @@ import stale from './App.module.scss';
 import AppBar from './components/AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentThunk } from './redux/asyncthunc';
-import ModalLogOut from './components/ModalLogOut/ModalLogOut';
+
 import Router from 'constants/router';
 import Dashboard from 'pages/Dashboard';
 import Report from 'pages/Report';
