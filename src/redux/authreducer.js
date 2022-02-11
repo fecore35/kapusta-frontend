@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerThunk, loginThunk, currentThunk, logOutThunk } from './asyncthunc';
+import {
+  registerThunk,
+  loginThunk,
+  currentThunk,
+  logOutThunk,
+} from './asyncthunc';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -89,29 +94,29 @@ const authSlice = createSlice({
     },
     [logOutThunk.pending](state, action) {
       return {
-          ...state,
-          isLoading: true,
-          isAuth: false,
-      }
-  },
-  [logOutThunk.fulfilled](state, action) {
-  return {
-      ...state, 
-      isLoading: false,
-      name: '',
-      email: '',
-      token: '',
-      isAuth: false,
-  }
-  },
-  [logOutThunk.rejected](state, action) {
-  return  {
-   ...state,
-   isLoading:false,
-  //  error: action.payload,
-   isAuth: false,
-  }
-  },
+        ...state,
+        isLoading: true,
+        isAuth: false,
+      };
+    },
+    [logOutThunk.fulfilled](state, action) {
+      return {
+        ...state,
+        isLoading: false,
+        name: '',
+        email: '',
+        token: '',
+        isAuth: false,
+      };
+    },
+    [logOutThunk.rejected](state, action) {
+      return {
+        ...state,
+        isLoading: false,
+        //  error: action.payload,
+        isAuth: false,
+      };
+    },
   },
 });
 
