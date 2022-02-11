@@ -21,7 +21,7 @@ const reportSlice = createSlice({
       return { ...state, month: action.payload };
     },
     reportYear: (state, action) => {
-      return { ...state, month: action.payload };
+      return { ...state, year: action.payload };
     },
     reportCategory: (state, action) => {
       return { ...state, currentCategory: action.payload };
