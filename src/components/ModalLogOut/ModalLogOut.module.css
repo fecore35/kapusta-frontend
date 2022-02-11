@@ -1,0 +1,15 @@
+.buttonLogout {
+  width: 66px;
+  font-style: Roboto;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  text-align: left;
+  border: none;
+  background: none;
+}
+/*# sourceMappingURL=ModalLogOut.module.css.map */
