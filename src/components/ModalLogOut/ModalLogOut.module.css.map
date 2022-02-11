@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,aAAa,CAAC;EACZ,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,MAAM;EAClB,WAAW,EAAE,MAAM;EACnB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;EACjB,cAAc,EAAE,MAAM;EACtB,KAAK,EAAE,OAAO;EACd,oBAAoB,EAAE,SAAS;EAC/B,UAAU,EAAE,IAAI;EAChB,MAAM,EAAE,IAAI;EACZ,UAAU,EAAE,IAAI;CACjB",
-    "sources": [
-        "ModalLogOut.module.scss"
-    ],
-    "names": [],
-    "file": "ModalLogOut.module.css"
-}
