@@ -16,7 +16,7 @@ export default function TopPanel({ showGoBack = false, showReport = false }) {
               className={s.balance__input + ' ' + s.balance__item}
               type="text"
               id="balance"
-              value="00.00 UAH"
+              placeholder="00.00 UAH"
             />
           </label>
 

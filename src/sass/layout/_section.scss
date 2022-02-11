@@ -1,0 +1,25 @@
+.section {
+  &:not(:last-of-type) {
+    margin-top: 30px;
+  }
+}
+
+.section__inner {
+  padding-top: 20px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 30px;
+
+  background-color: #fff;
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  border-radius: 30px;
+  overflow: hidden;
+
+  .section-dashboard & {
+    padding-top: 32px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 60px;
+    border-top-left-radius: 0;
+  }
+}
