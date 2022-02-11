@@ -29,6 +29,7 @@ const reportSelectors = {
   getReportCategory,
   getReportError,
   getVisibleCategory,
+  getReportType,
 };
 
 export default reportSelectors;
