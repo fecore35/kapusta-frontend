@@ -9,12 +9,11 @@ import Router from 'constants/router';
 import Dashboard from 'pages/Dashboard';
 import Report from 'pages/Report';
 import NotFound from 'pages/NotFound';
-import queryString from 'query-string';
-import { createBrowserHistory } from 'history';
+import { useGoogleAuth } from 'hooks/useGoogleAuth';
 
 function App() {
   const token = useSelector(state => state.auth.token);
-  const isAuth = useSelector(state => state.auth.isAuth);
+  const { isAuthUser } = useGoogleAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,10 +21,6 @@ function App() {
       dispatch(currentThunk());
     }
   }, [token]);
-
-  const history = createBrowserHistory();
-  const { user, newToken } = queryString.parse(history.location.search);
-  console.log(user, newToken);
 
   return (
     <div className={stale.App}>

@@ -76,7 +76,7 @@ export const currentThunk = createAsyncThunk(
           },
         );
         const data = await response.json();
-        return data.data.result;
+        return data.data;
       } catch (error) {
         return rejectWithValue({
           error: error.message,

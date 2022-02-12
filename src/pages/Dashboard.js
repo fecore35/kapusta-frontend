@@ -1,5 +1,5 @@
 import TopPanel from 'components/TopPanel/TopPanel';
-import { AppOperation } from 'components/AppOperation/AppOperation';
+import TransactionType from 'components/TransactionType/TransactionType';
 import Form from 'components/Form/Form';
 import UserView from 'components/UserView/UserView';
 
@@ -8,7 +8,7 @@ function Dashboard() {
     <section className="section-dashboard section">
       <div className="container">
         <TopPanel showReport />
-        <AppOperation />
+        <TransactionType isThemeTabs />
         <div className="section__inner">
           <Form />
           <UserView />
