@@ -46,7 +46,10 @@ const SignupForm = () => {
       <p className={styles.text_align}>
         Вы можете авторизоваться с помощью Google Account:
       </p>
-      <a href="http://localhost:5000/auth/google" className={styles.google}>
+      <a
+        href="https://kapusta-35.herokuapp.com/auth/google"
+        className={styles.google}
+      >
         Google
       </a>
 
