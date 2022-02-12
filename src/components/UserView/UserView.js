@@ -1,11 +1,13 @@
-import { PaginationTable } from '../Tables/PaginationTables';
-import { SummaryTable } from '../Tables/SummaryTable';
-import { RowSelection } from '../Tables/SelectedRows';
+
+import { SummaryTable } from '../Tables/SummaryTable/SummaryTable';
+import { GeneralTable } from '../Tables/GeneralTable/GeneralTable';
 import styles from './UserView.module.scss';
+
+
 function UserView() {
   return (
     <div className={styles.overview}>
-      <RowSelection />
+      <GeneralTable />
       <SummaryTable />
     </div>
   );
