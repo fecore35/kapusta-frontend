@@ -3,7 +3,6 @@
 import logo from '../../icons/logo.png';
 import groupV from '../../icons/Group 42.png';
 import vector1 from '../../icons/logo.png';
-import logOut from '../../icons/logOut.png';
 import ButtonUserName from './buttonUserName/ButtonUserName';
 import ButtonLogOut from './buttonLogOut/ButtonLogOut';
 import s from './AppBar.module.scss';
@@ -22,9 +21,6 @@ const AppBar = () => {
       <ButtonUserName className={s.buttonUserName} />
       <img src={vector1} alt="vector1" width="32" className={s.vector1} />
       <ButtonLogOut className={s.buttonLogout} />
-      <div className={s.logOut}>
-        <img src={logOut} alt="logOut" width="12" />
-      </div>
     </header>
   );
 };

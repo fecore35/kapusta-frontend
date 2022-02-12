@@ -10,4 +10,26 @@
   text-align: left;
   border: none;
   background: none;
+
+  span {
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: block;
+    }
+  }
+}
+
+.logOut {
+  width: 16px;
+  height: 16px;
+  margin-right: 20px;
+  border: none;
+  background: none;
+}
+
+@media screen and (min-width: 768px) {
+  .logOut {
+    display: none;
+  }
 }
