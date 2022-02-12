@@ -23,10 +23,6 @@ function Schedule({ type, category }) {
   ]);
   const [tick, setTick] = useState(data);
   console.log(category);
-  const sort = () =>
-    tick.sort((a, b) => {
-      return b.sum - a.sum;
-    });
   const dataForSchedule = () =>
     tick
       .sort((a, b) => {
@@ -42,21 +38,21 @@ function Schedule({ type, category }) {
       });
   // console.log(dataForSchedule())
 
-  useEffect(() => {
-    if (type !== 'Расход') {
-      return setTick([
-        {
-          name: 'Жены',
-          sum: 20000,
-        },
-        {
-          name: 'Моя',
-          sum: 25000,
-        },
-      ]);
-    }
-    setTick(data);
-  }, [type]);
+  // useEffect(() => {
+  //   if (type !== 'Расход') {
+  //     return setTick([
+  //       {
+  //         name: 'Жены',
+  //         sum: 20000,
+  //       },
+  //       {
+  //         name: 'Моя',
+  //         sum: 25000,
+  //       },
+  //     ]);
+  //   }
+  //   setTick(data);
+  // }, [type]);
   useEffect(() => {
     console.log(
       'Изменили категорию - получаем новые данные с БД по выбранной категории и перерисовываем график',
@@ -72,6 +68,7 @@ function Schedule({ type, category }) {
             // tickFormat={}
             />
             <VictoryBar
+              cornerRadius={{topLeft:10,topRight:10}}
               style={{
                 data: {
                   width: 36,
