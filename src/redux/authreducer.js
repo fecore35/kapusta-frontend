@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { createSlice } from '@reduxjs/toolkit';
 import {
   registerThunk,
@@ -5,6 +6,17 @@ import {
   currentThunk,
   logOutThunk,
 } from './asyncthunc';
+
+axios.defaults.baseURL = 'http://localhost:5000';
+
+const token = Object.freeze({
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+});
 
 const authSlice = createSlice({
   name: 'auth',
@@ -15,12 +27,12 @@ const authSlice = createSlice({
     error: null,
     isLoading: false,
     isAuth: false,
-    myLoad: 'hallo!',
     id: '',
   },
-  redusers: {
-    renameProp: (state, action) => {
-      return { ...state, myLoad: action.payload };
+  reducers: {
+    initUser: (state, action) => {
+      token.set(action.payload.user.token);
+      return { ...state, ...action.payload.user, isAuth: true };
     },
   },
   extraReducers: {
@@ -120,5 +132,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { renameProp } = authSlice.actions;
+export const { initUser } = authSlice.actions;
 export default authSlice.reducer;
