@@ -1,0 +1,84 @@
+.section {
+  .inner {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.statistic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 14px;
+}
+
+.statistic__item {
+  text-align: center;
+  width: 50%;
+
+  & + & {
+    border-left: 2px solid #e0e5ea;
+  }
+}
+
+.title {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 2.571;
+  color: #52555f;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 15px;
+  }
+}
+
+.vector {
+  width: 0px;
+  height: 70px;
+
+  border: 1px solid #e0e5eb;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .vector {
+    height: 36px;
+    border: 1px solid #e0e5eb;
+  }
+
+  .statistic__item {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .costs__item {
+    padding-right: 20px;
+    justify-content: end;
+  }
+
+  .profit__item {
+    padding-left: 20px;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+}
+
+.total {
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #407946;
+}
+
+.profit {
+  @extend .total;
+}
+
+.costs {
+  @extend .total;
+  color: #e53935;
+}

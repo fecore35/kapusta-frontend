@@ -102,28 +102,3 @@
   color: #52555f;
   margin-bottom: 0;
 }
-
-.control {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.type {
-  width: 100px;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 16px;
-  text-align: center;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-
-  color: #000000;
-}
-
-.button {
-  border: 0;
-  background-color: transparent;
-  cursor: pointer;
-}
