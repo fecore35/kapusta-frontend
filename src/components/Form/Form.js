@@ -1,7 +1,7 @@
+import Calendar from '../Calendar/calendar';
+import { Formik, Form, useField } from 'formik';
 import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
-import { Formik, Form, useField } from 'formik';
-import Calendar from 'components/Calendar/calendar.js';
 import styled from '@emotion/styled';
 import s from './Form.module.scss';
 import calendar from '../../icons/calendar.png';
@@ -55,7 +55,7 @@ const FormLabel = () => {
   const [product, setProduct] = useState('');
   const [category, setCategory] = useState('');
   const [valueCalendar, onChange] = useState(new Date());
-  const [showCalendar, setShowCalendar] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(null);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -145,7 +145,7 @@ const FormLabel = () => {
           }, 400);
         }}
       >
-        <Form>
+        <Form className={s.formFormic}>
           <img src={calendar} alt="calendar" className={s.calendarImg} />
           <MyTextInput
             value={valueCalendar}
@@ -184,8 +184,10 @@ const FormLabel = () => {
               <option value="education">Образование</option>
               <option value="other">Прочее</option>
             </MySelect>
-            <MyTextInput name="calc" type="number" placeholder="0.00" />
-            {/* <img src={calcImg} alt="calculator" className={s.calcImg} /> */}
+            <MyTextInput type="input" name="calc" placeholder="0.00" />
+            <div className={s.calcWrapper}>
+              <img src={calcImg} alt="calculator" className={s.calcImg} />
+            </div>
           </div>
           <button type="submit" name="buttonYes" className="buttonYes">
             ВВВОД
