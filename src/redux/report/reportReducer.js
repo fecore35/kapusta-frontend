@@ -10,6 +10,8 @@ const reportSlice = createSlice({
     category: [],
     currentCategory: null,
     income: true,
+    incomeSum: '0',
+    spendingSum: '0',
     transactions: [],
     error: null,
   },
@@ -40,6 +42,8 @@ const reportSlice = createSlice({
         ...state,
         isLoading: false,
         category: action.payload.data.categoriesSum,
+        incomeSum: action.payload.data.amounts.income,
+        spendingSum: action.payload.data.amounts.spending,
       };
     },
     [reportOperation.getCategory.rejected](state, action) {
