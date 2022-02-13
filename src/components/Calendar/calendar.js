@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import Calendar from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import ru from 'date-fns/locale/ru';
 
 function DatePicker() {
   const [value, onChange] = useState(new Date(), 'yyyy-MM-dd');
 
+  const handleDateChange = date => {
+    onChange(date);
+  };
+
   return (
     <div>
       <Calendar
-        selectRange={false}
-        locale={'ru-RU'}
-        onChange={onChange}
-        value={value}
+        locale={ru}
+        dateFormat="dd.MM.yyyy"
+        selected={value}
+        onChange={handleDateChange}
       />
-      <p>today is {JSON.stringify(value.toString()).slice(1, 11)}</p>
     </div>
   );
 }

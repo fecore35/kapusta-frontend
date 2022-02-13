@@ -3,11 +3,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { reportSelectors } from 'redux/report';
 import * as Yup from 'yup';
-import Calendar from 'react-calendar';
+import DatePicker from 'components/Calendar/calendar';
 import { Formik, Form, useField, Field, ErrorMessage } from 'formik';
 import styled from '@emotion/styled';
 import s from './Form.module.scss';
-import 'react-calendar/dist/Calendar.css';
 
 const StyledErrorsMessage = styled.div`
   font-size: 12px;
@@ -30,28 +29,7 @@ const StyledLabel = styled.label`
 
 const FormLabel = () => {
   const [valueCalendar, onChange] = useState(new Date(), 'yyyy-MM-dd');
-  const [showCalendar, setShowCalendar] = useState(false);
-
   const isIncome = useSelector(reportSelectors.getReportType);
-
-  const calendarHandler = e => {
-    if (
-      e.target.name === 'calendar' ||
-      e.target.closest('.calendarInner') ||
-      e.target.classList.contains('react-calendar__tile')
-    ) {
-      return;
-    }
-
-    setShowCalendar(false);
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', calendarHandler);
-    return () => {
-      document.removeEventListener('click', calendarHandler);
-    };
-  }, []);
 
   return (
     <>
@@ -96,24 +74,8 @@ const FormLabel = () => {
         {({ isSubmitting }) => (
           <Form className={s.formFormic}>
             <div>
-              <Field
-                type="text"
-                name="calendar"
-                value={valueCalendar}
-                id="calendar"
-                onFocus={() => setShowCalendar(true)}
-              />
+              <DatePicker name="calendar" selected={valueCalendar} />
               <ErrorMessage name="calendar" component="div" />
-              <div className={`calendarInner ${s.calendarInner}`}>
-                {showCalendar && (
-                  <Calendar
-                    selectRange={false}
-                    locale={'ru-RU'}
-                    onChange={onChange}
-                    value={valueCalendar}
-                  />
-                )}
-              </div>
             </div>
             <div className={s.forma}>
               <div>
