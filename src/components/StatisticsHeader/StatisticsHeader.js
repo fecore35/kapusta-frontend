@@ -1,9 +1,11 @@
-import s from './StatisticsHeader.module.scss';
+import { useSelector } from 'react-redux';
+import { reportSelectors } from 'redux/report';
 import { makeNumber } from '../../helpers/makeNumber';
+import s from './StatisticsHeader.module.scss';
 
 export function StatisticsHeader() {
-  let profit = 450000;
-  let costs = 180000;
+  const profit = useSelector(reportSelectors.getIncome);
+  const costs = useSelector(reportSelectors.getCosts);
 
   return (
     <div className={`section ${s.section}`}>
