@@ -10,6 +10,7 @@ import Dashboard from 'pages/Dashboard';
 import Report from 'pages/Report';
 import NotFound from 'pages/NotFound';
 import { useGoogleAuth } from 'hooks/useGoogleAuth';
+import axios from 'axios';
 
 function App() {
   let navigate = useNavigate();
@@ -21,6 +22,7 @@ function App() {
 
   useEffect(() => {
     if (token) {
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
       dispatch(currentThunk());
     }
   }, [dispatch, token]);
