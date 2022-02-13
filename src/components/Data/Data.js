@@ -1,13 +1,23 @@
-import monthHelper from '../../helpers/monthHelper.js';
+import { monthHelper, months } from '../../helpers/monthHelper.js';
 import s from './data.module.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import arrowLeft from '../../icons/arrow-l.svg';
 import arrowRight from '../../icons/arrow-r.svg';
+import { useDispatch } from 'react-redux';
+import { reportMonth, reportYear } from 'redux/report/reportReducer.js';
 const dateNow = new Date();
+
 function Data() {
   const [month, setMonth] = useState(monthHelper(dateNow.getMonth()));
   const [year, setYear] = useState(dateNow.getFullYear());
   console.log(dateNow);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(reportMonth(months.indexOf(month)));
+  }, [dispatch, month]);
+  useEffect(() => {
+    dispatch(reportYear(year));
+  }, [dispatch, year]);
   const handleDecrementMonth = () => {
     dateNow.setMonth(dateNow.getMonth() - 1);
     if (month === 'Январь') {
