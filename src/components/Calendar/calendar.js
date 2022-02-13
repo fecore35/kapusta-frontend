@@ -3,7 +3,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
 function DatePicker() {
-  const [value, onChange] = useState(new Date());
+  const [value, onChange] = useState(new Date(), 'yyyy-MM-dd');
 
   return (
     <div>
