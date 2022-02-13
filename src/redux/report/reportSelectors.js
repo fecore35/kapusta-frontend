@@ -6,6 +6,10 @@ const getReportError = state => state.report.error;
 
 const getReportType = state => state.report.income;
 
+const getMonth = state => state.report.month;
+
+const getYear = state => state.report.year;
+
 const getVisibleCategory = createSelector(
   [getReportCategory, getReportType],
   (category, isIncome) => {
@@ -30,6 +34,8 @@ const reportSelectors = {
   getReportError,
   getVisibleCategory,
   getReportType,
+  getMonth,
+  getYear,
 };
 
 export default reportSelectors;

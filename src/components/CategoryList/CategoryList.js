@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { reportCategory } from 'redux/report/reportReducer';
+import { reportSelectors } from 'redux/report';
 import { useReportCategory } from 'hooks/useReportCategory';
 import Category from './Category';
 import s from './CategoryList.module.scss';
 import TransactionType from 'components/TransactionType/TransactionType';
 
 function CategoryList() {
-  const { categoryList } = useReportCategory({ month: '1', year: '2021' });
+  const month = useSelector(reportSelectors.getMonth);
+  const year = useSelector(reportSelectors.getYear);
+
+  const { categoryList } = useReportCategory({ month, year });
   const [currentCategory, setCurrentCategory] = useState();
   const dispatch = useDispatch();
 
@@ -17,7 +21,7 @@ function CategoryList() {
 
   useEffect(() => {
     dispatch(reportCategory(currentCategory));
-  }, [currentCategory]);
+  }, [currentCategory, dispatch]);
 
   return (
     <div className="section">
