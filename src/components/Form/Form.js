@@ -155,32 +155,32 @@ const FormLabel = () => {
           category: '',
           calc: '',
         }}
-        validationSchema={Yup.object({
-          sum: Yup.number().min(1).positive().integer().required('Required'),
-          name: Yup.string().required(),
-          categories: Yup.string().required(),
-          expensesOpt: Yup.string()
-            .oneOf(
-              [
-                'transport',
-                'products',
-                'health',
-                'alcogol',
-                'rest',
-                'for home',
-                'tehnics',
-                'communal, communication',
-                'sport, hobby',
-                'education',
-                'other',
-              ],
-              'Invalid category',
-            )
-            .required('Required'),
-          incomesOpt: Yup.string()
-            .oneOf(['ЗП', 'Доп.доход'], 'Invalid category')
-            .required('Required'),
-        })}
+        // validationSchema={Yup.object({
+        //   sum: Yup.number().min(1).positive().integer().required('Required'),
+        //   name: Yup.string().required(),
+        //   categories: Yup.string().required(),
+        //   expensesOpt: Yup.string()
+        //     .oneOf(
+        //       [
+        //         'transport',
+        //         'products',
+        //         'health',
+        //         'alcogol',
+        //         'rest',
+        //         'for home',
+        //         'tehnics',
+        //         'communal, communication',
+        //         'sport, hobby',
+        //         'education',
+        //         'other',
+        //       ],
+        //       'Invalid category',
+        //     )
+        //     .required('Required'),
+        //   incomesOpt: Yup.string()
+        //     .oneOf(['ЗП', 'Доп.доход'], 'Invalid category')
+        //     .required('Required'),
+        // })}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
@@ -188,84 +188,91 @@ const FormLabel = () => {
           }, 400);
         }}
       >
-        <Form className={s.formFormic}>
-          <img src={calendar} alt="calendar" className={s.calendarImg} />
-          <MyTextInput
-            value={valueCalendar}
-            type="input"
-            name="calendar"
-            onFocus={() => setShowCalendar(true)}
-          />
-          <div className="calendarInner">
-            {showCalendar && <Calendar onChange={onChange} />}
-          </div>
-          <div className={s.forma}>
-            <MyTextArea
-              name="product"
-              // value={product}
-              type="text"
-              rows="6"
-              placeholder="Описание товара."
-              onChange={handleChange}
+        {({ isSubmitting }) => (
+          <Form className={s.formFormic}>
+            <img src={calendar} alt="calendar" className={s.calendarImg} />
+            <MyTextInput
+              value={valueCalendar}
+              type="input"
+              name="calendar"
+              onFocus={() => setShowCalendar(true)}
             />
-            {isIncome ? (
-              <MySelect
-                name="category"
-                placeholder="Категория товара."
-                // changerDescription={changerPlaceholder}
-                // typeForm={typeForm}
-              >
-                <option value="">Категория товара</option>
-                <option value="transport">Транспорт</option>
-                <option value="products">Продукты</option>
-                <option value="health">Здоровье</option>
-                <option value="alcogol">Алкоголь</option>
-                <option value="rest">Развлечения</option>
-                <option value="for home">Все для дома</option>
-                <option value="tehnics">Техника</option>
-                <option value="communal, communication">
-                  Коммуналка, связь
-                </option>
-                <option value="sport, hobby">Спорт, Хобби</option>
-                <option value="education">Образование</option>
-                <option value="other">Прочее</option>/{' '}
-                {/* {data.map(el => (
+            <div className="calendarInner">
+              {showCalendar && <Calendar onChange={onChange} />}
+            </div>
+            <div className={s.forma}>
+              <MyTextArea
+                name="product"
+                // value={product}
+                type="text"
+                rows="6"
+                placeholder="Описание товара."
+                onChange={handleChange}
+              />
+              {isIncome ? (
+                <MySelect
+                  name="category"
+                  placeholder="Категория товара."
+                  // changerDescription={changerPlaceholder}
+                  // typeForm={typeForm}
+                >
+                  <option value="">Категория товара</option>
+                  <option value="transport">Транспорт</option>
+                  <option value="products">Продукты</option>
+                  <option value="health">Здоровье</option>
+                  <option value="alcogol">Алкоголь</option>
+                  <option value="rest">Развлечения</option>
+                  <option value="for home">Все для дома</option>
+                  <option value="tehnics">Техника</option>
+                  <option value="communal, communication">
+                    Коммуналка, связь
+                  </option>
+                  <option value="sport, hobby">Спорт, Хобби</option>
+                  <option value="education">Образование</option>
+                  <option value="other">Прочее</option>/{' '}
+                  {/* {data.map(el => (
 //                 <MySelect value={el} onClick={handleClick} key={el}>
 //                   {el}
 //                 </MySelect>
 //               ))} */}
-              </MySelect>
-            ) : (
-              <MySelect
-                name="category"
-                placeholder="Категория дохода."
-                // changerDescription={changerPlaceholder}
-                // typeForm={typeForm}
-                // onChange={handleChange}
-                // value={categ}
-              >
-                <option value="">Категория дохода</option>
-                <option value="">ЗП</option>
-                <option value="">Доп.доход</option>
-              </MySelect>
-            )}
-            <MyTextInput type="input" name="calc" placeholder="0.00" />
-            <div className={s.calcWrapper}>
-              <img src={calcImg} alt="calculator" className={s.calcImg} />
+                </MySelect>
+              ) : (
+                <MySelect
+                  name="category"
+                  placeholder="Категория дохода."
+                  // changerDescription={changerPlaceholder}
+                  // typeForm={typeForm}
+                  // onChange={handleChange}
+                  // value={categ}
+                >
+                  <option value="">Категория дохода</option>
+                  <option value="">ЗП</option>
+                  <option value="">Доп.доход</option>
+                </MySelect>
+              )}
+              <MyTextInput type="input" name="calc" placeholder="0.00" />
+              <div className={s.calcWrapper}>
+                <img src={calcImg} alt="calculator" className={s.calcImg} />
+              </div>
             </div>
-          </div>
-          <button type="submit" name="buttonYes" className="buttonYes">
-            ВВВОД
-          </button>
-          <button
-            type="button"
-            name="buttonNo"
-            className="buttonNo"
-            onClick={handleSubmit}
-          >
-            ОЧИСТИТЬ
-          </button>
-        </Form>
+            <button
+              type="submit"
+              name="buttonYes"
+              className="buttonYes"
+              disabled={isSubmitting}
+            >
+              ВВВОД
+            </button>
+            <button
+              type="button"
+              name="buttonNo"
+              className="buttonNo"
+              onClick={handleSubmit}
+            >
+              ОЧИСТИТЬ
+            </button>
+          </Form>
+        )}
       </Formik>
     </>
   );
