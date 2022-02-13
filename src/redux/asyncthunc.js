@@ -1,14 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://kapusta-35.herokuapp.com';
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://kapusta-35.herokuapp.com';
+// axios.defaults.baseURL = 'http://localhost:5000';
 
 const userLogin = '/auth/login';
 const userRegister = '/auth/registration';
 const userLogOut = '/auth/logout';
 const userCurrent = '/users/';
 const userTransaction = '/transactions/';
+const userBalance = '/users/balance '
 
 
 export const registerThunk = createAsyncThunk(
@@ -58,9 +59,8 @@ export const currentThunk = createAsyncThunk(
     if (state.auth.token) {
       try {
         const {data} = await axios.get(userCurrent+state.auth.id)
-        // console.log(data);
         return data.data;
-      } catch (error) {
+         } catch (error) {
         return rejectWithValue({
           error: error.message,
         });
@@ -86,14 +86,32 @@ export const logOutThunk = createAsyncThunk(
   },
 );
 
-export const currentUserTransaction = createAsyncThunk(
+// export const currentUserTransaction = createAsyncThunk(
+//   'users/transaction',
+//   async (_, { rejectWithValue, getState }) => {
+//     const state = getState();
+//     if (state.auth.token) {
+//       try {
+//         const {data} = await axios.get(userTransaction)
+//         console.log(data.data);
+//          return data.data;
+//       } catch (error) {
+//         return rejectWithValue({
+//           error: error.message,
+//         });
+//       }
+//     }
+//   },
+// );
+
+export const userGetTransaction = createAsyncThunk(
   'users/transaction',
-  async (_, { rejectWithValue, getState }) => {
+  async (transactions, { rejectWithValue, getState }) => {
     const state = getState();
     if (state.auth.token) {
       try {
-        const {data} = await axios.get(userTransaction)
-        console.log(data.data);
+        const {data} = await axios.post(userTransaction, {...transactions})
+        console.log(data);
         return data.data;
       } catch (error) {
         return rejectWithValue({
@@ -104,14 +122,18 @@ export const currentUserTransaction = createAsyncThunk(
   },
 );
 
-export const userGetTransaction = createAsyncThunk(
-  'users/transaction',
-  async (transactions, { rejectWithValue, getState }) => {
+export const userPutBallance = createAsyncThunk(
+  'users/balance',
+  async (ballance, { rejectWithValue, getState }) => {
+    console.log(ballance);
+    
     const state = getState();
-    if (state.auth.token) {
+     if (state.auth.token) {
       try {
-        const {data} = await axios.post(userTransaction, {...transactions})
-        console.log(data);
+        const data = await axios.put(userBalance, {
+                 id: state.auth.id , 
+                 balance: ballance 
+        })
         return data.data;
       } catch (error) {
         return rejectWithValue({

@@ -16,7 +16,7 @@ const AppBar = () => {
       <a href="/">
         <img src={logo} alt="Logo" width="90" height="31" className={s.logo} />
       </a>
-      {/* {isAuth &&<>  */}
+      {isAuth &&<> 
         <img src={groupV} alt="group42" width="32" className={s.groupV} />
 
         <img src={vector1} alt="vector1" width="32" className={s.vector1} />
@@ -29,7 +29,7 @@ const AppBar = () => {
       <button className={s.logOut}>
         <img src={logOut} alt="logOut" width="12" />
       </button>
-      {/* </> } */}
+      </> }
     </header>
   );
 };

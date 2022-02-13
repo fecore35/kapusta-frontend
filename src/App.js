@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
     if (isAuth) {
-      dispatch(currentUserTransaction())
+      // dispatch(currentUserTransaction())
      return navigate(Router.DASHBOARD, { replace: true });     
     }
      else
