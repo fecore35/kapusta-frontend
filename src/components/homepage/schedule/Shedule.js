@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import * as V from 'victory';
-import axios from 'axios'
-import { currentThunk } from 'redux/asyncthunc';
+import axios from 'axios';
 import {
   VictoryBar,
   VictoryChart,
@@ -10,14 +8,31 @@ import {
   VictoryTheme,
   VictoryLabel,
 } from 'victory';
-// import {store} from '../../../redux/store.js'
 import styles from './Schedule.module.scss';
-// import { reportSelectors } from 'redux/report';
-// function Schedule({ type, category,err }) {
-//   const [data, setData] = useState([]);
+import useWindowDementions from '../../../helpers/getWindowDementions'
+import { reportSelectors } from 'redux/report';
+function Schedule({ type,currentCategory }) {
+  const [data, setData] = useState([]);
   const [tick, setTick] = useState(data);
-  console.log(category);
-  console.log(type)
+ const month = 1;
+ const year = 2022;
+ const { width } = useWindowDementions();
+  // console.log(type)
+  // console.log(currentCategory)
+  const getData = async (category,month,year) => {
+    try {
+      const data = await axios.get(
+        `/transactions/description/${month}/${year}/${category}`,
+      );
+      return console.log(data);
+    } catch (error) {
+      console.log(error)
+    }
+  };
+  useEffect(() => {
+    getData(currentCategory,month,year)
+  },[currentCategory])
+
   const dataForSchedule = () =>
     tick
       .sort((a, b) => {
@@ -31,33 +46,26 @@ import styles from './Schedule.module.scss';
           fill: '#FF751D',
         };
       });
-  // console.log(dataForSchedule())
-
-  // useEffect(() => {
-  //   if (type) {
-  //     return setTick([
-  //       {
-  //         name: 'Жены',
-  //         sum: 20000,
-  //       },
-  //       {
-  //         name: 'Моя',
-  //         sum: 25000,
-  //       },
-  //     ]);
-  //   }
-  //   setTick(data);
-  // }, [type]);
   useEffect(() => {
-    console.log(
-      'Изменили категорию - получаем новые данные с БД по выбранной категории и перерисовываем график',
-    );
-  }, [category]);
-
+    if (type) {
+      return setTick([
+        {
+          name: 'Жены',
+          sum: 20000,
+        },
+        {
+          name: 'Моя',
+          sum: 25000,
+        },
+      ]);
+    }
+    setTick(data);
+  }, [type]);
   return (
     <div className="section">
       <div className="container">
-        <div className={styles.schedule}>
+        {
+          width < 768 ? (<div></div>) : ( <div className={styles.schedule}>
           <VictoryChart theme={VictoryTheme.material} width={620} padding={60}>
             <VictoryAxis
             // tickFormat={}
@@ -96,16 +104,16 @@ import styles from './Schedule.module.scss';
               }
             />
           </VictoryChart>
-        </div>
+        </div>)
+}
       </div>
     </div>
   );
+            }
+const mapStateToProps = (state) => {
+  return {
+   type:reportSelectors.getReportType(state),
+   currentCategory: state.report.currentCategory
+  }
 }
-// const mapStateToProps = (state) => {
-//   return {
-//    category:reportSelectors.getReportCategory(state),
-//    type:reportSelectors.getReportType(state),
-//    error: reportSelectors.getReportError(state)
-//   }
-// }
-// export default connect(mapStateToProps, )(Schedule);
+export default connect(mapStateToProps, )(Schedule);
