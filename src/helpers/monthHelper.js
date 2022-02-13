@@ -1,5 +1,5 @@
-const months = [
-   'Январь',
+export const months = [
+  'Январь',
   'Февраль',
   'Март',
   'Апрель',
@@ -12,7 +12,6 @@ const months = [
   'Ноябрь',
   'Декабрь',
 ]
-function monthHelper (number) {
+export function monthHelper (number) {
     return months[number]
 }
-export default monthHelper;

@@ -6,6 +6,7 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 import * as Confirm from '@pnotify/confirm';
 import '@pnotify/confirm/dist/PNotifyConfirm.css';
+import logOut from '../../icons/logOut.png';
 
 defaults.closerHover = false;
 defaults.addModelessClass = 'logOutModal';
@@ -52,7 +53,10 @@ const ModalLogOut = ({ onClickSuccess }) => {
   return (
     <div>
       <button type="button" onClick={click} className={s.buttonLogout}>
-        Выйти
+        <span>Выйти</span>
+        <div className={s.logOut}>
+          <img src={logOut} alt="logOut" width="12" />
+        </div>
       </button>
     </div>
   );

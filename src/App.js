@@ -1,5 +1,5 @@
 import HomePage from 'components/homepage/HomePage';
-import { Route, Routes,useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import stale from './App.module.scss';
 import AppBar from './components/AppBar/AppBar';
@@ -23,16 +23,14 @@ function App() {
     if (token) {
       dispatch(currentThunk());
     }
-  }, [token]);
+  }, [dispatch, token]);
 
-  useEffect(() => {
-    if (isAuth) {
-      // dispatch(currentUserTransaction())
-     return navigate(Router.DASHBOARD, { replace: true });     
-    }
-     else
-    navigate(Router.HOME, { replace: true });
-  }, [isAuth]);
+  // useEffect(() => {
+  //   if (isAuth) {
+  //     // dispatch(currentUserTransaction());
+  //     return navigate(Router.DASHBOARD, { replace: true });
+  //   } else navigate(Router.HOME, { replace: true });
+  // }, [isAuth, navigate]);
 
   return (
     <div className={stale.App}>

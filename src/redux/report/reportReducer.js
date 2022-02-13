@@ -5,11 +5,13 @@ const reportSlice = createSlice({
   name: 'report',
   initialState: {
     isLoading: false,
-    month: '1',
-    year: '2022',
+    month: '',
+    year: '',
     category: [],
     currentCategory: null,
     income: true,
+    incomeSum: '0',
+    spendingSum: '0',
     transactions: [],
     error: null,
   },
@@ -25,7 +27,7 @@ const reportSlice = createSlice({
     },
     reportCategory: (state, action) => {
       return { ...state, currentCategory: action.payload };
-    },
+    }
   },
   extraReducers: {
     [reportOperation.getCategory.pending](state, action) {
@@ -40,6 +42,8 @@ const reportSlice = createSlice({
         ...state,
         isLoading: false,
         category: action.payload.data.categoriesSum,
+        incomeSum: action.payload.data.amounts.income,
+        spendingSum: action.payload.data.amounts.spending,
       };
     },
     [reportOperation.getCategory.rejected](state, action) {

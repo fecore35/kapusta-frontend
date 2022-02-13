@@ -68,7 +68,7 @@ const authSlice = createSlice({
       };
     },
     [loginThunk.fulfilled](state, action) {
-      token.set(action.payload.token)
+      token.set(action.payload.token);
       return {
         ...state,
         isLoading: false,
@@ -99,7 +99,7 @@ const authSlice = createSlice({
         email: action.payload.email,
         isAuth: true,
         balance: action.payload.balance,
-        rebalancing: action.payload.rebalancing    
+        rebalancing: action.payload.rebalancing,
       };
     },
     [currentThunk.rejected](state, action) {
@@ -111,14 +111,14 @@ const authSlice = createSlice({
       };
     },
     [logOutThunk.pending](state, action) {
-        return {
+      return {
         ...state,
         isLoading: true,
         isAuth: false,
       };
     },
     [logOutThunk.fulfilled](state, action) {
-        return {
+      return {
         ...state,
         isLoading: false,
         name: '',
@@ -137,23 +137,23 @@ const authSlice = createSlice({
     },
     [userGetTransaction.pending](state, action) {
       return {
-      ...state,
-      isLoading: true,
-     };
-  },
-  [userGetTransaction.fulfilled](state, action) {
-      return {
-      ...state,
-      balance: action.payload.currentBalance,
-     };
-  },
-  [userGetTransaction.rejected](state, action) {
-    return {
-      ...state,
-      isLoading: false,
-    };
-  },
+        ...state,
+        isLoading: true,
+      };
     },
+    [userGetTransaction.fulfilled](state, action) {
+      return {
+        ...state,
+        balance: action.payload.currentBalance,
+      };
+    },
+    [userGetTransaction.rejected](state, action) {
+      return {
+        ...state,
+        isLoading: false,
+      };
+    },
+  },
 });
 
 export const { initUser } = authSlice.actions;

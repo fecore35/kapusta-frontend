@@ -6,10 +6,18 @@ const getReportError = state => state.report.error;
 
 const getReportType = state => state.report.income;
 
+const getMonth = state => state.report.month;
+
+const getYear = state => state.report.year;
+
+const getIncome = state => state.report.incomeSum;
+
+const getCosts = state => state.report.spendingSum;
+
 const getVisibleCategory = createSelector(
   [getReportCategory, getReportType],
   (category, isIncome) => {
-    if (!isIncome) {
+    if (isIncome) {
       return (
         category &&
         category.filter(
@@ -30,6 +38,10 @@ const reportSelectors = {
   getReportError,
   getVisibleCategory,
   getReportType,
+  getMonth,
+  getYear,
+  getIncome,
+  getCosts,
 };
 
 export default reportSelectors;
