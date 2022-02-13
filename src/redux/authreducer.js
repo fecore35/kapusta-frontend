@@ -7,7 +7,7 @@ import {
   logOutThunk,
 } from './asyncthunc';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://kapusta-35.herokuapp.com';
 
 const token = Object.freeze({
   set(token) {

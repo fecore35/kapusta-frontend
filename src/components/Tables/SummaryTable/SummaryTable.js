@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { useTable } from 'react-table';
-import MOCK_SUMMARY from './MOCK_SUMMARY.json';
+import MOCK_SUMMARY from '../MOCK_SUMMARY.json';
 import { summaryColumns } from './summaryColumns';
-import './BasicTable.scss';
+import './summaryTable.scss';
 
 export const SummaryTable = () => {
   const columns = useMemo(() => summaryColumns, []);
@@ -14,7 +14,7 @@ export const SummaryTable = () => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
   return (
-    <table {...getTableProps()}>
+    <table className='summaryTbl'{...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup, index) => (
           <tr key={index} {...headerGroup.getHeaderGroupProps}>
