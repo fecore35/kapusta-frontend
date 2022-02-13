@@ -9,13 +9,12 @@ export const summaryColumns = [
         Header: 'Сводка',
         columns: [
             {
-                Header: "rerewrwr",
+                Header: "",
                 accessor: "month",
-                Cell: ({ value }) => { return monthNames[new Date(value).getMonth()] }
+                Cell: ({ value }) => { return monthNames[value] }
             },
             {
-
-                accessor: "summ",
+                accessor: "income",
             },
         ]
     }
