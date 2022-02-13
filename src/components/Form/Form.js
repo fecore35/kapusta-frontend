@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import Calendar from 'components/Calendar/calendar.js';
-import { Formik, Form, useField } from 'formik';
+import { Formik, Form, useField, Field, ErrorMessage } from 'formik';
 import styled from '@emotion/styled';
 import s from './Form.module.scss';
 import calendar from '../../icons/calendar.png';
@@ -15,19 +15,6 @@ const MyTextInput = ({ label, ...props }) => {
     <>
       <label htmlFor={props.id || props.name}>{label}</label>
       <input className="text-input" {...field} {...props} />
-      {meta.touched && meta.errors ? (
-        <div className="errors">{meta.errors}</div>
-      ) : null}
-    </>
-  );
-};
-
-const MyTextArea = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  return (
-    <>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <textarea className="text-area" {...field} {...props} />
       {meta.touched && meta.errors ? (
         <div className="errors">{meta.errors}</div>
       ) : null}
@@ -72,11 +59,14 @@ const MySelect = ({ label, ...props }) => {
 const FormLabel = () => {
   const [isIncome, setisIncome] = useState(false);
 
-  const [category, setCategory] = useState('');
   const [expensesOpt, setExpensesOpt] = useState('');
   const [incomesOpt, setIncomesOpt] = useState('');
 
   const [valueCalendar, onChange] = useState(new Date(), 'yyyy-MM-dd');
+  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('');
+  const [calculation, setCalculation] = useState('');
+
   const [showCalendar, setShowCalendar] = useState(false);
   const [showLabel, setShowlabel] = useState(false);
 
@@ -94,11 +84,16 @@ const FormLabel = () => {
   const handleChange = e => {
     const { name, value } = e.target;
     switch (name) {
+      case 'description':
+        setDescription(value);
+        break;
+
       case 'category':
         setCategory(value);
         break;
-      case 'expensOpt':
-        setExpensesOpt(value);
+
+      case 'calc':
+        setCalculation(value);
         break;
 
       default:
@@ -120,9 +115,6 @@ const FormLabel = () => {
   };
   const reset = () => {
     setCategory('');
-    setShowlabel(false);
-    setExpensesOpt();
-    setIncomesOpt();
   };
 
   const handleInputChange = e => {
@@ -151,36 +143,32 @@ const FormLabel = () => {
       <Formik
         initialValues={{
           calendar: '',
-          product: '',
+          description: '',
           category: '',
           calc: '',
         }}
-        // validationSchema={Yup.object({
-        //   sum: Yup.number().min(1).positive().integer().required('Required'),
-        //   name: Yup.string().required(),
-        //   categories: Yup.string().required(),
-        //   expensesOpt: Yup.string()
-        //     .oneOf(
-        //       [
-        //         'transport',
-        //         'products',
-        //         'health',
-        //         'alcogol',
-        //         'rest',
-        //         'for home',
-        //         'tehnics',
-        //         'communal, communication',
-        //         'sport, hobby',
-        //         'education',
-        //         'other',
-        //       ],
-        //       'Invalid category',
-        //     )
-        //     .required('Required'),
-        //   incomesOpt: Yup.string()
-        //     .oneOf(['ЗП', 'Доп.доход'], 'Invalid category')
-        //     .required('Required'),
-        // })}
+        validationSchema={Yup.object({
+          description: Yup.string().required(),
+          category: Yup.string()
+            .oneOf(
+              [
+                'transport',
+                'products',
+                'health',
+                'alcogol',
+                'rest',
+                'for home',
+                'tehnics',
+                'communal, communication',
+                'sport, hobby',
+                'education',
+                'other',
+              ],
+              'Invalid category',
+            )
+            .required('Required'),
+          calc: Yup.number().min(1).positive().integer().required('Required'),
+        })}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
@@ -193,7 +181,7 @@ const FormLabel = () => {
             <img src={calendar} alt="calendar" className={s.calendarImg} />
             <MyTextInput
               value={valueCalendar}
-              type="input"
+              type="text"
               name="calendar"
               onFocus={() => setShowCalendar(true)}
             />
@@ -201,56 +189,55 @@ const FormLabel = () => {
               {showCalendar && <Calendar onChange={onChange} />}
             </div>
             <div className={s.forma}>
-              <MyTextArea
-                name="product"
-                // value={product}
+              <Field
                 type="text"
-                rows="6"
+                name="description"
+                id="description"
                 placeholder="Описание товара."
+              />
+              <ErrorMessage name="description" component="div" />
+
+              <MySelect
+                name="category"
+                value={category}
+                placeholder="Категория товара."
+                onChange={handleChange}
+                // changerDescription={changerPlaceholder}
+                // typeForm={typeForm}
+              >
+                {isIncome ? (
+                  <>
+                    <option value="">Категория товара</option>
+                    <option value="transport">Транспорт</option>
+                    <option value="products">Продукты</option>
+                    <option value="health">Здоровье</option>
+                    <option value="alcogol">Алкоголь</option>
+                    <option value="rest">Развлечения</option>
+                    <option value="for home">Все для дома</option>
+                    <option value="tehnics">Техника</option>
+                    <option value="communal, communication">
+                      Коммуналка, связь
+                    </option>
+                    <option value="sport, hobby">Спорт, Хобби</option>
+                    <option value="education">Образование</option>
+                    <option value="other">Прочее</option>/
+                  </>
+                ) : (
+                  <>
+                    <option value="">Категория дохода</option>
+                    <option value="">ЗП</option>
+                    <option value="">Доп.доход</option>
+                  </>
+                )}
+              </MySelect>
+
+              <MyTextInput
+                type="input"
+                value={calculation}
+                name="calc"
+                placeholder="0.00"
                 onChange={handleChange}
               />
-              {isIncome ? (
-                <MySelect
-                  name="category"
-                  placeholder="Категория товара."
-                  // changerDescription={changerPlaceholder}
-                  // typeForm={typeForm}
-                >
-                  <option value="">Категория товара</option>
-                  <option value="transport">Транспорт</option>
-                  <option value="products">Продукты</option>
-                  <option value="health">Здоровье</option>
-                  <option value="alcogol">Алкоголь</option>
-                  <option value="rest">Развлечения</option>
-                  <option value="for home">Все для дома</option>
-                  <option value="tehnics">Техника</option>
-                  <option value="communal, communication">
-                    Коммуналка, связь
-                  </option>
-                  <option value="sport, hobby">Спорт, Хобби</option>
-                  <option value="education">Образование</option>
-                  <option value="other">Прочее</option>/{' '}
-                  {/* {data.map(el => (
-//                 <MySelect value={el} onClick={handleClick} key={el}>
-//                   {el}
-//                 </MySelect>
-//               ))} */}
-                </MySelect>
-              ) : (
-                <MySelect
-                  name="category"
-                  placeholder="Категория дохода."
-                  // changerDescription={changerPlaceholder}
-                  // typeForm={typeForm}
-                  // onChange={handleChange}
-                  // value={categ}
-                >
-                  <option value="">Категория дохода</option>
-                  <option value="">ЗП</option>
-                  <option value="">Доп.доход</option>
-                </MySelect>
-              )}
-              <MyTextInput type="input" name="calc" placeholder="0.00" />
               <div className={s.calcWrapper}>
                 <img src={calcImg} alt="calculator" className={s.calcImg} />
               </div>
