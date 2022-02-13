@@ -5,9 +5,11 @@ import {
   loginThunk,
   currentThunk,
   logOutThunk,
+  userGetTransaction,
 } from './asyncthunc';
 
 axios.defaults.baseURL = 'https://kapusta-35.herokuapp.com';
+// axios.defaults.baseURL = 'http://localhost:5000';
 
 const token = Object.freeze({
   set(token) {
@@ -28,6 +30,8 @@ const authSlice = createSlice({
     isLoading: false,
     isAuth: false,
     id: '',
+    balance: '0',
+    rebalancing: false,
   },
   reducers: {
     initUser: (state, action) => {
@@ -64,6 +68,7 @@ const authSlice = createSlice({
       };
     },
     [loginThunk.fulfilled](state, action) {
+      token.set(action.payload.token);
       return {
         ...state,
         isLoading: false,
@@ -92,8 +97,9 @@ const authSlice = createSlice({
         isLoading: false,
         name: action.payload.name,
         email: action.payload.email,
-        id: action.payload.id,
         isAuth: true,
+        balance: action.payload.balance,
+        rebalancing: action.payload.rebalancing,
       };
     },
     [currentThunk.rejected](state, action) {
@@ -127,6 +133,24 @@ const authSlice = createSlice({
         isLoading: false,
         //  error: action.payload,
         isAuth: false,
+      };
+    },
+    [userGetTransaction.pending](state, action) {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    },
+    [userGetTransaction.fulfilled](state, action) {
+      return {
+        ...state,
+        balance: action.payload.currentBalance,
+      };
+    },
+    [userGetTransaction.rejected](state, action) {
+      return {
+        ...state,
+        isLoading: false,
       };
     },
   },
