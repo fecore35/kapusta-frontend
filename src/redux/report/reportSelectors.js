@@ -9,7 +9,7 @@ const getReportType = state => state.report.income;
 const getVisibleCategory = createSelector(
   [getReportCategory, getReportType],
   (category, isIncome) => {
-    if (!isIncome) {
+    if (isIncome) {
       return (
         category &&
         category.filter(

@@ -15,7 +15,7 @@ function Category({ name, total, icon, setCategory, currentCategory }) {
           <use href={`./sprite-category.svg#${icon}`}></use>
         </svg>
       </i>
-      <p className={s.name}>{icon}</p>
+      <p className={s.name}>{name}</p>
     </li>
   );
 }
