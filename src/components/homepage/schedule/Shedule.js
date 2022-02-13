@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import * as V from 'victory';
+import axios from 'axios'
+import { currentThunk } from 'redux/asyncthunc';
 import {
   VictoryBar,
   VictoryChart,
@@ -7,22 +10,14 @@ import {
   VictoryTheme,
   VictoryLabel,
 } from 'victory';
+// import {store} from '../../../redux/store.js'
 import styles from './Schedule.module.scss';
-function Schedule({ type, category }) {
-  const [data, setData] = useState([
-    { name: 'Свинина', sum: 3000 },
-    { name: 'Говядина', sum: 500 },
-    { name: 'Курица', sum: 1800 },
-    { name: 'Рыба', sum: 2100 },
-    { name: 'Панини', sum: 1800 },
-    { name: 'Кофе', sum: 1700 },
-    { name: 'Спагетти', sum: 1500 },
-    { name: 'Шоколад', sum: 800 },
-    { name: 'Маслины', sum: 500 },
-    { name: 'Зелень', sum: 300 },
-  ]);
+// import { reportSelectors } from 'redux/report';
+// function Schedule({ type, category,err }) {
+//   const [data, setData] = useState([]);
   const [tick, setTick] = useState(data);
   console.log(category);
+  console.log(type)
   const dataForSchedule = () =>
     tick
       .sort((a, b) => {
@@ -39,7 +34,7 @@ function Schedule({ type, category }) {
   // console.log(dataForSchedule())
 
   // useEffect(() => {
-  //   if (type !== 'Расход') {
+  //   if (type) {
   //     return setTick([
   //       {
   //         name: 'Жены',
@@ -106,4 +101,11 @@ function Schedule({ type, category }) {
     </div>
   );
 }
-export default Schedule;
+// const mapStateToProps = (state) => {
+//   return {
+//    category:reportSelectors.getReportCategory(state),
+//    type:reportSelectors.getReportType(state),
+//    error: reportSelectors.getReportError(state)
+//   }
+// }
+// export default connect(mapStateToProps, )(Schedule);
