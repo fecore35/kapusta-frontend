@@ -25,10 +25,9 @@ function App() {
   return (
     <div className={stale.App}>
       <AppBar />
-      <Dashboard />
       <Routes>
-        {/* <Route path={Router.HOME} element={<HomePage />} /> */}
-        {/* <Route path={Router.DASHBOARD} element={<Dashboard />} /> */}
+        <Route path={Router.HOME} element={<HomePage />} />
+        <Route path={Router.DASHBOARD} element={<Dashboard />} />
         <Route path={Router.REPORT} element={<Report />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
