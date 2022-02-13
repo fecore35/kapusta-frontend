@@ -5,8 +5,8 @@ const reportSlice = createSlice({
   name: 'report',
   initialState: {
     isLoading: false,
-    month: '1',
-    year: '2022',
+    month: '',
+    year: '',
     category: [],
     currentCategory: null,
     income: true,
@@ -27,7 +27,7 @@ const reportSlice = createSlice({
     },
     reportCategory: (state, action) => {
       return { ...state, currentCategory: action.payload };
-    },
+    }
   },
   extraReducers: {
     [reportOperation.getCategory.pending](state, action) {

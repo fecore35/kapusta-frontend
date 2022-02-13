@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import * as V from 'victory';
+import { connect } from 'react-redux';
+import axios from 'axios';
 import {
   VictoryBar,
   VictoryChart,
@@ -8,21 +9,30 @@ import {
   VictoryLabel,
 } from 'victory';
 import styles from './Schedule.module.scss';
-function Schedule({ type, category }) {
-  const [data, setData] = useState([
-    { name: 'Свинина', sum: 3000 },
-    { name: 'Говядина', sum: 500 },
-    { name: 'Курица', sum: 1800 },
-    { name: 'Рыба', sum: 2100 },
-    { name: 'Панини', sum: 1800 },
-    { name: 'Кофе', sum: 1700 },
-    { name: 'Спагетти', sum: 1500 },
-    { name: 'Шоколад', sum: 800 },
-    { name: 'Маслины', sum: 500 },
-    { name: 'Зелень', sum: 300 },
-  ]);
+import useWindowDementions from '../../../helpers/getWindowDementions'
+import { reportSelectors } from 'redux/report';
+function Schedule({ type,currentCategory }) {
+  const [data, setData] = useState([]);
   const [tick, setTick] = useState(data);
-  console.log(category);
+ const month = 1;
+ const year = 2022;
+ const { width } = useWindowDementions();
+  // console.log(type)
+  // console.log(currentCategory)
+  const getData = async (category,month,year) => {
+    try {
+      const data = await axios.get(
+        `/transactions/description/${month}/${year}/${category}`,
+      );
+      return console.log(data);
+    } catch (error) {
+      console.log(error)
+    }
+  };
+  useEffect(() => {
+    getData(currentCategory,month,year)
+  },[currentCategory])
+
   const dataForSchedule = () =>
     tick
       .sort((a, b) => {
@@ -36,33 +46,26 @@ function Schedule({ type, category }) {
           fill: '#FF751D',
         };
       });
-  // console.log(dataForSchedule())
-
-  // useEffect(() => {
-  //   if (type !== 'Расход') {
-  //     return setTick([
-  //       {
-  //         name: 'Жены',
-  //         sum: 20000,
-  //       },
-  //       {
-  //         name: 'Моя',
-  //         sum: 25000,
-  //       },
-  //     ]);
-  //   }
-  //   setTick(data);
-  // }, [type]);
   useEffect(() => {
-    console.log(
-      'Изменили категорию - получаем новые данные с БД по выбранной категории и перерисовываем график',
-    );
-  }, [category]);
-
+    if (type) {
+      return setTick([
+        {
+          name: 'Жены',
+          sum: 20000,
+        },
+        {
+          name: 'Моя',
+          sum: 25000,
+        },
+      ]);
+    }
+    setTick(data);
+  }, [type]);
   return (
     <div className="section">
       <div className="container">
-        <div className={styles.schedule}>
+        {
+          width < 768 ? (<div></div>) : ( <div className={styles.schedule}>
           <VictoryChart theme={VictoryTheme.material} width={620} padding={60}>
             <VictoryAxis
             // tickFormat={}
@@ -101,9 +104,16 @@ function Schedule({ type, category }) {
               }
             />
           </VictoryChart>
-        </div>
+        </div>)
+}
       </div>
     </div>
   );
+            }
+const mapStateToProps = (state) => {
+  return {
+   type:reportSelectors.getReportType(state),
+   currentCategory: state.report.currentCategory
+  }
 }
-export default Schedule;
+export default connect(mapStateToProps, )(Schedule);
