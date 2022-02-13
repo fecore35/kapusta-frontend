@@ -3,10 +3,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { reportSelectors } from 'redux/report';
 import * as Yup from 'yup';
-import Calendar from 'components/Calendar/calendar.js';
+import Calendar from 'react-calendar';
 import { Formik, Form, useField, Field, ErrorMessage } from 'formik';
 import styled from '@emotion/styled';
 import s from './Form.module.scss';
+import 'react-calendar/dist/Calendar.css';
 
 const StyledErrorsMessage = styled.div`
   font-size: 12px;
@@ -98,12 +99,20 @@ const FormLabel = () => {
               <Field
                 type="text"
                 name="calendar"
+                value={valueCalendar}
                 id="calendar"
                 onFocus={() => setShowCalendar(true)}
               />
               <ErrorMessage name="calendar" component="div" />
-              <div className="calendarInner">
-                {showCalendar && <Calendar onChange={onChange} />}
+              <div className={`calendarInner ${s.calendarInner}`}>
+                {showCalendar && (
+                  <Calendar
+                    selectRange={false}
+                    locale={'ru-RU'}
+                    onChange={onChange}
+                    value={valueCalendar}
+                  />
+                )}
               </div>
             </div>
             <div className={s.forma}>
