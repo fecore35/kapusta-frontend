@@ -64,6 +64,7 @@ const authSlice = createSlice({
       };
     },
     [loginThunk.fulfilled](state, action) {
+      token.set(action.payload.token)
       return {
         ...state,
         isLoading: false,
@@ -105,14 +106,14 @@ const authSlice = createSlice({
       };
     },
     [logOutThunk.pending](state, action) {
-      return {
+        return {
         ...state,
         isLoading: true,
         isAuth: false,
       };
     },
     [logOutThunk.fulfilled](state, action) {
-      return {
+        return {
         ...state,
         isLoading: false,
         name: '',
