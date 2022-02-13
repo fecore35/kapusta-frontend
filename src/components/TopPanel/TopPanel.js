@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Router from '../../constants/router';
 import s from './TopPanel.module.scss';
+import Data from '../Data/Data.js'
 
 export default function TopPanel({ showGoBack = false, showReport = false }) {
   return (
@@ -23,6 +24,7 @@ export default function TopPanel({ showGoBack = false, showReport = false }) {
           <button className={s.balance__btn + ' ' + s.balance__item}>
             ПОДТВЕРДИТЬ
           </button>
+          <Data/>
         </form>
 
         {showReport && (
