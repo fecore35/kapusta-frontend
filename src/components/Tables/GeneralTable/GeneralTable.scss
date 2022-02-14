@@ -74,6 +74,10 @@ table th:first-child {
   border-left: 2px solid $secondaryColor;
   padding-left: 20px;
 }
+table thead th:first-child {
+  border-left: 2px solid transparent;
+}
+
 table td:last-child,
 table th:last-child {
   width: 100px;
@@ -133,10 +137,33 @@ table td:nth-child(5) {
   justify-content: space-around;
 }
 .pageNavigationButton {
-  color: $secondaryColor;
-  background-color: $accentColor;
+  background-color: $secondaryColor;
+  background-color: #fff;
   border: none;
   border-radius: 5px;
+
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 0;
+  cursor: pointer;
+  width: 125px;
+  border-radius: 16px;
+  height: 44px;
+  border: 2px solid #f5f6fb;
+  transition-duration: 350ms;
+  transition-property: background-color border-color color;
+
+  &:hover {
+    background-color: #ffffff;
+    color: #ff751d;
+    border-color: #ff751d;
+  }
 }
 
 .delBtn {
