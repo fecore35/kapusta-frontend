@@ -2,57 +2,46 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
 import FormSelect from 'components/FormSelect/FormSelect';
 import FormInput from 'components/FormInput/FormInput';
 import DatePicker from 'components/Calendar/calendar';
 import { reportSelectors } from 'redux/report';
 import { extraDataSelectors } from 'redux/extraData';
+import Categories from 'constants/categories';
 import s from './Form.module.scss';
 
-const incomeCategory = [
-  { value: '', label: 'Категория товара' },
-  { value: 'transport', label: 'Транспорт' },
-  { value: 'foods', label: 'Продукты' },
-  { value: 'health', label: 'Здоровье' },
-  { value: 'alco', label: 'Алкоголь' },
-  { value: 'fun', label: 'Развлечения' },
-  { value: 'house', label: 'Все для дома' },
-  { value: 'tech', label: 'Техника' },
-  { value: 'utilities', label: 'Коммуналка, связь' },
-  { value: 'sport', label: 'Спорт, Хобби' },
-  { value: 'education', label: 'Образование' },
-  { value: 'other', label: 'Прочее' },
-];
-
-const spendingCategory = [
-  { value: '', label: 'Категория дохода' },
-  { value: 'salary', label: 'ЗП' },
-  { value: 'addition', label: 'Доп.доход' },
-];
+const setValidate = Yup.object({
+  description: Yup.string().required('Обязательно'),
+  category: Yup.object().required('Обязательно'),
+  calc: Yup.number()
+    .min(0.01)
+    .positive('Должен быть положительным числом')
+    .required('Обязательно'),
+});
 
 const FormLabel = () => {
-  const [valueCalendar, onChange] = useState(new Date(), 'yyyy-MM-dd');
+  // const [valueCalendar, onChange] = useState(new Date(), 'yyyy-MM-dd');
   const isIncome = useSelector(reportSelectors.getReportType);
   const date = useSelector(extraDataSelectors.getDate);
 
-  const onSaveTransaction = (values, { setSubmitting, resetForm }) => {
-    console.log({
+  const resetForm = () => {
+    formik.resetForm();
+  };
+
+  const onSaveTransaction = async (_values, { resetForm }) => {
+    const response = await axios.post('/transactions', {
       ...date,
       sum: formik.values.calc,
       income: isIncome,
       category: formik.values.category.value,
       description: formik.values.description,
     });
-  };
 
-  const setValidate = Yup.object({
-    description: Yup.string().required('Обязательно'),
-    category: Yup.object().required('Обязательно'),
-    calc: Yup.number()
-      .min(0.01)
-      .positive('Должен быть положительным числом')
-      .required('Обязательно'),
-  });
+    if (response.status === 201) {
+      resetForm();
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -66,16 +55,11 @@ const FormLabel = () => {
 
   useEffect(() => {
     formik.setFieldValue();
-    formik.values.category = isIncome ? spendingCategory[0] : incomeCategory[0];
+    formik.values.category = isIncome
+      ? Categories.spendingCategory[0]
+      : Categories.incomeCategory[0];
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isIncome]);
-
-  const resetForm = () => {
-    formik.setFieldValue();
-    formik.values.description = '';
-    formik.values.category = isIncome ? spendingCategory[0] : incomeCategory[0];
-    formik.values.calc = '';
-  };
 
   return (
     <form className={s.form} onSubmit={formik.handleSubmit} autoComplete="off">
@@ -85,7 +69,7 @@ const FormLabel = () => {
           <div className={s.calendarWrap}>
             <DatePicker
               name="calendar"
-              selected={valueCalendar}
+              // selected={valueCalendar}
               className={s.calendarInput}
             />
           </div>
@@ -94,7 +78,7 @@ const FormLabel = () => {
           type="text"
           name="description"
           placeholder="Описание товара."
-          value={formik.values.description}
+          value={formik.values.description || ''}
           onChange={formik.handleChange}
           error={formik.errors.description}
           touched={formik.touched.description}
@@ -103,8 +87,10 @@ const FormLabel = () => {
         <FormSelect
           id="category"
           name="category"
-          options={isIncome ? spendingCategory : incomeCategory}
-          value={formik.values.category}
+          options={
+            isIncome ? Categories.spendingCategory : Categories.incomeCategory
+          }
+          value={formik.values.category || ''}
           onChange={formik.setFieldValue}
           onBlur={formik.setFieldTouched}
           error={formik.errors.category}
@@ -115,7 +101,7 @@ const FormLabel = () => {
         <FormInput
           type="number"
           name="calc"
-          value={formik.values.calc}
+          value={formik.values.calc || ''}
           onChange={formik.handleChange}
           error={formik.errors.calc}
           touched={formik.touched.calc}
