@@ -19,7 +19,9 @@ export const COLUMNS = [
     {
         Header: 'СУММА',
         accessor: "price",
-        // Cell: ({ value }) => { return `- ${value}` }
+        Cell: (props) => {
+            return `- ${props.value}`
+        }
     },
 
 ]
