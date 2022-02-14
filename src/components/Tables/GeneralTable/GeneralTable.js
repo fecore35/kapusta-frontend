@@ -11,10 +11,6 @@ import { reportSelectors } from 'redux/report';
 export const GeneralTable = () => {
   const columns = useMemo(() => COLUMNS, []);
   const [data, setData] = useState([]);
-  console.log(
-    '🚀 ~ file: GeneralTable.js ~ line 15 ~ GeneralTable ~ data',
-    data,
-  );
 
   const isIncome = useSelector(reportSelectors.getReportType);
   const { income, spending, error, isLoading } = useTransactions();
@@ -96,10 +92,17 @@ export const GeneralTable = () => {
           {page.map((row, index) => {
             prepareRow(row);
             return (
-              <tr key={index} {...row.getRowProps()}>
+              <tr key={index} {...row.getRowProps({ className: 'row' })}>
                 {row.cells.map((cell, index) => {
                   return (
-                    <td key={index} {...cell.getCellProps()}>
+                    <td
+                      key={index}
+                      {...cell.getCellProps(
+                        isIncome
+                          ? { className: 'incomeCell' }
+                          : { className: 'spendingsCell' },
+                      )}
+                    >
                       {cell.render('Cell')}
                     </td>
                   );
@@ -109,14 +112,19 @@ export const GeneralTable = () => {
           })}
         </tbody>
       </table>
-      <div className="pageNavigation">
-        <button className="pageNavigationButton" onClick={() => previousPage()}>
-          Назад
-        </button>
-        <button className="pageNavigationButton" onClick={() => nextPage()}>
-          Дальше
-        </button>
-      </div>
+      {data.length > 10 && (
+        <div className="pageNavigation">
+          <button
+            className="pageNavigationButton"
+            onClick={() => previousPage()}
+          >
+            Назад
+          </button>
+          <button className="pageNavigationButton" onClick={() => nextPage()}>
+            Дальше
+          </button>
+        </div>
+      )}
     </div>
   );
 };
