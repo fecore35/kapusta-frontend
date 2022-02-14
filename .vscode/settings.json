@@ -14,5 +14,6 @@
     "titleBar.activeBackground": "#FF751D",
     "titleBar.inactiveForeground": "#ffffff",
     "titleBar.inactiveBackground": "#cccccc"
-  }
+  },
+  "liveshare.audio.startCallOnShare": true
 }

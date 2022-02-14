@@ -1,208 +1,130 @@
-import Calendar from '../Calendar/calendar';
-import { Formik, Form, useField } from 'formik';
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import styled from '@emotion/styled';
+import axios from 'axios';
+import FormSelect from 'components/FormSelect/FormSelect';
+import FormInput from 'components/FormInput/FormInput';
+import DatePicker from 'components/Calendar/calendar';
+import { reportSelectors } from 'redux/report';
+import { extraDataSelectors } from 'redux/extraData';
+import Categories from 'constants/categories';
 import s from './Form.module.scss';
-import calendar from '../../icons/calendar.png';
-import 'react-calendar/dist/Calendar.css';
-import calcImg from '../../icons/calcImg.png';
 
-const MyTextInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  return (
-    <>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <input className="text-input" {...field} {...props} />
-      {meta.touched ? null : null}
-    </>
-  );
-};
-
-const MyTextArea = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  return (
-    <>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <textarea className="text-area" {...field} {...props} />
-      {meta.touched ? null : null}
-    </>
-  );
-};
-
-const StyledSelect = styled.select`
-  color: #c7ccdc; ;
-`;
-
-const StyledLabel = styled.label`
-  margin-top: 1rem;
-`;
-
-const MySelect = ({ label, ...props }) => {
-  // useField() возвращает formik.getFieldProps(), formik.getFieldMeta()]
-  // которые мы можем распространить на <input>
-  const [field, meta] = useField(props);
-  return (
-    <>
-      <StyledLabel htmlFor={props.id || props.name}>{label}</StyledLabel>
-      <StyledSelect {...field} {...props} />
-      {meta.touched ? null : null}
-    </>
-  );
-};
+const setValidate = Yup.object({
+  description: Yup.string().required('Обязательно'),
+  category: Yup.object().required('Обязательно'),
+  calc: Yup.number()
+    .min(0.01)
+    .positive('Должен быть положительным числом')
+    .required('Обязательно'),
+});
 
 const FormLabel = () => {
-  const [product, setProduct] = useState('');
-  const [category, setCategory] = useState('');
-  const [valueCalendar, onChange] = useState(new Date());
-  const [showCalendar, setShowCalendar] = useState(null);
+  // const [valueCalendar, onChange] = useState(new Date(), 'yyyy-MM-dd');
+  const isIncome = useSelector(reportSelectors.getReportType);
+  const date = useSelector(extraDataSelectors.getDate);
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    switch (name) {
-      case 'product':
-        setProduct(value);
-        break;
-      case 'category':
-        setCategory(value);
-        break;
+  const resetForm = () => {
+    formik.resetForm();
+  };
 
-      default:
-        return;
+  const onSaveTransaction = async (_values, { resetForm }) => {
+    const response = await axios.post('/transactions', {
+      ...date,
+      sum: formik.values.calc,
+      income: isIncome,
+      category: formik.values.category.value,
+      description: formik.values.description,
+    });
+
+    if (response.status === 201) {
+      resetForm();
     }
   };
-  const handleSubmit = e => {
-    e.preventDefault();
-    reset();
-  };
-  const reset = () => {
-    setProduct('');
-    setCategory('');
-  };
 
-  const calendarHandler = e => {
-    if (
-      e.target.name === 'calendar' ||
-      e.target.closest('.calendarInner') ||
-      e.target.classList.contains('react-calendar__tile')
-    ) {
-      return;
-    }
+  const formik = useFormik({
+    initialValues: {
+      description: '',
+      category: '',
+      calc: '',
+    },
+    validationSchema: setValidate,
+    onSubmit: onSaveTransaction,
+  });
 
-    setShowCalendar(false);
-  };
   useEffect(() => {
-    document.addEventListener('click', calendarHandler);
-    return () => {
-      document.removeEventListener('click', calendarHandler);
-    };
-  }, []);
+    formik.setFieldValue();
+    formik.values.category = isIncome
+      ? Categories.spendingCategory[0]
+      : Categories.incomeCategory[0];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isIncome]);
 
   return (
-    <>
-      {/* <h1>.</h1> */}
-      <Formik
-        initialValues={{
-          calendar: '',
-          product: '',
-          category: '',
-          calc: '',
-        }}
-        validationSchema={Yup.object({
-          product: Yup.string()
-            .max(15, 'Must be 15 characters or less')
-            .required('Required'),
-          calendar: Yup.number().required('Required'),
-          calc: Yup.number().required('Required'),
-          // acceptedTerms: Yup.boolean()
-          //   .required('Required')
-          //   .oneOf([true], 'You must accept the terms and conditions.'),
-          category: Yup.string()
-            // specify the set of valid values for  type
-            // @see http://bit.ly/yup-mixed-oneOf
-            .oneOf(
-              [
-                'transport',
-                'products',
-                'health',
-                'alcogol',
-                'rest',
-                'for home',
-                'tehnics',
-                'communal, communication',
-                'sport, hobby',
-                'education',
-                'other',
-              ],
-              'Invalid category',
-            )
-            .required('Required'),
-        })}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
-      >
-        <Form className={s.formFormic}>
-          <img src={calendar} alt="calendar" className={s.calendarImg} />
-          <MyTextInput
-            value={valueCalendar}
-            type="input"
-            name="calendar"
-            onFocus={() => setShowCalendar(true)}
-          />
-          <div className="calendarInner">
-            {showCalendar && <Calendar onChange={onChange} />}
-          </div>
-          <div className={s.forma}>
-            <MyTextArea
-              name="product"
-              value={product}
-              type="text"
-              rows="6"
-              placeholder="Описание товара."
-              onChange={handleChange}
+    <form className={s.form} onSubmit={formik.handleSubmit} autoComplete="off">
+      <div className={s.inputList}>
+        <label className={s.calendar}>
+          <i className={s.calendarIcon}></i>
+          <div className={s.calendarWrap}>
+            <DatePicker
+              name="calendar"
+              // selected={valueCalendar}
+              className={s.calendarInput}
             />
-            <MySelect
-              name="category"
-              placeholder="Категория товара."
-              onChange={handleChange}
-              value={category}
-            >
-              <option value="">Категория товара</option>
-              <option value="transport">Транспорт</option>
-              <option value="products">Продукты</option>
-              <option value="health">Здоровье</option>
-              <option value="alcogol">Алкоголь</option>
-              <option value="rest">Развлечения</option>
-              <option value="for home">Все для дома</option>
-              <option value="tehnics">Техника</option>
-              <option value="communal, communication">Коммуналка, связь</option>
-              <option value="sport, hobby">Спорт, Хобби</option>
-              <option value="education">Образование</option>
-              <option value="other">Прочее</option>
-            </MySelect>
-            <MyTextInput type="input" name="calc" placeholder="0.00" />
-            <div className={s.calcWrapper}>
-              <img src={calcImg} alt="calculator" className={s.calcImg} />
-            </div>
           </div>
-          <button type="submit" name="buttonYes" className="buttonYes">
-            ВВВОД
-          </button>
-          <button
-            type="button"
-            name="buttonNo"
-            className="buttonNo"
-            onClick={handleSubmit}
-          >
-            ОЧИСТИТЬ
-          </button>
-        </Form>
-      </Formik>
-    </>
+        </label>
+        <FormInput
+          type="text"
+          name="description"
+          placeholder="Описание товара."
+          value={formik.values.description || ''}
+          onChange={formik.handleChange}
+          error={formik.errors.description}
+          touched={formik.touched.description}
+          classLabel={s.descriptionLabel}
+        />
+        <FormSelect
+          id="category"
+          name="category"
+          options={
+            isIncome ? Categories.spendingCategory : Categories.incomeCategory
+          }
+          value={formik.values.category || ''}
+          onChange={formik.setFieldValue}
+          onBlur={formik.setFieldTouched}
+          error={formik.errors.category}
+          touched={formik.touched.category}
+          className={s.categoryLabel}
+        />
+
+        <FormInput
+          type="number"
+          name="calc"
+          value={formik.values.calc || ''}
+          onChange={formik.handleChange}
+          error={formik.errors.calc}
+          touched={formik.touched.calc}
+          classLabel={s.calcLabel}
+          min="0"
+          placeholder="0,00"
+          step=".01"
+        />
+      </div>
+      <div className={s.btnList}>
+        <button type="submit" name="buttonYes" className="buttonYes">
+          Вввод
+        </button>
+        <button
+          type="reset"
+          name="buttonNo"
+          className="buttonNo"
+          onClick={resetForm}
+        >
+          Очистить
+        </button>
+      </div>
+    </form>
   );
 };
 

@@ -1,31 +1,64 @@
 @import '../../../sass/main.scss';
 
 table {
-  /* font-family: Arial, Helvetica, sans-serif; */
   table-layout: fixed;
   border-collapse: collapse;
-  // width: 760px;
-  margin-top: 60px;
   margin-left: auto;
   margin-right: auto;
   color: $secondaryTextColor;
   border: none;
-  // padding: 20px;
 }
+
 table.generalTbl {
-  width: 760px;
+  width: 78vw;
+  @media screen and (min-width: 1280px) {
+    width: 760px;
+  }
 }
 
 table.generalTbl tr {
   height: 40px;
 }
-// thead th:nth-child(1) {
-//   width: 84px;
-// }
+
+thead th:nth-child(1) {
+  width: 11vw;
+  @media screen and (min-width: 1280px) {
+    width: 84px;
+  }
+}
+
+thead th:nth-child(2) {
+  width: 26vw;
+  @media screen and (min-width: 1280px) {
+    width: 272px;
+  }
+}
+
+thead th:nth-child(3) {
+  width: 13vw;
+  @media screen and (min-width: 1280px) {
+    width: 116px;
+  }
+}
+
+thead th:nth-child(4) {
+  width: 12vw;
+  @media screen and (min-width: 1280px) {
+    width: 104px;
+  }
+}
+
+thead th:nth-child(5) {
+  width: 16vw;
+  @media screen and (min-width: 1280px) {
+    width: 184px;
+  }
+}
 
 table th:first-child {
   border-top-left-radius: 20px;
 }
+
 table th:last-child {
   border-top-right-radius: 20px;
 }
@@ -36,13 +69,21 @@ table th {
   border-top: none;
   border-bottom: 2px solid $secondaryColor;
 }
+
 table th:first-child,
 table td:first-child {
-  padding-left: 20px;
-  // width: 105px;
-}
-table td:first-child {
   border-left: 2px solid $secondaryColor;
+  padding-left: 20px;
+}
+
+table thead th:first-child {
+  border-left: 2px solid transparent;
+}
+
+table td:last-child,
+table th:last-child {
+  width: 100px;
+  text-align: center;
 }
 
 table th {
@@ -54,38 +95,37 @@ table th {
   color: $textColor;
   border: none;
 }
-table th:nth-child(4),
-table td:nth-child(4) {
-  text-align: right;
-  // width: 125px;
-}
 
-table th:nth-child(2),
 table td:nth-child(2) {
-  // width: 205px;
   text-align: left;
   padding-left: 20px;
 }
-table th:nth-child(4),
-table td:nth-child(4) {
-  // width: 200px;
+
+table th:nth-child(3) {
+  text-align: center;
+}
+
+table td:nth-child(3) {
+  width: 116px;
   text-align: center;
   padding-left: 20px;
 }
+
+table th:nth-child(4) {
+  text-align: right;
+}
+
 table td:nth-child(4) {
-  // width: 125px;
-  text-align: center;
+  text-align: right;
   font-weight: 700;
 }
 
 table td:last-child {
-  // width: 125px;
   text-align: center;
   border-right: 2px solid $secondaryColor;
 }
 
 .pageNavigation {
-  width: 760px;
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -93,11 +133,35 @@ table td:last-child {
   margin-bottom: 50px;
   justify-content: space-around;
 }
+
 .pageNavigationButton {
-  color: $secondaryColor;
-  background-color: $accentColor;
+  background-color: $secondaryColor;
+  background-color: #fff;
   border: none;
   border-radius: 5px;
+
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 0;
+  cursor: pointer;
+  width: 125px;
+  border-radius: 16px;
+  height: 44px;
+  border: 2px solid #f5f6fb;
+  transition-duration: 350ms;
+  transition-property: background-color border-color color;
+
+  &:hover {
+    background-color: #ffffff;
+    color: #ff751d;
+    border-color: #ff751d;
+  }
 }
 
 .delBtn {

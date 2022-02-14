@@ -1,1 +1,20 @@
 @import '../src/sass/main.scss';
+
+body {
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    background-color: #f5f6fb;
+    border-bottom-left-radius: 110px;
+    height: 526px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .App {
+    position: relative;
+    z-index: 2;
+  }
+}
