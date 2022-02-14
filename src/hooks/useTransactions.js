@@ -7,10 +7,10 @@ import {
 
 export const useTransactions = () => {
   const incomeTransactions = useSelector(
-    transactionsSelectors.getIncomeTransactions,
+    transactionsSelectors.getVisibleIncomeTransactions,
   );
   const spendingTransactions = useSelector(
-    transactionsSelectors.getSpendingTransactions,
+    transactionsSelectors.getVisibleSpendingTransactions,
   );
   const transactionsError = useSelector(
     transactionsSelectors.getTransactionsError,

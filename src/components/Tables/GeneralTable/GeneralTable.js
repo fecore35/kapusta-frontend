@@ -1,30 +1,45 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useTable, useSortBy, usePagination, useRowSelect } from 'react-table';
-import MOCK_DATA from '../MOCK_DATA.json';
 import { COLUMNS } from './generalColumns';
-import trashbin from '../../../pictures/trashbin.svg'
+import trashbin from '../../../pictures/trashbin.svg';
 import './GeneralTable.scss';
 // import { } from '../../../pictures/'
+import { useTransactions } from 'hooks/useTransactions';
+import { useSelector } from 'react-redux';
+import { reportSelectors } from 'redux/report';
 
 export const GeneralTable = () => {
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => MOCK_DATA, []);
+  const [data, setData] = useState([]);
+  console.log(
+    '🚀 ~ file: GeneralTable.js ~ line 15 ~ GeneralTable ~ data',
+    data,
+  );
 
+  const isIncome = useSelector(reportSelectors.getReportType);
+  const { income, spending, error, isLoading } = useTransactions();
 
   const handleButtonClick = (e, row) => {
     console.log(row.id);
-  }
+  };
+
+  useEffect(() => {
+    if (isIncome) {
+      return setData(income);
+    }
+
+    setData(spending);
+  }, [income, isIncome, spending]);
 
   const tableInstance = useTable(
     {
-      columns: columns,
-      data: data,
+      columns,
+      data,
     },
     useSortBy,
     usePagination,
     useRowSelect,
     hooks => {
-
       hooks.visibleColumns.push(columns => {
         return [
           ...columns,
@@ -32,10 +47,18 @@ export const GeneralTable = () => {
           {
             Header: '',
             id: 'click-me-button',
-            Cell: ({ row }) => (<button className='delBtn' type='button' onClick={(e) => {
-              handleButtonClick(e, row)
-            }}><img src={trashbin} alt='delete' width='18' height='18'></img></button>)
-          }
+            Cell: ({ row }) => (
+              <button
+                className="delBtn"
+                type="button"
+                onClick={e => {
+                  handleButtonClick(e, row);
+                }}
+              >
+                <img src={trashbin} alt="delete" width="18" height="18"></img>
+              </button>
+            ),
+          },
         ];
       });
     },
@@ -51,7 +74,7 @@ export const GeneralTable = () => {
   } = tableInstance;
   return (
     <div>
-      <table className='generalTbl'{...getTableProps()}>
+      <table className="generalTbl" {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup, index) => (
             <tr key={index} {...headerGroup.getHeaderGroupProps}>
