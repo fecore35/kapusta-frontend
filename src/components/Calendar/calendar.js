@@ -1,20 +1,31 @@
 import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import Calendar from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import ru from 'date-fns/locale/ru';
 
-function DatePicker() {
-  const [value, onChange] = useState(new Date());
+import { useDispatch } from 'react-redux';
+import { initDate } from 'redux/extraData/extraDataReducer';
+
+function DatePicker({ className }) {
+  const [value, onChange] = useState(new Date(), 'yyyy-MM-dd');
+  const dispatch = useDispatch();
+
+  const handleDateChange = date => {
+    onChange(date);
+    const year = String(date.getFullYear());
+    const month = String(date.getMonth() + 1);
+    const day = String(date.getDate());
+    dispatch(initDate({ month, day, year }));
+  };
 
   return (
-    <div>
-      <Calendar
-        selectRange={false}
-        locale={'ru-RU'}
-        onChange={onChange}
-        value={value}
-      />
-      <p>today is {JSON.stringify(value.toString()).slice(1, 11)}</p>
-    </div>
+    <Calendar
+      locale={ru}
+      dateFormat="dd.MM.yyyy"
+      selected={value}
+      onChange={handleDateChange}
+      className={className}
+    />
   );
 }
 
