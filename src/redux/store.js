@@ -3,6 +3,7 @@ import authReduser from './authreducer';
 import balanceReducer from './balancereducer';
 import reportReducer from './report/reportReducer';
 import extraDataReducer from './extraData/extraDataReducer';
+import transactionsReducer from './transactions/transactionsReducer';
 
 import {
   persistStore,
@@ -30,6 +31,7 @@ export const store = configureStore({
     balance: balanceReducer,
     report: reportReducer,
     extraData: extraDataReducer,
+    transactions: transactionsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
