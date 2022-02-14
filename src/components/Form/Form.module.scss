@@ -1,219 +1,128 @@
-.formFormic {
-  // display: flex;
-  margin-left: -20px;
+.form {
+  @media screen and (min-width: 1200px) {
+    display: flex;
+  }
+}
+
+.inputList {
+  display: flex;
+  flex: auto;
+  height: 44px;
+  margin-bottom: 30px;
+
+  @media screen and (min-width: 1200px) {
+    padding-right: 27px;
+    margin-bottom: 0;
+  }
+}
+
+.btnList {
+  display: flex;
+  width: 270px;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-left: auto;
   margin-right: auto;
+}
+
+.calendar {
+  width: 104px;
+  display: flex;
   align-items: center;
-  width: 100%;
-  // height: 511px;
-  // padding-top: 21px;
-  // padding-left: 19px;
-  // background: #f5f6fb;
-  border-bottom-left-radius: 20%;
-}
-textarea[name='product'],
-select[name='category'],
-input[name='calc'] {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 14px;
-  text-align: center;
-  align-items: center;
-  letter-spacing: 0.02em;
-  background: #ffffff;
-  border: 2px solid #f5f6fb;
-  box-sizing: border-box;
-  border-radius: 0px;
-  background: #f5f6fb;
-}
-
-textarea[name='product'],
-select[name='category'] {
-  width: 282px;
-  height: 44px;
-  border: 2px solid #ffffff;
-  box-sizing: border-box;
-  border-radius: 16px;
-}
-
-// .forma {
-//   // width: 282px;
-//   // height: 160px;
-// }
-
-input[name='calc'] {
   justify-content: center;
-  // margin-left: 50px;
-  width: 125px;
-  height: 44px;
-  color: #c7ccdc;
-  border: 2px solid #ffffff;
-  box-sizing: border-box;
-  border-radius: 22px 0px 0px 22px;
+  margin-bottom: 0;
+  margin-right: 36px;
+  cursor: pointer;
 }
-// .calc {
-//   // margin: 0 auto;
-// }
-.calcWrapper {
-  // width: 60px;
-  height: 44px;
-  margin-left: 167px;
-  margin-top: -45px;
-  padding: 12px 21px;
-  border: 2px solid #ffffff;
-  box-sizing: border-box;
-  border-radius: 22px 0px 0px 22px;
-  transform: matrix(-1, 0, 0, 1, 0, 0);
-  background: #f5f6fb;
-}
-.calcImg {
+
+.calendarIcon {
+  display: inline-block;
   width: 20px;
   height: 20px;
-}
-button[name='buttonYes'] {
-  margin-top: 83px;
-  margin-right: 15px;
-  margin-left: 27px;
-}
-button[name='buttonNo'] {
-  margin: 0 auto;
+  color: inherit;
+  margin-right: 10px;
+  background-image: url(../../icons/calendar.svg);
+  background-size: cover;
 }
 
-@media screen and (max-width: 320px) {
-  input[name='calendar'],
-  .calendarImg {
-    display: none;
-  }
+.calendarInput {
+  width: 74px;
+  background-color: transparent;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: inherit;
 }
-@media screen and (min-width: 768px) {
-  .formFormic {
-    display: flex;
-    flex-wrap: wrap;
-    // padding-left: 50px;
-    align-items: center;
-    width: auto;
-    justify-content: center;
-    margin-right: 0px;
-    // margin-top: 98px;
-    padding-bottom: 48px;
-    // padding-left: 20px;
-    // padding-right: auto;
-  }
 
-  .forma {
-    display: flex;
-    justify-content: center;
-    min-width: 467px;
+.descriptionLabel {
+  flex: auto;
+
+  input {
     height: 44px;
+    width: 100%;
+    padding: 0 20px;
+    background-color: transparent;
     border: 2px solid #f5f6fb;
-    box-sizing: border-box;
-    border-radius: 16px 16px 16px 0px;
-    background: #ffffff;
-  }
-  input[name='calendar'] {
-    margin-left: 10px;
-    width: 74px;
-    height: 40px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    border: none;
-  }
-  textarea[name='product'] {
-    width: 175px;
-    height: 40px;
-    color: #52555f;
-    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-  }
-  select[name='category'] {
-    width: 171px;
-    height: 40px;
-  }
-  input[name='calc'] {
-    margin-left: 0px;
-    width: 124px;
-    height: 40px;
-  }
-  .calcWrapper {
-    margin: 0 auto;
-  }
-  button[name='buttonYes'] {
-    margin-right: 15px;
-    margin-left: auto;
-    margin-top: 30px;
-  }
-  button[name='buttonNo'] {
-    margin-right: auto;
-    margin-top: 30px;
-  }
-  .calendarInner {
-    position: absolute;
-    z-index: 99999999;
+    border-right: none;
+    border-radius: 16px 0 0 0;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+
+    &:hover {
+      border-color: #f5f6fb;
+    }
   }
 }
-@media screen and (min-width: 1280px) {
-  .formFormic {
-    margin-left: auto;
-    // padding-top: 33px;
-    // padding-bottom: 59px;
-    // padding-right: 20px;
-    padding-left: 20px;
-    display: flex;
-    height: 136px;
-    // width: 1280px;
-    flex-wrap: nowrap;
-  }
-  .forma {
-    display: flex;
-    width: 601px;
-    margin-right: 27px;
-    height: 44px;
-    border: 2px solid #f5f6fb;
-    box-sizing: border-box;
-    border-radius: 16px 16px 16px 0px;
-  }
 
-  .calendarImg {
-    width: 20px;
-    height: 17.68px;
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-
-  input[name='calendar'] {
-    margin-left: 10px;
-    width: 74px;
-    height: 40px;
-    margin-right: 23px;
-  }
-
-  textarea[name='product'] {
-    width: 289px;
-    height: 40px;
-  }
-  select[name='category'] {
+.categoryLabel {
+  & > div {
+    min-height: 44px;
     width: 188px;
-    height: 40px;
-  }
+    background: #fff;
+    border-radius: 0;
+    border: 2px solid #f5f6fb;
+    border-right: none;
+    box-shadow: none;
 
-  input[name='calc'] {
+    &:hover {
+      border-color: #f5f6fb;
+    }
+  }
+}
+
+.react-select__indicator-separator {
+  display: none;
+}
+
+.calcLabel {
+  input {
+    position: relative;
+    display: block;
+    margin: 0 0 0 auto;
+    padding: 0 50px 0 20px;
     width: 124px;
-    height: 40px;
-    margin-left: 0;
-    color: #c7ccdc;
-  }
-  button[name='buttonYes'] {
-    margin-top: 0;
-    margin-right: 15px;
-    margin-left: 0;
-  }
-  button[name='buttonNo'] {
-    margin-right: 20px;
-    margin-top: 0;
-  }
-  .calendarInner,
-  .calcInner {
-    position: absolute;
-    z-index: 99999999;
+    height: 44px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    background-color: transparent;
+    border: 2px solid #f5f6fb;
+    border-radius: 0 16px 16px 0;
+
+    background-image: url(../../icons/calculator.svg);
+    background-repeat: no-repeat;
+    background-position: center right 20px;
   }
 }

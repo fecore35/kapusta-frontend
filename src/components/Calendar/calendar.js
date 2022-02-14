@@ -6,7 +6,7 @@ import ru from 'date-fns/locale/ru';
 import { useDispatch } from 'react-redux';
 import { initDate } from 'redux/extraData/extraDataReducer';
 
-function DatePicker() {
+function DatePicker({ className }) {
   const [value, onChange] = useState(new Date(), 'yyyy-MM-dd');
   const dispatch = useDispatch();
 
@@ -19,14 +19,13 @@ function DatePicker() {
   };
 
   return (
-    <div>
-      <Calendar
-        locale={ru}
-        dateFormat="dd.MM.yyyy"
-        selected={value}
-        onChange={handleDateChange}
-      />
-    </div>
+    <Calendar
+      locale={ru}
+      dateFormat="dd.MM.yyyy"
+      selected={value}
+      onChange={handleDateChange}
+      className={className}
+    />
   );
 }
 
