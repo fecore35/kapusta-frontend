@@ -17,7 +17,7 @@ export const GeneralTable = () => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
   const isIncome = useSelector(reportSelectors.getReportType)
-  console.log(isIncome);
+
 
   const handleButtonClick = (e, row) => {
     console.log(row.id);
@@ -94,14 +94,15 @@ export const GeneralTable = () => {
           })}
         </tbody>
       </table>
-      <div className="pageNavigation">
-        <button className="pageNavigationButton" onClick={() => previousPage()}>
-          Назад
-        </button>
-        <button className="pageNavigationButton" onClick={() => nextPage()}>
-          Дальше
-        </button>
-      </div>
+      {data.length > 10 &&
+        <div className="pageNavigation">
+          <button className="pageNavigationButton" onClick={() => previousPage()}>
+            Назад
+          </button>
+          <button className="pageNavigationButton" onClick={() => nextPage()}>
+            Дальше
+          </button>
+        </div>}
     </div>
   );
 };
