@@ -1,6 +1,5 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useTable } from 'react-table';
-import MOCK_SUMMARY from '../MOCK_SUMMARY.json';
 import { summaryColumns } from './summaryColumns';
 import './summaryTable.scss';
 import axios from 'axios';
@@ -27,20 +26,9 @@ export const SummaryTable = () => {
   useEffect(() => {
     getSummary()
   }, [])
-  console.log(summary);
+
   const data = useMemo(() => summary, [summary]);
-  // const getSummary = async () => {
-  //   try {
-  //     const { data } = await axios.get(
-  //       `/transactions/summary`
-  //     )
-  //     console.log(data.data.summary);
-  //     return data.data.summary
-  //   } catch (error) {
-  //     return (error);
-  //   }
-  // }
-  // console.log(getSummary())
+
 
 
   /////

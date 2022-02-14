@@ -4,12 +4,20 @@ import MOCK_DATA from '../MOCK_DATA.json';
 import { COLUMNS } from './generalColumns';
 import trashbin from '../../../pictures/trashbin.svg'
 import './GeneralTable.scss';
-// import { } from '../../../pictures/'
+import { useSelector } from 'react-redux';
+import { reportSelectors } from 'redux/report/';
+
+
+
+
+
+
 
 export const GeneralTable = () => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
-
+  const isIncome = useSelector(reportSelectors.getReportType)
+  console.log(isIncome);
 
   const handleButtonClick = (e, row) => {
     console.log(row.id);
@@ -73,10 +81,10 @@ export const GeneralTable = () => {
           {page.map((row, index) => {
             prepareRow(row);
             return (
-              <tr key={index} {...row.getRowProps()}>
+              <tr key={index} {...row.getRowProps({ className: 'row' })}>
                 {row.cells.map((cell, index) => {
                   return (
-                    <td key={index} {...cell.getCellProps()}>
+                    <td key={index} {...cell.getCellProps(isIncome ? { className: 'incomeCell' } : { className: 'spendingsCell' })}>
                       {cell.render('Cell')}
                     </td>
                   );
