@@ -1,6 +1,8 @@
 import s from '../AppBar.module.scss';
+import { useSelector } from 'react-redux';
 
 const ButtonUserName = () => {
+  const name = useSelector(state => state.auth.name);
   return (
     <button
       className={s.buttonUserName}
@@ -8,7 +10,7 @@ const ButtonUserName = () => {
       type="button"
       // onClick={() => dispatch(authOperations.UserName())}
     >
-      User Name
+      {name}
     </button>
   );
 };

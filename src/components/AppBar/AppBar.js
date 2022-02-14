@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import logo from '../../icons/logo.png';
 import groupV from '../../icons/Group 42.png';
 import vector1 from '../../icons/logo.png';
@@ -9,18 +9,25 @@ import s from './AppBar.module.scss';
 
 const AppBar = () => {
   //   const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
+  const isAuth = useSelector(state => state.auth.isAuth);
   return (
     <header className={s.header}>
       <a href="/">
         <img src={logo} alt="Logo" width="90" height="31" className={s.logo} />
       </a>
-      <img src={groupV} alt="group42" width="32" className={s.groupV} />
+      {isAuth && (
+        <>
+          <img src={groupV} alt="group42" width="32" className={s.groupV} />
 
-      {/* <Navigation /> */}
-      {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
-      <ButtonUserName className={s.buttonUserName} />
-      <img src={vector1} alt="vector1" width="32" className={s.vector1} />
-      <ButtonLogOut className={s.buttonLogout} />
+          <img src={vector1} alt="vector1" width="32" className={s.vector1} />
+
+          {/* <Navigation /> */}
+          {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
+          <ButtonUserName className={s.buttonUserName} />
+          <img src={vector1} alt="vector1" width="32" className={s.vector1} />
+          <ButtonLogOut className={s.buttonLogout} />
+        </>
+      )}
     </header>
   );
 };
