@@ -55,7 +55,7 @@ const FormLabel = () => {
 
   useEffect(() => {
     formik.setFieldValue();
-    formik.values.category = isIncome
+    formik.values.category = !isIncome
       ? Categories.spendingCategory[0]
       : Categories.incomeCategory[0];
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -88,7 +88,7 @@ const FormLabel = () => {
           id="category"
           name="category"
           options={
-            isIncome ? Categories.spendingCategory : Categories.incomeCategory
+            !isIncome ? Categories.spendingCategory : Categories.incomeCategory
           }
           value={formik.values.category || ''}
           onChange={formik.setFieldValue}
