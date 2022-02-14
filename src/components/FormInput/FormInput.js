@@ -4,13 +4,18 @@ function FormInput({
   touched,
   error,
   onChange,
-  onBlur,
   classLabel,
   ...props
 }) {
   return (
     <label className={classLabel}>
-      <input name={name} id={name} onChange={onChange} {...props} />
+      <input
+        name={name}
+        id={name}
+        onChange={onChange}
+        value={value}
+        {...props}
+      />
       {!!error && touched && (
         <div
           className="input-error"
