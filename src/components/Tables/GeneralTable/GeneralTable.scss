@@ -19,9 +19,9 @@ table.generalTbl {
 table.generalTbl tr {
   height: 40px;
 }
-thead th:nth-child(1) {
-  width: 84px;
-}
+// thead th:nth-child(1) {
+//   width: 84px;
+// }
 
 table th:first-child {
   border-top-left-radius: 20px;
@@ -39,7 +39,7 @@ table th {
 table th:first-child,
 table td:first-child {
   padding-left: 20px;
-  width: 105px;
+  // width: 105px;
 }
 table td:first-child {
   border-left: 2px solid $secondaryColor;
@@ -57,18 +57,18 @@ table th {
 table th:nth-child(4),
 table td:nth-child(4) {
   text-align: right;
-  width: 125px;
+  // width: 125px;
 }
 
 table th:nth-child(2),
 table td:nth-child(2) {
-  width: 205px;
+  // width: 205px;
   text-align: left;
   padding-left: 20px;
 }
 table th:nth-child(4),
 table td:nth-child(4) {
-  width: 200px;
+  // width: 200px;
   text-align: center;
   padding-left: 20px;
 }

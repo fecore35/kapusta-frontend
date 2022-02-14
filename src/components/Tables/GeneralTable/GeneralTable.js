@@ -83,6 +83,7 @@ export const GeneralTable = () => {
             return (
               <tr key={index} {...row.getRowProps({ className: 'row' })}>
                 {row.cells.map((cell, index) => {
+                  console.log(cell);
                   return (
                     <td key={index} {...cell.getCellProps(isIncome ? { className: 'incomeCell' } : { className: 'spendingsCell' })}>
                       {cell.render('Cell')}
