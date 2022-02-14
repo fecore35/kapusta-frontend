@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ru from 'date-fns/locale/ru';
@@ -13,10 +13,15 @@ function DatePicker({ className }) {
   const handleDateChange = date => {
     onChange(date);
     const year = String(date.getFullYear());
-    const month = String(date.getMonth() + 1);
+    const month = String(date.getMonth());
     const day = String(date.getDate());
     dispatch(initDate({ month, day, year }));
   };
+
+  useEffect(() => {
+    handleDateChange(new Date());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Calendar
