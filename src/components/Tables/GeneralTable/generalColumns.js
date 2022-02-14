@@ -3,22 +3,26 @@ import { format } from 'date-fns'
 export const COLUMNS = [
 
     {
-        Header: 'Дата',
+        Header: 'ДАТА',
         accessor: "date",
         Cell: ({ value }) => { return format(new Date(value), 'dd.MM.yyyy') }
     },
     {
-        Header: 'Описание',
+        Header: 'ОПИСАНИЕ',
         accessor: "product",
     },
     {
-        Header: 'Категория',
+        Header: 'КАТЕГОРИЯ',
         accessor: "category",
     },
 
     {
-        Header: 'Сумма',
+        Header: 'СУММА',
         accessor: "price",
+        Cell: (props) => {
+            return `- ${props.value}`
+        }
     },
 
 ]
+

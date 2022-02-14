@@ -4,11 +4,19 @@ import MOCK_DATA from '../MOCK_DATA.json';
 import { COLUMNS } from './generalColumns';
 import trashbin from '../../../pictures/trashbin.svg'
 import './GeneralTable.scss';
-// import { } from '../../../pictures/'
+import { useSelector } from 'react-redux';
+import { reportSelectors } from 'redux/report/';
+
+
+
+
+
+
 
 export const GeneralTable = () => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
+  const isIncome = useSelector(reportSelectors.getReportType)
 
 
   const handleButtonClick = (e, row) => {
@@ -73,10 +81,11 @@ export const GeneralTable = () => {
           {page.map((row, index) => {
             prepareRow(row);
             return (
-              <tr key={index} {...row.getRowProps()}>
+              <tr key={index} {...row.getRowProps({ className: 'row' })}>
                 {row.cells.map((cell, index) => {
+                  console.log(cell);
                   return (
-                    <td key={index} {...cell.getCellProps()}>
+                    <td key={index} {...cell.getCellProps(isIncome ? { className: 'incomeCell' } : { className: 'spendingsCell' })}>
                       {cell.render('Cell')}
                     </td>
                   );
@@ -86,14 +95,15 @@ export const GeneralTable = () => {
           })}
         </tbody>
       </table>
-      <div className="pageNavigation">
-        <button className="pageNavigationButton" onClick={() => previousPage()}>
-          Назад
-        </button>
-        <button className="pageNavigationButton" onClick={() => nextPage()}>
-          Дальше
-        </button>
-      </div>
+      {data.length > 10 &&
+        <div className="pageNavigation">
+          <button className="pageNavigationButton" onClick={() => previousPage()}>
+            Назад
+          </button>
+          <button className="pageNavigationButton" onClick={() => nextPage()}>
+            Дальше
+          </button>
+        </div>}
     </div>
   );
 };
