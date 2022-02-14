@@ -27,6 +27,7 @@ function DatePicker({ className }) {
     <Calendar
       locale={ru}
       dateFormat="dd.MM.yyyy"
+      maxDate={new Date()}
       selected={value}
       onChange={handleDateChange}
       className={className}
