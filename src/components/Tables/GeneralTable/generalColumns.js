@@ -1,24 +1,24 @@
-import { format } from 'date-fns'
+import { format } from 'date-fns';
 
 export const COLUMNS = [
+  {
+    Header: 'Дата',
+    accessor: 'date',
+    Cell: ({ value }) => {
+      return format(new Date(value), 'dd.MM.yyyy');
+    },
+  },
+  {
+    Header: 'Описание',
+    accessor: 'description',
+  },
+  {
+    Header: 'Категория',
+    accessor: 'label',
+  },
 
-    {
-        Header: 'Дата',
-        accessor: "date",
-        Cell: ({ value }) => { return format(new Date(value), 'dd.MM.yyyy') }
-    },
-    {
-        Header: 'Описание',
-        accessor: "product",
-    },
-    {
-        Header: 'Категория',
-        accessor: "category",
-    },
-
-    {
-        Header: 'Сумма',
-        accessor: "price",
-    },
-
-]
+  {
+    Header: 'Сумма',
+    accessor: 'sum',
+  },
+];

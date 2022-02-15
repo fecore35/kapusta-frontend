@@ -1,4 +1,10 @@
 const incomeCategory = [
+  { value: '', label: 'Категория дохода' },
+  { value: 'salary', label: 'ЗП' },
+  { value: 'addition', label: 'Доп.доход' },
+];
+
+const spendingCategory = [
   { value: '', label: 'Категория товара' },
   { value: 'transport', label: 'Транспорт' },
   { value: 'foods', label: 'Продукты' },
@@ -11,12 +17,6 @@ const incomeCategory = [
   { value: 'sport', label: 'Спорт, Хобби' },
   { value: 'education', label: 'Образование' },
   { value: 'other', label: 'Прочее' },
-];
-
-const spendingCategory = [
-  { value: '', label: 'Категория дохода' },
-  { value: 'salary', label: 'ЗП' },
-  { value: 'addition', label: 'Доп.доход' },
 ];
 
 const Categories = { incomeCategory, spendingCategory };

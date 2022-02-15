@@ -10,7 +10,7 @@ const dateNow = new Date();
 function Data() {
   const [month, setMonth] = useState(monthHelper(dateNow.getMonth()));
   const [year, setYear] = useState(dateNow.getFullYear());
-  console.log(dateNow);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(reportMonth(months.indexOf(month)));
