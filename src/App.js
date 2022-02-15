@@ -9,6 +9,8 @@ import Router from 'constants/router';
 import Report from 'pages/Report';
 import NotFound from 'pages/NotFound';
 import { useGoogleAuth } from 'hooks/useGoogleAuth';
+import { PublicRoute } from 'components/Routes/PublicRoute'
+import { PrivateRoute } from 'components/Routes/PrivateRoute'
 import axios from 'axios';
 import Spinner from 'components/Spinner/Spinner';
 // const Dashboard = lazy(() =>
@@ -38,15 +40,17 @@ function App() {
     }
   }, [dispatch, token]);
 
+
+
   return (
     <div className={stale.App}>
       <AppBar />
       <Suspense fallback={<Spinner />}>
         <Routes>
-          <Route path={Router.HOME} element={<HomePage />} />
-          <Route path={Router.DASHBOARD} element={<Dashboard />} />
-          <Route path={Router.REPORT} element={<Report />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path={Router.HOME} element={<PublicRoute component={HomePage} />} />
+          <Route path={Router.DASHBOARD} element={<PrivateRoute component={Dashboard} />} />
+          <Route path={Router.REPORT} element={<PrivateRoute component={Report} />} />
+          <Route path="*" element={<PublicRoute component={NotFound} />} />
         </Routes>
       </Suspense>
     </div>
