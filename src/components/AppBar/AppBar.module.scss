@@ -1,7 +1,6 @@
 .header {
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
+
   align-items: center;
   width: 100%;
   height: 56px;
@@ -66,7 +65,7 @@
   border: none;
   background: none;
 }
- 
+
 @media screen and (max-width: 320px) {
   .buttonUserName,
   .vector1,
@@ -76,9 +75,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .header {
-    width: 768px;
-  }
   .logo {
     margin-left: 12px;
   }
@@ -96,9 +92,6 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .header {
-    width: 1280px;
-  }
   .groupV {
     margin-left: 908px;
   }
