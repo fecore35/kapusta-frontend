@@ -8,7 +8,7 @@ const ModalStartBalanse = () => {
     <>
       <div
         className={showModalStartBalanse ? s.showText : s.hideShowText}
-        onClick={() => setShowModalStartBalanse(false)}
+        onClick={() => setShowModalStartBalanse(true)}
       >
         <p className={s.text}>
           Привет! Для начала работы внеси текущий баланс своего счета!

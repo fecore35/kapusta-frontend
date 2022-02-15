@@ -46,7 +46,7 @@ const BalanceForm = () => {
       <button className={s.btn} type="button" onClick={handleclick}>
         Подтвердить
       </button>
-      {rebalancing === 0 && <ModalStartBalanse />}
+      {ballance === '' && <ModalStartBalanse />}
     </form>
   );
 };
