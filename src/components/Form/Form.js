@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { transactionsOperation } from 'redux/transactions';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import FormSelect from 'components/FormSelect/FormSelect';
 import FormInput from 'components/FormInput/FormInput';
 import DatePicker from 'components/Calendar/calendar';
@@ -21,26 +21,28 @@ const setValidate = Yup.object({
 });
 
 const FormLabel = () => {
-  // const [valueCalendar, onChange] = useState(new Date(), 'yyyy-MM-dd');
   const isIncome = useSelector(reportSelectors.getReportType);
   const date = useSelector(extraDataSelectors.getDate);
+  const dispatch = useDispatch();
 
   const resetForm = () => {
     formik.resetForm();
   };
 
-  const onSaveTransaction = async (_values, { resetForm }) => {
-    const response = await axios.post('/transactions', {
+  const onSaveTransaction = async (values, { resetForm }) => {
+    const newTransaction = {
       ...date,
-      sum: formik.values.calc,
       income: isIncome,
-      category: formik.values.category.value,
-      description: formik.values.description,
-    });
+      sum: values.calc,
+      category: values.category.value,
+      description: values.description,
+    };
 
-    if (response.status === 201) {
-      resetForm();
-    }
+    dispatch(
+      transactionsOperation.addTransaction({ newTransaction, isIncome }),
+    );
+
+    resetForm();
   };
 
   const formik = useFormik({

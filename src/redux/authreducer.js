@@ -7,6 +7,7 @@ import {
   logOutThunk,
   userGetTransaction,
 } from './asyncthunc';
+import { transactionsOperation } from 'redux/transactions';
 
 axios.defaults.baseURL = 'https://kapusta-35.herokuapp.com';
 // axios.defaults.baseURL = 'http://localhost:5000';
@@ -151,6 +152,15 @@ const authSlice = createSlice({
       return {
         ...state,
         isLoading: false,
+      };
+    },
+    [transactionsOperation.addTransaction.fulfilled](state, action) {
+      const { data } = action.payload;
+      const newBalance = data.newTransaction.balance;
+
+      return {
+        ...state,
+        balance: newBalance,
       };
     },
   },
