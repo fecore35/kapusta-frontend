@@ -4,17 +4,17 @@
   position: absolute;
   top: 18px;
 
-  max-width: 282px;
+  max-width: 292px;
   padding-top: 31px;
   padding-right: 25px;
   padding-bottom: 41px;
   padding-left: 25px;
-  color: $active-product-category-bg;
+  color: $btn-orange-text-color;
 
   background: $text-modal-gradient;
   border-radius: 30px;
   z-index: 99;
-  cursor: pointer;
+  text-align: left;
 }
 
 .hideShowText {
