@@ -6,7 +6,7 @@ import { StatisticsHeader } from 'components/StatisticsHeader/StatisticsHeader';
 function Report() {
   return (
     <>
-      <TopPanel showGoBack />
+      <TopPanel showGoBack showCalendar />
       <StatisticsHeader />
       <CategoryList />
       <Schedule />
