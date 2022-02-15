@@ -22,7 +22,8 @@ const getVisibleCategory = createSelector(
         category &&
         category.filter(
           ({ totalSum, slug }) =>
-            (totalSum && slug.includes('salary')) || slug.includes('addition'),
+            (totalSum && slug.includes('salary')) ||
+            (totalSum && slug.includes('addition')),
         )
       );
     }

@@ -28,7 +28,7 @@ function CategoryList() {
       <TransactionType />
 
       <ul className={s.list}>
-        {categoryList &&
+        {categoryList && categoryList.length > 0 ? (
           categoryList.map(({ name, slug, totalSum }) => (
             <Category
               key={slug}
@@ -38,7 +38,10 @@ function CategoryList() {
               setCategory={setCurrentCategory}
               currentCategory={currentCategory}
             />
-          ))}
+          ))
+        ) : (
+          <li className={s.notFound}>За данный период транзакций нет</li>
+        )}
       </ul>
     </div>
   );
