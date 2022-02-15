@@ -163,6 +163,15 @@ const authSlice = createSlice({
         balance: newBalance,
       };
     },
+    [transactionsOperation.onDelete.fulfilled](state, action) {
+      const { data } = action.payload;
+      const newBalance = data.updatedBalance;
+
+      return {
+        ...state,
+        balance: newBalance,
+      };
+    },
   },
 });
 

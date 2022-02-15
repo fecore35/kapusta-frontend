@@ -28,9 +28,22 @@ const addTransaction = createAsyncThunk(
   },
 );
 
+const onDelete = createAsyncThunk(
+  'transactions/delete',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(`/transactions/${credentials}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  },
+);
+
 const operations = {
   getTransactions,
   addTransaction,
+  onDelete,
 };
 
 export default operations;
