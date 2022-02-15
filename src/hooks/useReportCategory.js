@@ -7,12 +7,14 @@ export const useReportCategory = ({ month, year }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(
-      reportOperation.getCategory({
-        month,
-        year,
-      }),
-    );
+    if (month && year) {
+      dispatch(
+        reportOperation.getCategory({
+          month,
+          year,
+        }),
+      );
+    }
   }, [dispatch, month, year]);
 
   return { categoryList };
