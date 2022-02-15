@@ -21,14 +21,18 @@ const getVisibleCategory = createSelector(
       return (
         category &&
         category.filter(
-          ({ slug }) => slug.includes('salary') || slug.includes('addition'),
+          ({ totalSum, slug }) =>
+            (totalSum && slug.includes('salary')) || slug.includes('addition'),
         )
       );
     }
 
     return (
       category &&
-      category.filter(({ slug }) => slug !== 'salary' && slug !== 'addition')
+      category.filter(
+        ({ totalSum, slug }) =>
+          totalSum && slug !== 'salary' && slug !== 'addition',
+      )
     );
   },
 );
