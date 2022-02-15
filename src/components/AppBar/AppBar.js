@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useSelector } from 'react-redux';
-import logo from '../../icons/logo.png';
+import logo from '../../icons/logoKapusta.svg';
 import groupV from '../../icons/Group 42.png';
 import vector1 from '../../icons/logo.png';
 import ButtonUserName from './buttonUserName/ButtonUserName';
