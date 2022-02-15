@@ -10,9 +10,21 @@ import Report from 'pages/Report';
 import NotFound from 'pages/NotFound';
 import { useGoogleAuth } from 'hooks/useGoogleAuth';
 import axios from 'axios';
-const Dashboard = lazy(() =>
-  import('pages/Dashboard' /* webpackChunkName: 'dashboard-pages' */),
-);
+import Spinner from 'components/Spinner/Spinner';
+// const Dashboard = lazy(() =>
+//   import('pages/Dashboard' /* webpackChunkName: 'dashboard-pages' */),
+// );
+const Dashboard = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(
+      () =>
+        resolve(
+          import('pages/Dashboard' /* webpackChunkName: 'dashboard-pages' */),
+        ),
+      3500,
+    );
+  });
+});
 
 function App() {
   const token = useSelector(state => state.auth.token);
@@ -29,7 +41,7 @@ function App() {
   return (
     <div className={stale.App}>
       <AppBar />
-      <Suspense fallback={<h1>Loading </h1>}>
+      <Suspense fallback={<Spinner />}>
         <Routes>
           <Route path={Router.HOME} element={<HomePage />} />
           <Route path={Router.DASHBOARD} element={<Dashboard />} />
