@@ -9,8 +9,8 @@ import Router from 'constants/router';
 import Report from 'pages/Report';
 import NotFound from 'pages/NotFound';
 import { useGoogleAuth } from 'hooks/useGoogleAuth';
-import { PublicRoute } from '../src/components/Routes/PublicRoute'
-import { PrivateRoute } from '../src/components/Routes/PrivateRoute'
+import { PublicRoute } from 'components/Routes/PublicRoute'
+import { PrivateRoute } from 'components/Routes/PrivateRoute'
 import axios from 'axios';
 import Spinner from 'components/Spinner/Spinner';
 // const Dashboard = lazy(() =>
