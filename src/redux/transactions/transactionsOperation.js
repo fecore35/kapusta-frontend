@@ -13,8 +13,24 @@ const getTransactions = createAsyncThunk(
   },
 );
 
+const addTransaction = createAsyncThunk(
+  'transactions/add',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post(
+        `/transactions/`,
+        credentials.newTransaction,
+      );
+      return { data: data.data, isIncome: credentials.isIncome };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  },
+);
+
 const operations = {
   getTransactions,
+  addTransaction,
 };
 
 export default operations;
