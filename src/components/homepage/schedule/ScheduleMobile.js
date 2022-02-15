@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import Media from 'react-media';
-import ScheduleMobile from './ScheduleMobile.js'
 import {
   VictoryBar,
   VictoryChart,
@@ -12,7 +10,7 @@ import {
 } from 'victory';
 import styles from './Schedule.module.scss';
 import { reportSelectors } from 'redux/report';
-function Schedule({ type,currentCategory,month,year }) {
+function ScheduleMobile({ type,currentCategory,month,year }) {
   const [data, setData] = useState([]);
   const [tick, setTick] = useState(data);
   const getData = async (category,month,year) => {
@@ -32,48 +30,41 @@ function Schedule({ type,currentCategory,month,year }) {
   const dataForSchedule = () => 
     tick
       .sort((a, b) => {
-        return b.sum - a.sum;
+        return a.sum - b.sum;
       })
       .map(el => {
         return {
           quarter: el.name,
-          earnings: Math.trunc(Number(el.sum)),
-          label: el.sum + 'грн',
+          earnings: Number(el.sum),
+          label: el.sum,
           fill: '#FF751D',
         };
       });
   return (
     <div className="section">
-      <div className="container">
-      <Media query="(max-width: 768px)" render={() =>
-          (
-            <ScheduleMobile/>
-          )}
-        />
-         <Media query="(min-width: 767.5px)" render={() =>
-          (
+        {
          <div className={styles.schedule}>
-           <div className={styles.bg}>
-          <VictoryChart theme={VictoryTheme.material} width={620} padding={{left:50, top:60,bottom:40,right:60}}>
+          <VictoryChart theme={VictoryTheme.material} width={282} padding={70}>
             <VictoryAxis
-             style={{
-              axis: {
-                  strokeWidth: 0,
-              },
-              grid: {
-                  stroke: null
-              },
-              ticks: {
-                  size: null
-              }
-           }
-          }
+            style={{
+                axis: {
+                    strokeWidth: 0,
+                },
+                grid: {
+                    stroke: null
+                },
+                ticks: {
+                    size: null
+                }
+             }
+            }
             />
             <VictoryBar
-              cornerRadius={{topLeft:10,topRight:10}}
+             horizontal
+              cornerRadius={{topLeft:5,topRight:5}}
               style={{
                 data: {
-                  width: 30,
+                  width: 15,
                   fill: ({ datum }) => datum.fill,
                 },
               }}
@@ -84,17 +75,18 @@ function Schedule({ type,currentCategory,month,year }) {
               y="earnings"
               labelComponent={
                 <VictoryLabel
+                 dy={-13}
+                 dx={1}
                   style={[
-                    { fontFamily: 'Roboto', fontSize: 10, lineHeight: 14 ,fill:"#52555F"},
+                    { fontFamily: 'Roboto', fontSize: 10, lineHeight: 12,fill:"#52555F" },
                   ]}
                 />
               }
             />
           </VictoryChart>
         </div>
-        </div>)}/>
+}
       </div>
-    </div>
   );
             }
 const mapStateToProps = (state) => {
@@ -105,4 +97,4 @@ const mapStateToProps = (state) => {
    month: state.report.month,
   }
 }
-export default connect(mapStateToProps, )(Schedule);
+export default connect(mapStateToProps, )(ScheduleMobile);
