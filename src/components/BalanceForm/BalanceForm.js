@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { userPutBallance } from 'redux/asyncthunc';
+import ModalStartBalanse from 'components/ModalStartBalanse/ModalStartBalanse';
+
 import s from './BalanceForm.module.scss';
 
 const BalanceForm = () => {
@@ -40,9 +42,11 @@ const BalanceForm = () => {
         className={s.input}
         onChange={handleChange}
       />
+
       <button className={s.btn} type="button" onClick={handleclick}>
         Подтвердить
       </button>
+      {rebalancing === 0 && <ModalStartBalanse />}
     </form>
   );
 };
