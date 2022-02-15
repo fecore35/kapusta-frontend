@@ -24,26 +24,22 @@ function CategoryList() {
   }, [currentCategory, dispatch]);
 
   return (
-    <div className="section">
-      <div className="container">
-        <div className={s.inner}>
-          <TransactionType />
+    <div className="section__inner">
+      <TransactionType />
 
-          <ul className={s.list}>
-            {categoryList &&
-              categoryList.map(({ name, slug, totalSum }) => (
-                <Category
-                  key={slug}
-                  name={name}
-                  total={totalSum}
-                  icon={slug}
-                  setCategory={setCurrentCategory}
-                  currentCategory={currentCategory}
-                />
-              ))}
-          </ul>
-        </div>
-      </div>
+      <ul className={s.list}>
+        {categoryList &&
+          categoryList.map(({ name, slug, totalSum }) => (
+            <Category
+              key={slug}
+              name={name}
+              total={totalSum}
+              icon={slug}
+              setCategory={setCurrentCategory}
+              currentCategory={currentCategory}
+            />
+          ))}
+      </ul>
     </div>
   );
 }

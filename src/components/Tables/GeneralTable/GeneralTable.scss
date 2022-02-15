@@ -130,8 +130,11 @@ table td:last-child {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  margin-bottom: 50px;
   justify-content: space-around;
+
+  @media screen and (max-width: 1280px) {
+    margin-bottom: 50px;
+  }
 }
 
 .pageNavigationButton {

@@ -9,29 +9,29 @@ import {
   VictoryLabel,
 } from 'victory';
 import styles from './Schedule.module.scss';
-import useWindowDementions from '../../../helpers/getWindowDementions'
+import useWindowDementions from '../../../helpers/getWindowDementions';
 import { reportSelectors } from 'redux/report';
-function Schedule({ type,currentCategory }) {
+function Schedule({ type, currentCategory }) {
   const [data, setData] = useState([]);
   const [tick, setTick] = useState(data);
- const month = 1;
- const year = 2022;
- const { width } = useWindowDementions();
+  const month = 1;
+  const year = 2022;
+  const { width } = useWindowDementions();
   // console.log(type)
   // console.log(currentCategory)
-  const getData = async (category,month,year) => {
+  const getData = async (category, month, year) => {
     try {
       const data = await axios.get(
         `/transactions/description/${month}/${year}/${category}`,
       );
       return console.log(data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
   useEffect(() => {
-    getData(currentCategory,month,year)
-  },[currentCategory])
+    getData(currentCategory, month, year);
+  }, [currentCategory]);
 
   const dataForSchedule = () =>
     tick
@@ -62,16 +62,17 @@ function Schedule({ type,currentCategory }) {
     setTick(data);
   }, [type]);
   return (
-    <div className="section">
-      <div className="container">
-        {
-          width < 768 ? (<div></div>) : ( <div className={styles.schedule}>
+    <div className="section__inner">
+      {width < 768 ? (
+        <div></div>
+      ) : (
+        <div className={styles.schedule}>
           <VictoryChart theme={VictoryTheme.material} width={620} padding={60}>
             <VictoryAxis
             // tickFormat={}
             />
             <VictoryBar
-              cornerRadius={{topLeft:10,topRight:10}}
+              cornerRadius={{ topLeft: 10, topRight: 10 }}
               style={{
                 data: {
                   width: 36,
@@ -104,16 +105,15 @@ function Schedule({ type,currentCategory }) {
               }
             />
           </VictoryChart>
-        </div>)
-}
-      </div>
+        </div>
+      )}
     </div>
   );
-            }
-const mapStateToProps = (state) => {
-  return {
-   type:reportSelectors.getReportType(state),
-   currentCategory: state.report.currentCategory
-  }
 }
-export default connect(mapStateToProps, )(Schedule);
+const mapStateToProps = state => {
+  return {
+    type: reportSelectors.getReportType(state),
+    currentCategory: state.report.currentCategory,
+  };
+};
+export default connect(mapStateToProps)(Schedule);
