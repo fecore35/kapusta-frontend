@@ -1,5 +1,9 @@
 .buttonLogout {
-  width: 66px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 55px;
   font-style: Roboto;
   font-weight: normal;
   font-size: 12px;
@@ -10,6 +14,7 @@
   text-align: left;
   border: none;
   background: none;
+  cursor: pointer;
 
   span {
     display: none;
