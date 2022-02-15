@@ -1,4 +1,4 @@
-import HomePage from 'components/homepage/HomePage';
+
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
 import stale from './App.module.scss';
@@ -6,22 +6,51 @@ import AppBar from './components/AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentThunk, currentUserTransaction } from './redux/asyncthunc';
 import Router from 'constants/router';
-import Report from 'pages/Report';
-import NotFound from 'pages/NotFound';
 import { useGoogleAuth } from 'hooks/useGoogleAuth';
 import { PublicRoute } from 'components/Routes/PublicRoute'
 import { PrivateRoute } from 'components/Routes/PrivateRoute'
 import axios from 'axios';
 import Spinner from 'components/Spinner/Spinner';
-// const Dashboard = lazy(() =>
-//   import('pages/Dashboard' /* webpackChunkName: 'dashboard-pages' */),
-// );
+
 const Dashboard = lazy(() => {
   return new Promise(resolve => {
     setTimeout(
       () =>
         resolve(
           import('pages/Dashboard' /* webpackChunkName: 'dashboard-pages' */),
+        ),
+      3500,
+    );
+  });
+});
+const HomePage = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(
+      () =>
+        resolve(
+          import('components/homepage/HomePage' /* webpackChunkName: 'homepage' */),
+        ),
+      3500,
+    );
+  });
+});
+const Report = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(
+      () =>
+        resolve(
+          import('pages/Report' /* webpackChunkName: 'report' */),
+        ),
+      3500,
+    );
+  });
+});
+const NotFound = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(
+      () =>
+        resolve(
+          import('pages/NotFound' /* webpackChunkName: 'NotFound' */),
         ),
       3500,
     );
