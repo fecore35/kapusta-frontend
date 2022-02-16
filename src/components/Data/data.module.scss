@@ -1,6 +1,6 @@
 .dateContainer {
   display: flex;
-  margin-left: 225px;
+  margin-left: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -32,6 +32,7 @@
   text-transform: uppercase;
   color: #000000;
   font-weight: bold;
+  width: 150px;
 }
 .year {
   margin-right: 15px;

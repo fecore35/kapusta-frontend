@@ -2,25 +2,22 @@ import TopPanel from 'components/TopPanel/TopPanel';
 import TransactionType from 'components/TransactionType/TransactionType';
 import Form from 'components/Form/Form';
 import UserView from 'components/UserView/UserView';
+import Sections from 'components/sections/Sections';
 
 function Dashboard() {
   return (
     <>
-      <section className="section section-topPanel">
-        <div className="container">
-          <TopPanel showReport />
-        </div>
-      </section>
+      <Sections className="section-topPanel topPanel-dashboard">
+        <TopPanel showReport />
+      </Sections>
 
-      <section className="section section-dashboard">
-        <div className="container">
-          <TransactionType isThemeTabs />
-          <div className="section__inner">
-            <Form />
-            <UserView />
-          </div>
+      <Sections className="section-dashboard">
+        <TransactionType isThemeTabs />
+        <div className="section__inner">
+          <Form />
+          <UserView />
         </div>
-      </section>
+      </Sections>
     </>
   );
 }

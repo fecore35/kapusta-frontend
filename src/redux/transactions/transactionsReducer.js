@@ -63,6 +63,38 @@ const transactionsSlice = createSlice({
         error: action.payload,
       };
     },
+    [transactionsOperation.onDelete.pending](state, action) {
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    },
+    [transactionsOperation.onDelete.fulfilled](state, action) {
+      const { data } = action.payload;
+      const deletedTransaction = data.deletedTransaction;
+      const newTransactions = {
+        spending: state['spending'].filter(
+          transaction => transaction.id !== deletedTransaction.id,
+        ),
+        income: state['income'].filter(
+          transaction => transaction.id !== deletedTransaction.id,
+        ),
+      };
+
+      return {
+        ...state,
+        ...newTransactions,
+        isLoading: false,
+      };
+    },
+    [transactionsOperation.onDelete.rejected](state, action) {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    },
   },
 });
 

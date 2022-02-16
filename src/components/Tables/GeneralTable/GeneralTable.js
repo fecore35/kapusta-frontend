@@ -1,22 +1,24 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useTable, useSortBy, usePagination, useRowSelect } from 'react-table';
 import { COLUMNS } from './generalColumns';
 import trashbin from '../../../pictures/trashbin.svg';
 import './GeneralTable.scss';
 // import { } from '../../../pictures/'
 import { useTransactions } from 'hooks/useTransactions';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { reportSelectors } from 'redux/report';
+import { transactionsOperation } from 'redux/transactions';
 
 export const GeneralTable = () => {
   const columns = useMemo(() => COLUMNS, []);
   const [data, setData] = useState([]);
-
   const isIncome = useSelector(reportSelectors.getReportType);
-  const { income, spending, error, isLoading } = useTransactions();
 
-  const handleButtonClick = (e, row) => {
-    console.log(row.id);
+  const { income, spending, error, isLoading } = useTransactions();
+  const dispatch = useDispatch();
+
+  const handleButtonClick = (_e, { original }) => {
+    dispatch(transactionsOperation.onDelete(original.id));
   };
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export const GeneralTable = () => {
     }
 
     setData(spending);
-  }, [income, isIncome, spending]);
+  }, [income, spending, isIncome]);
 
   const tableInstance = useTable(
     {
@@ -59,6 +61,7 @@ export const GeneralTable = () => {
       });
     },
   );
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -70,6 +73,7 @@ export const GeneralTable = () => {
   } = tableInstance;
   return (
     <div>
+      {isLoading ? <div>Loading...</div> : ''}
       <table className="generalTbl" {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup, index) => (
