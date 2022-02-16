@@ -1,0 +1,67 @@
+.transactionBlock {
+  margin-top: 80px;
+  padding-left: 19px;
+  padding-right: 19px;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid #f5f6fb;
+  margin-bottom: 10px;
+}
+.description {
+  display: flex;
+}
+.label {
+  font-size: 8px;
+  line-height: 9px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  margin-left: 20px;
+}
+.date {
+  font-size: 8px;
+  line-height: 9px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #52555f;
+}
+.name {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+  color: #52555f;
+}
+.sum {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+.sumBlock {
+  display: flex;
+  flex-direction: row;
+}
+.exp {
+  margin-right: auto;
+}
+
+.delBtn {
+  border: none;
+  background-color: #ffffff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.notFound {
+  margin-bottom: 40px;
+  text-align: center;
+}

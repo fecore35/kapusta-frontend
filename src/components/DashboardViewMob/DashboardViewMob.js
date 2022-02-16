@@ -5,6 +5,7 @@ import TransactionType from 'components/TransactionType/TransactionType';
 import DatePicker from 'components/Calendar/calendar';
 import Form from 'components/Form/Form';
 import s from './DashboardViewMob.module.scss';
+import TransactionsMobile from 'components/TransactionsMobile/TransactionsMobile'
 
 function DashboardViewMob() {
   const [showForm, setShowForm] = useState(true);
@@ -33,6 +34,7 @@ function DashboardViewMob() {
               </div>
             </label>
           </Sections>
+          <TransactionsMobile/>
         </>
       )}
     </>
