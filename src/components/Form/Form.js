@@ -115,7 +115,7 @@ const FormLabel = () => {
       </div>
       <div className={s.btnList}>
         <button type="submit" name="buttonYes" className="buttonYes">
-          Вввод
+          Ввод
         </button>
         <button
           type="reset"
