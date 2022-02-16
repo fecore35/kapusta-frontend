@@ -8,7 +8,7 @@ import s from './TransactionType.module.scss';
 import arrowLeft from '../../icons/arrow-l.svg';
 import arrowRight from '../../icons/arrow-r.svg';
 
-function TransactionType({ isThemeTabs }) {
+function TransactionType({ isThemeTabs, setShowForm }) {
   const dispatch = useDispatch();
   const transactionType = useSelector(reportSelectors.getReportType);
   const [type, setType] = useState('......');
@@ -16,6 +16,10 @@ function TransactionType({ isThemeTabs }) {
   let profit = s.link;
 
   const onChangeTypeHandler = () => {
+    if (setShowForm) {
+      setShowForm(true);
+    }
+
     if (transactionType) {
       return dispatch(reportType(false));
     }
