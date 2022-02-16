@@ -1,5 +1,7 @@
+@import '../../sass/utils/breakpoints';
+
 .form {
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: $breakpoint-desktop) {
     display: flex;
   }
 }
@@ -10,7 +12,12 @@
   height: 44px;
   margin-bottom: 30px;
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (max-width: $breakpoint-tablet) {
+    flex-direction: column;
+    height: auto;
+  }
+
+  @media screen and (min-width: $breakpoint-desktop) {
     padding-right: 27px;
     margin-bottom: 0;
   }
@@ -24,6 +31,10 @@
 
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    margin-top: 80px;
+  }
 }
 
 .calendar {
@@ -34,6 +45,10 @@
   margin-bottom: 0;
   margin-right: 36px;
   cursor: pointer;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    display: none;
+  }
 }
 
 .calendarIcon {
@@ -77,8 +92,23 @@
     line-height: 14px;
     letter-spacing: 0.02em;
 
-    &:hover {
-      border-color: #f5f6fb;
+    @media screen and (min-width: $breakpoint-tablet) {
+      &:hover {
+        border-color: #f5f6fb;
+      }
+    }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      &::placeholder {
+        color: #c7ccdc;
+      }
+
+      padding: 20px 26px;
+      font-size: 12px;
+      color: #c7ccdc;
+      border: 2px solid #fff;
+      border-bottom: none;
+      border-radius: 16px 16px 0 0;
     }
   }
 }
@@ -93,17 +123,31 @@
     border-right: none;
     box-shadow: none;
 
-    &:hover {
-      border-color: #f5f6fb;
+    @media screen and (min-width: $breakpoint-tablet) {
+      &:hover {
+        border-color: #f5f6fb;
+      }
+    }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      padding: 0 26px;
+      width: 100%;
+      font-size: 16px;
+      background-color: transparent;
+      border: 2px solid #fff;
+      border-radius: 0 0 16px 0;
+
+      font-size: 12px;
+      color: #c7ccdc;
     }
   }
 }
 
-.react-select__indicator-separator {
-  display: none;
-}
-
 .calcLabel {
+  @media screen and (max-width: $breakpoint-mobile) {
+    margin-top: 30px;
+  }
+
   input {
     position: relative;
     display: block;
@@ -124,5 +168,32 @@
     background-image: url(../../icons/calculator.svg);
     background-repeat: no-repeat;
     background-position: center right 20px;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      position: relative;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10px 46px 10px 30px;
+      width: 183px;
+      color: var(--black-text-color);
+      background-color: transparent;
+      border: 2px solid #fff;
+      text-align: center;
+      border-radius: 22px;
+    }
   }
+}
+
+.back {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-image: url(../../icons/back.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-width: 0;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }

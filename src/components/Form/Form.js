@@ -20,7 +20,7 @@ const setValidate = Yup.object({
     .required('Обязательно'),
 });
 
-const FormLabel = () => {
+const FormLabel = ({ setShowForm }) => {
   const isIncome = useSelector(reportSelectors.getReportType);
   const date = useSelector(extraDataSelectors.getDate);
   const dispatch = useDispatch();
@@ -43,6 +43,10 @@ const FormLabel = () => {
     );
 
     resetForm();
+
+    if (setShowForm) {
+      setShowForm(false);
+    }
   };
 
   const formik = useFormik({
@@ -64,69 +68,85 @@ const FormLabel = () => {
   }, [isIncome]);
 
   return (
-    <form className={s.form} onSubmit={formik.handleSubmit} autoComplete="off">
-      <div className={s.inputList}>
-        <label className={s.calendar}>
-          <i className={s.calendarIcon}></i>
-          <div className={s.calendarWrap}>
-            <DatePicker
-              name="calendar"
-              // selected={valueCalendar}
-              className={s.calendarInput}
-            />
-          </div>
-        </label>
-        <FormInput
-          type="text"
-          name="description"
-          placeholder="Описание товара."
-          value={formik.values.description || ''}
-          onChange={formik.handleChange}
-          error={formik.errors.description}
-          touched={formik.touched.description}
-          classLabel={s.descriptionLabel}
-        />
-        <FormSelect
-          id="category"
-          name="category"
-          options={
-            !isIncome ? Categories.spendingCategory : Categories.incomeCategory
-          }
-          value={formik.values.category || ''}
-          onChange={formik.setFieldValue}
-          onBlur={formik.setFieldTouched}
-          error={formik.errors.category}
-          touched={formik.touched.category}
-          className={s.categoryLabel}
-        />
-
-        <FormInput
-          type="number"
-          name="calc"
-          value={formik.values.calc || ''}
-          onChange={formik.handleChange}
-          error={formik.errors.calc}
-          touched={formik.touched.calc}
-          classLabel={s.calcLabel}
-          min="0"
-          placeholder="0,00"
-          step=".01"
-        />
-      </div>
-      <div className={s.btnList}>
-        <button type="submit" name="buttonYes" className="buttonYes">
-          Вввод
-        </button>
+    <>
+      {setShowForm && (
         <button
-          type="reset"
-          name="buttonNo"
-          className="buttonNo"
-          onClick={resetForm}
-        >
-          Очистить
-        </button>
-      </div>
-    </form>
+          type="button"
+          className={s.back}
+          onClick={() => setShowForm(false)}
+        ></button>
+      )}
+
+      <form
+        className={s.form}
+        onSubmit={formik.handleSubmit}
+        autoComplete="off"
+      >
+        <div className={s.inputList}>
+          <label className={s.calendar}>
+            <i className={s.calendarIcon}></i>
+            <div className={s.calendarWrap}>
+              <DatePicker
+                name="calendar"
+                // selected={valueCalendar}
+                className={s.calendarInput}
+              />
+            </div>
+          </label>
+          <FormInput
+            type="text"
+            name="description"
+            placeholder="Описание товара."
+            value={formik.values.description || ''}
+            onChange={formik.handleChange}
+            error={formik.errors.description}
+            touched={formik.touched.description}
+            classLabel={s.descriptionLabel}
+          />
+          <FormSelect
+            id="category"
+            name="category"
+            options={
+              !isIncome
+                ? Categories.spendingCategory
+                : Categories.incomeCategory
+            }
+            value={formik.values.category || ''}
+            onChange={formik.setFieldValue}
+            onBlur={formik.setFieldTouched}
+            error={formik.errors.category}
+            touched={formik.touched.category}
+            className={s.categoryLabel}
+          />
+
+          <FormInput
+            type="number"
+            name="calc"
+            value={formik.values.calc || ''}
+            onChange={formik.handleChange}
+            error={formik.errors.calc}
+            touched={formik.touched.calc}
+            classLabel={s.calcLabel}
+            min="0"
+            placeholder="0,00"
+            step=".01"
+          />
+        </div>
+        <div className={s.btnList}>
+          <button type="submit" name="buttonYes" className="buttonYes">
+            Вввод
+          </button>
+          <button
+            type="reset"
+            name="buttonNo"
+            className="buttonNo"
+            onClick={resetForm}
+          >
+            Очистить
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 
