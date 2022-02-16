@@ -1,6 +1,7 @@
+import '@pnotify/mobile/dist/PNotifyMobile.css';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
+import { alert, defaultModules } from '@pnotify/core';
 axios.defaults.baseURL = 'https://kapusta-35.herokuapp.com';
 // axios.defaults.baseURL = 'http://localhost:5000';
 
@@ -9,25 +10,30 @@ const userRegister = '/auth/registration';
 const userLogOut = '/auth/logout';
 const userCurrent = '/users/';
 const userTransaction = '/transactions/';
-const userBalance = '/users/balance '
-
+const userBalance = '/users/balance ';
 
 export const registerThunk = createAsyncThunk(
   'users/register',
   async (user, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(userRegister,{...user}      
-      );
+      const { data } = await axios.post(userRegister, { ...user });
 
-      if (data.code === 409) {
-        alert('Такой пользователь уже есть, попробуйте другое имя');
-        throw new Error('Required');
-      }
+      alert('Регистрация прошла успешно');
       return data.data;
     } catch (error) {
-      return rejectWithValue({
-        error: error.message,
-      });
+      alert(
+        'Такой пользователь уже есть, попробуйте другое имя или нажмите кнопку войти',
+      );
+      return rejectWithValue(
+        error,
+        // {
+        //    if (error.code === 409) {
+
+        //   throw new Error('Required');
+        // }
+        //   error: error.message,
+        // }
+      );
     }
   },
 );
@@ -36,17 +42,18 @@ export const loginThunk = createAsyncThunk(
   'users/login',
   async (user, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(userLogin, {...user}    
-        );
-      // console.log(data);
-      if (!data.data.token) {
-        alert('Нету такого пользователя, попробуйте другое имя');
-        throw new Error('Required');
-      }
+      const { data } = await axios.post(userLogin, { ...user });
+      console.log(user);
+      alert(`С возвращением, ${user.email}`);
+      // if (!data.data.token) {
+      //   throw new Error('Required');
+      // }
       return data.data;
     } catch (error) {
+      alert('Нету такого пользователя, попробуйте другое ');
       return rejectWithValue({
-        error: error.message,
+        error,
+        // : error.message,
       });
     }
   },
@@ -58,9 +65,9 @@ export const currentThunk = createAsyncThunk(
     const state = getState();
     if (state.auth.token) {
       try {
-        const {data} = await axios.get(userCurrent+state.auth.id)
+        const { data } = await axios.get(userCurrent + state.auth.id);
         return data.data;
-         } catch (error) {
+      } catch (error) {
         return rejectWithValue({
           error: error.message,
         });
@@ -75,7 +82,7 @@ export const logOutThunk = createAsyncThunk(
     const state = getState();
     if (state.auth.token) {
       try {
-        const response = await axios.post(userLogOut)
+        const response = await axios.post(userLogOut);
         return response.data.statusText;
       } catch (error) {
         return rejectWithValue({
@@ -110,7 +117,7 @@ export const userGetTransaction = createAsyncThunk(
     const state = getState();
     if (state.auth.token) {
       try {
-        const {data} = await axios.post(userTransaction, {...transactions})
+        const { data } = await axios.post(userTransaction, { ...transactions });
         console.log(data);
         return data.data;
       } catch (error) {
@@ -126,14 +133,14 @@ export const userPutBallance = createAsyncThunk(
   'users/balance',
   async (ballance, { rejectWithValue, getState }) => {
     console.log(ballance);
-    
+
     const state = getState();
-     if (state.auth.token) {
+    if (state.auth.token) {
       try {
         const data = await axios.put(userBalance, {
-                 id: state.auth.id , 
-                 balance: ballance 
-        })
+          id: state.auth.id,
+          balance: ballance,
+        });
         return data.data;
       } catch (error) {
         return rejectWithValue({
