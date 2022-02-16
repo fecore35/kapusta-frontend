@@ -1,5 +1,5 @@
 
-import { SummaryTable } from '../Tables/SummaryTable/SummaryTable';
+import  SummaryTable  from '../Tables/SummaryTable/SummaryTable';
 import { GeneralTable } from '../Tables/GeneralTable/GeneralTable';
 import styles from './UserView.module.scss';
 

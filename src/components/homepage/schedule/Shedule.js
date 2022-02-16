@@ -23,7 +23,7 @@ function Schedule({ type, currentCategory, month, year }) {
       );
       return setTick(data.data.data.descriptionsSum);
     } catch (error) {
-      console.log(error);
+      return setTick([]);
     }
   };
   useEffect(() => {
