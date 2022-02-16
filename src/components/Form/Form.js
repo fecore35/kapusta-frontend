@@ -10,6 +10,7 @@ import { reportSelectors } from 'redux/report';
 import { extraDataSelectors } from 'redux/extraData';
 import Categories from 'constants/categories';
 import s from './Form.module.scss';
+import ModalConfirm from 'components/ModalConfirm/ModalConfirm';
 
 const setValidate = Yup.object({
   description: Yup.string().required('Обязательно'),
@@ -134,7 +135,7 @@ const FormLabel = ({ setShowForm }) => {
         </div>
         <div className={s.btnList}>
           <button type="submit" name="buttonYes" className="buttonYes">
-            Вввод
+            Ввод
           </button>
           <button
             type="reset"
