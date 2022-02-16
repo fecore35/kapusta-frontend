@@ -1,6 +1,7 @@
+import '@pnotify/mobile/dist/PNotifyMobile.css';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
+import { alert, defaultModules } from '@pnotify/core';
 axios.defaults.baseURL = 'https://kapusta-35.herokuapp.com';
 // axios.defaults.baseURL = 'http://localhost:5000';
 
@@ -21,7 +22,7 @@ export const registerThunk = createAsyncThunk(
       return data.data;
     } catch (error) {
       alert(
-        'Такой пользователь уже есть, попробуйте другое имяимя или нажмите кнопку войти',
+        'Такой пользователь уже есть, попробуйте другое имя или нажмите кнопку войти',
       );
       return rejectWithValue(
         error,
