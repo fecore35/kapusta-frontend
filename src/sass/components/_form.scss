@@ -1,0 +1,17 @@
+@import '../utils/breakpoints';
+
+label {
+  position: relative;
+  display: block;
+}
+
+.input-error {
+  position: absolute;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+  }
+}

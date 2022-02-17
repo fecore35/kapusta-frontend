@@ -1,0 +1,67 @@
+@import '../utils/breakpoints';
+
+.section {
+  & + & {
+    margin-top: 30px;
+  }
+}
+
+.section-topPanel {
+  padding-top: 30px;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    padding-top: 40px;
+  }
+}
+
+.section-topPanel--report {
+  @media screen and (max-width: $breakpoint-mobile) {
+    padding-top: 15px;
+  }
+
+  @media screen and (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+    form button {
+      display: none;
+    }
+
+    form input {
+      text-align: center;
+      padding: 0 10px;
+    }
+  }
+}
+
+.topPanel-dashboard {
+  margin-bottom: 10px;
+
+  & + .section {
+    margin-top: 0;
+  }
+}
+
+.section__inner {
+  padding-top: 20px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 30px;
+
+  background-color: #fff;
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  border-radius: 30px;
+  overflow: hidden;
+
+  .section-dashboard & {
+    padding-top: 32px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 60px;
+    border-top-left-radius: 0;
+  }
+
+  .section-statistics & {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

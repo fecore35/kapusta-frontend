@@ -1,0 +1,64 @@
+@import '../../sass/utils/colors';
+
+.showText {
+  position: absolute;
+  // top: 18px;
+  top: 120px;
+
+  max-width: 292px;
+  padding-top: 31px;
+  padding-right: 25px;
+  padding-bottom: 41px;
+  padding-left: 25px;
+  color: $btn-orange-text-color;
+
+  background: $text-modal-gradient;
+  border-radius: 30px;
+  z-index: 99;
+  text-align: left;
+}
+
+.hideShowText {
+  display: none;
+}
+
+.showText::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 19px solid transparent;
+  border-bottom-color: #1d346a;
+  border-top: 0;
+  margin-left: -96px;
+  margin-top: -17px;
+}
+
+.text {
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.43;
+}
+.textNo {
+  font-size: 12px;
+  line-height: 1.143;
+}
+
+@media screen and (min-width: 768px) {
+  .showText {
+    left: 110px;
+    top: 60px;
+  }
+  .textNo {
+    line-height: 1.33;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .showText {
+    left: 185px;
+    top: 63px;
+  }
+}

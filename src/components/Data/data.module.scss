@@ -1,0 +1,42 @@
+.dateContainer {
+  display: flex;
+  margin-left: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 175px;
+}
+.button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  color: #ff751d;
+}
+.description {
+  font-size: 12px;
+  line-height: 14px;
+
+  text-align: center;
+  letter-spacing: 0.04em;
+
+  color: rgba(82, 85, 95, 0.7);
+}
+.date {
+  display: flex;
+}
+.currentDate {
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+  font-weight: bold;
+  width: 150px;
+}
+.year {
+  margin-right: 15px;
+}
+.month {
+  margin-left: 15px;
+}

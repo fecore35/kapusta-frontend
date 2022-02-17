@@ -1,0 +1,199 @@
+@import '../../sass/utils/breakpoints';
+
+.form {
+  @media screen and (min-width: $breakpoint-desktop) {
+    display: flex;
+  }
+}
+
+.inputList {
+  flex: auto;
+  height: auto;
+  margin-bottom: 30px;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    height: 44px;
+    display: flex;
+    padding-right: 27px;
+    margin-bottom: 0;
+  }
+}
+
+.btnList {
+  display: flex;
+  width: 270px;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    margin-top: 80px;
+  }
+
+  @media screen and (min-width: $breakpoint-tablet) and (max-width: 1279.98px) {
+    margin-top: 30px;
+  }
+}
+
+.calendar {
+  width: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+  margin-right: 36px;
+  cursor: pointer;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    display: none;
+  }
+}
+
+.calendarIcon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  color: inherit;
+  margin-right: 10px;
+  background-image: url(../../icons/calendar.svg);
+  background-size: cover;
+}
+
+.calendarInput {
+  width: 74px;
+  background-color: transparent;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.descriptionLabel {
+  flex: auto;
+
+  input {
+    height: 44px;
+    width: 100%;
+    padding: 0 20px;
+    background-color: transparent;
+    border: 2px solid #f5f6fb;
+    border-right: none;
+    border-radius: 16px 0 0 0;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      &:hover {
+        border-color: #f5f6fb;
+      }
+    }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      &::placeholder {
+        color: #c7ccdc;
+      }
+
+      padding: 20px 26px;
+      font-size: 12px;
+      color: #c7ccdc;
+      border: 2px solid #fff;
+      border-bottom: none;
+      border-radius: 16px 16px 0 0;
+    }
+  }
+}
+
+.categoryLabel {
+  & > div {
+    min-height: 44px;
+    width: 188px;
+    background: #fff;
+    border-radius: 0;
+    border: 2px solid #f5f6fb;
+    border-right: none;
+    box-shadow: none;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      &:hover {
+        border-color: #f5f6fb;
+      }
+    }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      padding: 0 26px;
+      width: 100%;
+      font-size: 16px;
+      background-color: transparent;
+      border: 2px solid #fff;
+      border-radius: 0 0 16px 0;
+
+      font-size: 12px;
+      color: #c7ccdc;
+    }
+  }
+}
+
+.calcLabel {
+  @media screen and (max-width: $breakpoint-mobile) {
+    margin-top: 30px;
+  }
+
+  input {
+    position: relative;
+    display: block;
+    margin: 0 0 0 auto;
+    padding: 0 50px 0 20px;
+    width: 124px;
+    height: 44px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    background-color: transparent;
+    border: 2px solid #f5f6fb;
+    border-radius: 0 16px 16px 0;
+
+    background-image: url(../../icons/calculator.svg);
+    background-repeat: no-repeat;
+    background-position: center right 20px;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      position: relative;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10px 46px 10px 30px;
+      width: 183px;
+      color: var(--black-text-color);
+      background-color: transparent;
+      border: 2px solid #fff;
+      text-align: center;
+      border-radius: 22px;
+    }
+  }
+}
+
+.back {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-image: url(../../icons/back.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-width: 0;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

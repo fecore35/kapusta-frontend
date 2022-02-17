@@ -1,0 +1,71 @@
+@import '../../sass/utils/breakpoints';
+
+.inner {
+  text-align: center;
+}
+
+.center {
+  @media screen and (min-width: $breakpoint-desktop) {
+    width: 50%;
+  }
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align-last: left;
+}
+
+.right,
+.left {
+  @media screen and (min-width: $breakpoint-desktop) {
+    width: 25%;
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    justify-content: space-between;
+    flex-direction: row;
+    padding-bottom: 58px;
+  }
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: #52555f;
+  cursor: pointer;
+}
+
+.iconBack {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-image: url(../../icons/back.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-width: 0;
+  cursor: pointer;
+  margin-right: 20px;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+}
+
+.back {
+  @media screen and (max-width: $breakpoint-mobile) {
+    margin-right: auto;
+    order: 99;
+  }
+}

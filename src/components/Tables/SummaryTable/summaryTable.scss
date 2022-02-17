@@ -1,0 +1,32 @@
+@import '../../../sass/main.scss';
+
+div.summaryFrame {
+  height: 100%;
+  border-radius: 0 0 20px 0;
+  overflow: hidden;
+}
+
+div.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 38px;
+  text-align: center;
+  border-radius: 20px 20px 0 0;
+  background-color: #f5f6fb;
+}
+
+li.list {
+  width: 220px;
+}
+
+li.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 0 22px;
+  height: 38px;
+  margin-top: 2px;
+  background-color: #f5f6fb;
+}

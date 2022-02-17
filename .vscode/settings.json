@@ -1,5 +1,9 @@
 {
-  "cSpell.words": ["Kapusta"],
+  "cSpell.words": [
+    "ДОХОД",
+    "РАСХОД",
+    "Kapusta"
+  ],
   "files.autoSave": "onFocusChange",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
@@ -10,5 +14,6 @@
     "titleBar.activeBackground": "#FF751D",
     "titleBar.inactiveForeground": "#ffffff",
     "titleBar.inactiveBackground": "#cccccc"
-  }
+  },
+  "liveshare.audio.startCallOnShare": true
 }

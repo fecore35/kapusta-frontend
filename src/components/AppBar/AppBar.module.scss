@@ -1,0 +1,175 @@
+.container {
+  background: #ffffff;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  padding-right: 20px;
+  height: 56px;
+}
+
+.user__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 90px;
+  height: 31px;
+  margin-left: 19px;
+}
+
+.groupV {
+  width: 32px;
+  margin-left: 120px;
+  margin-right: 10px;
+}
+
+.user__symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #f5f6fa;
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
+  border-radius: 50%;
+
+  font-style: Bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+}
+
+.vector1 {
+  width: 0px;
+  height: 36px;
+  border: 1px solid #e0e5eb;
+  display: none;
+  // margin-right: 20px;
+  // margin-left: 20px;
+}
+
+.team {
+  font-size: 11px;
+  color: var(--primary-text-color);
+}
+
+.team:hover,
+.team:focus {
+  animation-name: team;
+  animation-duration: 2s;
+}
+
+@keyframes team {
+  from {
+    color: #000000;
+  }
+
+  to {
+    color: #fb7c2f;
+  }
+}
+
+.buttonUserName {
+  font-weight: normal;
+  font-style: Roboto;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  text-align: right;
+  border: none;
+  background: none;
+  text-overflow: ellipsis;
+  /* overflow: hidden; */
+  white-space: nowrap;
+  display: none;
+  cursor: pointer;
+}
+
+.buttonLogout {
+  width: 66px;
+  font-style: Roboto;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  // color: #52555f;
+  text-decoration-line: underline;
+  text-align: left;
+  border: none;
+  background: none;
+  display: none;
+  padding-right: 19px;
+}
+
+.logOut {
+  width: 16px;
+  height: 16px;
+  margin-right: 20px;
+  border: none;
+  background: none;
+}
+
+@media screen and (max-width: 320px) {
+  .buttonUserName,
+  .vector1,
+  .buttonLogout {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  // .user__symbol {
+  //   display: none;
+  // }
+  .vector1 {
+    display: block;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  .buttonUserName {
+    display: block;
+  }
+  .logo {
+    margin-left: 12px;
+  }
+  // .groupV {
+  //   margin-left: 444px;
+  // }
+  .buttonLogout {
+    width: 64;
+    margin-right: 44px;
+  }
+
+  .logOut {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  // .groupV {
+  //   margin-left: 908px;
+  // }
+  // .groupV {
+  //   justify-content:space-between;
+  // }
+  .buttonLogout {
+    margin-right: 44px;
+    justify-content: center;
+  }
+  .logo {
+    margin-left: 0;
+  }
+
+  .logOut {
+    display: none;
+  }
+}

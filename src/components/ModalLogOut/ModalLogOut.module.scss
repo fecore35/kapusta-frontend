@@ -1,0 +1,40 @@
+.buttonLogout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 55px;
+  font-style: Roboto;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  text-decoration-line: underline;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  span {
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: block;
+    }
+  }
+}
+
+.logOut {
+  width: 16px;
+  height: 16px;
+  margin-right: 20px;
+  border: none;
+  background: none;
+}
+
+@media screen and (min-width: 768px) {
+  .logOut {
+    display: none;
+  }
+}
