@@ -17,8 +17,8 @@ function Schedule({ type, currentCategory, month, year }) {
   const [data, setData] = useState([]);
   const [tick, setTick] = useState(data);
   const getData = async (category, month, year) => {
-    if (!month || !year || !category) {
-      return;
+    if (month === undefined || !year || !category) {
+      return setTick([]);
     }
     try {
       const data = await axios.get(
