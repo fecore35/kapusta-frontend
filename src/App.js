@@ -34,6 +34,17 @@ const HomePage = lazy(() => {
     );
   });
 });
+const DevelopersView = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(
+      () =>
+        resolve(
+          import('pages/DevelopersView/DevelopersView')
+        ),
+      3500,
+    );
+  });
+});
 const Report = lazy(() => {
   return new Promise(resolve => {
     setTimeout(
@@ -76,6 +87,7 @@ function App() {
       <AppBar />
       <Suspense fallback={<Spinner />}>
         <Routes>
+          <Route path={Router.DEVELOPERS} element={<DevelopersView />} />
           <Route path={Router.HOME} element={<PublicRoute component={HomePage} />} />
           <Route path={Router.DASHBOARD} element={<PrivateRoute component={Dashboard} />} />
           <Route path={Router.REPORT} element={<PrivateRoute component={Report} />} />

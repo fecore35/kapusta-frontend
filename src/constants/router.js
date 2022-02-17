@@ -1,4 +1,5 @@
 const Router = {
+  DEVELOPERS: '/',
   HOME: '/',
   DASHBOARD: '/dashboard',
   REPORT: '/report',

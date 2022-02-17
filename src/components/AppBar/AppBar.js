@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useSelector } from 'react-redux';
-
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../icons/logoKapusta.svg';
 import groupV from '../../icons/userActiv.svg';
 import vector1 from '../../icons/logoKapusta.svg';
@@ -22,6 +22,10 @@ const AppBar = () => {
           height="31"
           className={s.logo}
         />
+
+        <NavLink to="/developers" className={s.team}>
+          <h1>𝐓𝐞𝐚𝐦𝐬</h1>
+        </NavLink>
 
         {isAuth && (
           <div className={s.user__item}>
