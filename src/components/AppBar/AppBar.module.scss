@@ -30,9 +30,22 @@
   margin-right: 10px;
 }
 
-// .vector__mobile {
-//   display: none;
-// }
+.user__symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #f5f6fa;
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
+  border-radius: 50%;
+
+  font-style: Bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+}
 
 .vector1 {
   width: 0px;
@@ -93,6 +106,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  // .user__symbol {
+  //   display: none;
+  // }
   .vector1 {
     display: block;
     margin-right: 20px;
