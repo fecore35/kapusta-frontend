@@ -20,7 +20,7 @@ const AppBar = () => {
         <img src={logo} alt="Logo" width="90" height="31" className={s.logo} />
 
         <NavLink to={Router.DEVELOPERS} className={s.team}>
-          <h1>𝐓𝐞𝐚𝐦𝐬</h1>
+          <h1>𝐓𝐞𝐚𝐦</h1>
         </NavLink>
 
         {isAuth && (
