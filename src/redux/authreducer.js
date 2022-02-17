@@ -6,6 +6,7 @@ import {
   currentThunk,
   logOutThunk,
   userGetTransaction,
+  userPutBallance,
 } from './asyncthunc';
 import { transactionsOperation } from 'redux/transactions';
 
@@ -151,6 +152,26 @@ const authSlice = createSlice({
     [userGetTransaction.rejected](state, action) {
       return {
         ...state,
+        isLoading: false,
+      };
+    },
+    [userPutBallance.pending](state, action) {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    },
+    [userPutBallance.fulfilled](state, action) {
+      return {
+        ...state,
+        isLoading: false,
+        rebalancing: true,
+      };
+    },
+    [userPutBallance.rejected](state, action) {
+      return {
+        ...state,
+        balance: '0',
         isLoading: false,
       };
     },
