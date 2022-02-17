@@ -165,6 +165,7 @@ const authSlice = createSlice({
       return {
         ...state,
         isLoading: false,
+        balance: action.payload.currentBalance,
         rebalancing: true,
       };
     },
