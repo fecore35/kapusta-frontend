@@ -7,7 +7,7 @@ export const useReportCategory = ({ month, year }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (month && year) {
+    if (month !== undefined && year) {
       dispatch(
         reportOperation.getCategory({
           month,
