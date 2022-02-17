@@ -7,7 +7,7 @@ import { StatisticsHeader } from 'components/StatisticsHeader/StatisticsHeader';
 function Report() {
   return (
     <>
-      <Sections className="section-topPanel">
+      <Sections className="section-topPanel section-topPanel--report">
         <TopPanel showGoBack showCalendar />
       </Sections>
 

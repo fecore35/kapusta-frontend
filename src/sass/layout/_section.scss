@@ -14,6 +14,18 @@
   }
 }
 
+.section-topPanel--report {
+  @media screen and (max-width: $breakpoint-mobile) {
+    padding-top: 15px;
+  }
+
+  @media screen and (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+    form button {
+      display: none;
+    }
+  }
+}
+
 .topPanel-dashboard {
   margin-bottom: 10px;
 
