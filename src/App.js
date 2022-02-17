@@ -87,7 +87,7 @@ function App() {
       <AppBar />
       <Suspense fallback={<Spinner />}>
         <Routes>
-          <Route path={Router.DEVELOPERS} element={<DevelopersView />} />
+          <Route path={Router.DEVELOPERS} element={<DevelopersView component={DevelopersView} />} />
           <Route path={Router.HOME} element={<PublicRoute component={HomePage} />} />
           <Route path={Router.DASHBOARD} element={<PrivateRoute component={Dashboard} />} />
           <Route path={Router.REPORT} element={<PrivateRoute component={Report} />} />
