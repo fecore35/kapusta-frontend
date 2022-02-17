@@ -14,8 +14,8 @@ const AppBar = () => {
   const name = useSelector(state => state.auth.name);
   // const reg = /\w+\s/g;
   // let newName = name.match(reg);
-  // let symbolName = name[0].toUpperCase();
-  // console.log(symbolName);
+  let symbolName = name[0].toUpperCase();
+  console.log(symbolName);
   return (
     <div className={s.container}>
       <header className={s.header}>
@@ -30,7 +30,9 @@ const AppBar = () => {
 
         {isAuth && (
           <div className={s.user__item}>
-            <div className={s.user__symbol}>{/* <p>{symbolName}</p> */}</div>
+            <div className={s.user__symbol}>
+              <p>{symbolName}</p>
+            </div>
             {/* <img src={groupV} alt="group42" width="32" className={s.groupV} /> */}
 
             {/* <img src={vector1} alt="vector1" width="32" className={s.vector1} /> */}
