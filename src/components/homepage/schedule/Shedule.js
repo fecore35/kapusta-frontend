@@ -17,6 +17,9 @@ function Schedule({ type, currentCategory, month, year }) {
   const [data, setData] = useState([]);
   const [tick, setTick] = useState(data);
   const getData = async (category, month, year) => {
+    if (!month || !year || !category) {
+      return;
+    }
     try {
       const data = await axios.get(
         `/transactions/description/${month}/${year}/${category}`,

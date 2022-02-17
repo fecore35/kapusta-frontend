@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector,connect} from 'react-redux';
+import { useSelector, connect } from 'react-redux';
 import { reportSelectors } from 'redux/report';
 import './summaryTable.scss';
 import { monthHelper } from '../../../helpers/monthHelper';
 import axios from 'axios';
-  const SummaryTable = ({balance}) => {
+const SummaryTable = ({ balance }) => {
   const [summary, setSummary] = useState([]);
   const summaryIncome = useSelector(reportSelectors.getReportType);
-  console.log(balance)
   const getDataSummary = async () => {
     try {
-      const data = await axios.get(
-        `/transactions/summary`,
-      );
+      const data = await axios.get(`/transactions/summary`);
       return setSummary(data.data.data.summary);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
   useEffect(() => {
-    getDataSummary()
-  },[balance])
+    getDataSummary();
+  }, [balance]);
   return (
     <div className="summaryFrame">
       <div className="title">
@@ -44,9 +41,9 @@ import axios from 'axios';
     </div>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-   balance: state.auth.balance,
-  }
-}
-export default connect(mapStateToProps, )(SummaryTable);
+    balance: state.auth.balance,
+  };
+};
+export default connect(mapStateToProps)(SummaryTable);
