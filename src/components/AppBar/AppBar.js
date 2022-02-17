@@ -7,7 +7,6 @@ import ButtonUserName from './buttonUserName/ButtonUserName';
 import ButtonLogOut from './buttonLogOut/ButtonLogOut';
 import s from './AppBar.module.scss';
 
-import { Link } from 'react-router-dom';
 import Router from 'constants/router';
 
 const AppBar = () => {
@@ -20,7 +19,7 @@ const AppBar = () => {
       <header className={s.header}>
         <img src={logo} alt="Logo" width="90" height="31" className={s.logo} />
 
-        <NavLink to="/developers" className={s.team}>
+        <NavLink to={Router.DEVELOPERS} className={s.team}>
           <h1>𝐓𝐞𝐚𝐦𝐬</h1>
         </NavLink>
 
