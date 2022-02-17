@@ -97,7 +97,7 @@ const FormLabel = ({ setShowForm }) => {
           <FormInput
             type="text"
             name="description"
-            placeholder="Описание товара."
+            placeholder={isIncome ? 'Описание дохода' : 'Описание товара'}
             value={formik.values.description || ''}
             onChange={formik.handleChange}
             error={formik.errors.description}
