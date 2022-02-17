@@ -31,7 +31,7 @@ function Schedule({ type, currentCategory, month, year }) {
   };
   useEffect(() => {
     getData(currentCategory, month, year);
-  }, [currentCategory]);
+  }, [currentCategory, month, year]);
 
   const dataForSchedule = () =>
     tick
