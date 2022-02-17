@@ -43,7 +43,6 @@ export const loginThunk = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(userLogin, { ...user });
-      console.log(user);
       alert(`С возвращением, ${user.email}`);
       // if (!data.data.token) {
       //   throw new Error('Required');
@@ -118,7 +117,6 @@ export const userGetTransaction = createAsyncThunk(
     if (state.auth.token) {
       try {
         const { data } = await axios.post(userTransaction, { ...transactions });
-        console.log(data);
         return data.data;
       } catch (error) {
         return rejectWithValue({
@@ -132,8 +130,6 @@ export const userGetTransaction = createAsyncThunk(
 export const userPutBallance = createAsyncThunk(
   'users/balance',
   async (ballance, { rejectWithValue, getState }) => {
-    console.log(ballance);
-
     const state = getState();
     if (state.auth.token) {
       try {
