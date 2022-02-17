@@ -5,6 +5,8 @@ import Router from '../../../constants/router';
 
 const ButtonUserName = () => {
   const name = useSelector(state => state.auth.name);
+  const reg = /\w+\s/g;
+  let newName = name.match(reg);
   return (
     <Link to={Router.DASHBOARD}>
       <button
@@ -13,7 +15,7 @@ const ButtonUserName = () => {
         type="button"
         // onClick={() => dispatch(authOperations.UserName())}
       >
-        {name}
+        {newName}
       </button>
     </Link>
   );
