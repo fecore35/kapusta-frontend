@@ -7,17 +7,13 @@
 }
 
 .inputList {
-  display: flex;
   flex: auto;
-  height: 44px;
+  height: auto;
   margin-bottom: 30px;
 
-  @media screen and (max-width: $breakpoint-tablet) {
-    flex-direction: column;
-    height: auto;
-  }
-
-  @media screen and (min-width: $breakpoint-desktop) {
+  @media screen and (min-width: $breakpoint-tablet) {
+    height: 44px;
+    display: flex;
     padding-right: 27px;
     margin-bottom: 0;
   }
@@ -34,6 +30,10 @@
 
   @media screen and (max-width: $breakpoint-mobile) {
     margin-top: 80px;
+  }
+
+  @media screen and (min-width: $breakpoint-tablet) and (max-width: 1279.98px) {
+    margin-top: 30px;
   }
 }
 
