@@ -1,7 +1,6 @@
-import '@pnotify/mobile/dist/PNotifyMobile.css';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { alert, defaultModules } from '@pnotify/core';
+import { alert } from '@pnotify/core';
 axios.defaults.baseURL = 'https://kapusta-35.herokuapp.com';
 // axios.defaults.baseURL = 'http://localhost:5000';
 
@@ -18,22 +17,19 @@ export const registerThunk = createAsyncThunk(
     try {
       const { data } = await axios.post(userRegister, { ...user });
 
-      alert('Регистрация прошла успешно');
+      alert({
+        text: 'Регистрация прошла успешно, нажмите кнопку войти',
+        delay: 1500,
+        hide: true,
+      });
       return data.data;
     } catch (error) {
-      alert(
-        'Такой пользователь уже есть, попробуйте другое имя или нажмите кнопку войти',
-      );
-      return rejectWithValue(
-        error,
-        // {
-        //    if (error.code === 409) {
-
-        //   throw new Error('Required');
-        // }
-        //   error: error.message,
-        // }
-      );
+      alert({
+        text: 'Такой пользователь уже есть, попробуйте другое имя или нажмите кнопку войти',
+        delay: 1500,
+        hide: true,
+      });
+      return rejectWithValue(error);
     }
   },
 );
@@ -43,16 +39,26 @@ export const loginThunk = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(userLogin, { ...user });
-      alert(`С возвращением, ${user.email}`);
-      // if (!data.data.token) {
-      //   throw new Error('Required');
-      // }
+      // !data.data.rebalancing ? alert(`С возвращением, ${user.email}`) :
+
+      alert({
+        text: `Добро пожаловать, ${user.email}`,
+        delay: 1500,
+        hide: true,
+      });
+
+      // alert(`Добро пожаловать, ${user.email}`);
+      // console.log(alert);
+
       return data.data;
     } catch (error) {
-      alert('Нету такого пользователя, попробуйте другое ');
+      alert({
+        text: 'Нету такого пользователя, попробуйте другое',
+        delay: 1500,
+        hide: true,
+      });
       return rejectWithValue({
         error,
-        // : error.message,
       });
     }
   },
