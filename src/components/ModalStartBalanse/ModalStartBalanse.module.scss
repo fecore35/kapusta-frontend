@@ -2,7 +2,8 @@
 
 .showText {
   position: absolute;
-  top: 18px;
+  // top: 18px;
+  top: 120px;
 
   max-width: 292px;
   padding-top: 31px;
@@ -47,7 +48,8 @@
 
 @media screen and (min-width: 768px) {
   .showText {
-    left: -264px;
+    left: 110px;
+    top: 60px;
   }
   .textNo {
     line-height: 1.33;
