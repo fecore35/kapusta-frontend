@@ -14,7 +14,7 @@ const team = [
     fullName: 'Evgenii Bryzgun',
     position: 'Team Leader',
     photo: Evgenii,
-    linkedIn: '#',
+    linkedIn: 'https://www.linkedin.com/in/bryzgun',
     gitHub: 'https://github.com/fecore35',
   },
   {
