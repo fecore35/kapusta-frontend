@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { alert } from '@pnotify/core';
-axios.defaults.baseURL = 'https://kapusta-35.herokuapp.com';
+axios.defaults.baseURL = 'https://kapusta-35-backend.onrender.com';
 // axios.defaults.baseURL = 'http://localhost:5000';
 
 const userLogin = '/auth/login';
