@@ -10,7 +10,7 @@ import {
 } from './asyncthunc';
 import { transactionsOperation } from 'redux/transactions';
 
-axios.defaults.baseURL = 'https://kapusta-35.herokuapp.com';
+axios.defaults.baseURL = 'https://kapusta-35-backend.onrender.com';
 // axios.defaults.baseURL = 'http://localhost:5000';
 
 const token = Object.freeze({

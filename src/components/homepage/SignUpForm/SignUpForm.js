@@ -47,7 +47,7 @@ const SignupForm = () => {
         Вы можете авторизоваться с помощью Google Account:
       </p>
       <a
-        href="https://kapusta-35.herokuapp.com/auth/google"
+        href="https://kapusta-35-backend.onrender.com/auth/google"
         className={styles.google}
       >
         Google
